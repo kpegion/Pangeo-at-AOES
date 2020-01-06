@@ -4,10 +4,11 @@ install:
         #  - pip install -r requirements.txt
 
 script:
+  - pushd docs
   # Use Sphinx to make the html docs
   - make html
   # Tell GitHub not to use jekyll to compile the docs
-  - touch docs/build/html/.nojekyll
+  - touch build/html/.nojekyll
 
 # Tell Travis CI to copy the documentation to the gh-pages branch of
 # your GitHub repository.
