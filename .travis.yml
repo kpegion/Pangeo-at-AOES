@@ -1,20 +1,29 @@
-language: python - "2.7"
+language: python
 
-# before_install will simply setup a conda enviroment for installing python packages, if you
-# have project dependencies it's usually recommended to go this route
 before_install:
     - wget http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh
     - chmod +x miniconda.sh
     - "./miniconda.sh -b"
     - export PATH=/home/travis/miniconda2/bin:$PATH
-      #    - conda update --yes conda
+    - conda update --yes conda
 
 install:
-    - conda install --yes python="2.7" sphinx        
-    - pip install --user travis-sphinx
+    - conda install --yes sphinx
 
 script:
-    - travis-sphinx build
+  - pushd docs
+  # Use Sphinx to make the html docs
+  - make html
+  # Tell GitHub not to use jekyll to compile the docs
+  - touch build/html/.nojekyll
 
-after_success:
-    - travis-sphinx deploy
+# Tell Travis CI to copy the documentation to the gh-pages branch of
+# your GitHub repository.
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
+  keep-history: true
+  on:
+    branch: master
+  local_dir: docs/build/html/
