@@ -9,11 +9,4 @@ Welcome to Pangeo-at-AOES's documentation!
 .. toctree::
    :maxdepth: 2
 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   getting_started
