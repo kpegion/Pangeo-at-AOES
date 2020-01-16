@@ -35,6 +35,36 @@
             
   <div class="section" id="setting-up-pangeo-on-the-cola-servers">
 <h1>Setting up Pangeo on the COLA Servers<a class="headerlink" href="#setting-up-pangeo-on-the-cola-servers" title="Permalink to this headline">¶</a></h1>
+<p>Now that we understand what Pangeo is and why we want to use it, let’s talk about how to set it up and run it on the COLA servers.</p>
+<dl class="docutils">
+<dt>Many of the examples provided in this tutorial will work using the COLA Anaconda Module, activated using ::</dt>
+<dd>module load anaconda/3</dd>
+</dl>
+<p>However, the COLA Anaconda Module may not have the latest version or may not include Python packages that you wish to use, especially non-standard packages such as <cite>climpred</cite> are not included.</p>
+<p>I recommend installing your own version of miniconda (a mini version of Anaconda Python) which will allow you to install additional packages as you need without needing to ask Tom to install a package and so that you can develop custom testing environments in the future.  You may not see now why you would want this flexibility, but you will likely encounter the need down the road.  To do this I have reproduced the necessary steps from <a class="reference external" href="https://pangeo.io/setup_guides/hpc.html">https://pangeo.io/setup_guides/hpc.html</a>.</p>
+<p>Log into a COLA Server and from your home directory execute the following</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">repo</span><span class="o">.</span><span class="n">continuum</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">miniconda</span><span class="o">/</span><span class="n">Miniconda3</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="n">Miniconda3</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
+<span class="o">./</span><span class="n">Miniconda3</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="n">Linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>The following command is necessary so that your new Python environment is not initiaized by default on login ::</dt>
+<dd>conda config –set auto_activate_base false</dd>
+<dt>Next, you want to make sure that your conda package manager is updated ::</dt>
+<dd>conda update conda</dd>
+</dl>
+<p>We will now create a conda (Python) environment with a specific set of packages installed</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">pangeo</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> \
+    <span class="n">python</span><span class="o">=</span><span class="mf">3.6</span> <span class="n">jupyterlab</span> <span class="n">nbserverproxy</span> \
+    <span class="n">xarray</span> <span class="n">scipy</span> <span class="n">netcdf4</span> <span class="n">matplotlib</span> <span class="n">cartopy</span> <span class="n">dask</span>
+</pre></div>
+</div>
+<p>You have now created a conda environment called pangeo. When you activiate this environment, you have access to Python 3.6 and all the packages listed here.  You may wonder, how do I know what packages to install?  No need to worry, you can install these for now and add others later if you realize you need them.</p>
+<dl class="docutils">
+<dt>Now, let’s activiate this environment so you can work in Python with these packages ::</dt>
+<dd>conda activate pangeo</dd>
+</dl>
 </div>
 
 
