@@ -20,6 +20,5 @@ Expectations Prior to these Tutorials
 .. toctree::
    :maxdepth: 2
   
-   getting-started
    what-is-pangeo
    setting-up-pangeo
