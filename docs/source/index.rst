@@ -19,8 +19,9 @@ Expectations Prior to these Tutorials
 
 .. toctree::
    :maxdepth: 2
-   :caption: Why this Documentation?
+   :caption: Python Packages for Climate Data Analysis
 
+   scientific-python-packages
    what-is-pangeo
    other-useful-python-packages
 
