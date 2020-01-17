@@ -22,7 +22,7 @@ Expectations Prior to these Tutorials
 * :doc:`what-is-pangeo`
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    what-is-pangeo
 
@@ -32,7 +32,18 @@ Expectations Prior to these Tutorials
 * :doc:`setting-up-jupyter`
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
   
    setting-up-pangeo
    setting-up-jupyter
+
+**Basic Examples**
+
+* :doc:'read-netcdf-data'
+* :doc:'read-grib-data'
+
+**Use Cases**
+.. toctree::
+   :maxdepth: 1
+
+   example1
