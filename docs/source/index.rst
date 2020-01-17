@@ -17,9 +17,24 @@ Expectations Prior to these Tutorials
 3. You are familiar with basic Unix.  If you are not familiar with Unix, [Software Carpentry](https://software-carpentry.org/) provides a good basic [Unix Tutorial](http://swcarpentry.github.io/shell-novice/)
 4. You have programming experience and a basic understandng of Python syntax. If you need to refresh your programming skills and/or learn Python syntax, [Software Carpentry](https://software-carpentry.org/) provides a [Programming with Python Tutorial](http://swcarpentry.github.io/python-novice-inflammation/)
 
+**Why this Documentation?**
+
+
+
+* :doc:`what-is-pangeo`
+
+.. toctree::
+   :maxdepth: 1
+
+   :what-is-pangeo
+
+**Getting Setup**
+
+* :doc:`setting-up-pangeo`
+* :doc:`setting-up-jupyter`
+
 .. toctree::
    :maxdepth: 2
   
-   what-is-pangeo
    setting-up-pangeo
    setting-up-jupyter
