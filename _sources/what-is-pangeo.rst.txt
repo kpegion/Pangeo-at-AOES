@@ -33,11 +33,13 @@ Useful Affiliated Packages
 
 There are a large collection of open source software packages that build off of the Pangeo Core Software stack. A list is included here: http://xarray.pydata.org/en/latest/related-projects.html
 
-There are some that I want to mention here because I have contributed to them, used them, and/or find themparticularly useful for my word.  I will add others if/when I try them and find that they are useful for my purposes:
+There are some that I want to mention here because I have contributed to them, used them, and/or find themparticularly useful for my word.  I will add others if/when I try them and find that they are useful for my purposes
+
 climpred
 --------
 (https://climpred.readthedocs.io/en/stable/) --analysis of ensemble forecast models for climate prediction
 I have contributed to this software development and will provide some examples and use cases.  Built off of xskillscore
+
 xskillscore
 -----------
 (https://github.com/raybellwaves/xskillscore) -- underlying definitions for calculating skill scores
