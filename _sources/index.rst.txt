@@ -42,7 +42,7 @@ Expectations Prior to these Tutorials
 * :doc:`read-netcdf-data`
 * :doc:`read-grib-data`
 
-. toctree::
+.. toctree::
    :maxdepth: 1
 
    read-netcdf-data

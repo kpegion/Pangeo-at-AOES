@@ -1,4 +1,3 @@
-###########################################
 What is Pangeo and why are we using it?
 ###########################################
 
@@ -9,7 +8,6 @@ I think of it as two things:
 1. An evolving set of software and tools for data analysis in our field
 2. An open and helpful community rich with useful information to advance my data analysis capabilities and research and share my knowledge to help others.
 
-****************************
 The Pangeo Software Stack
 ****************************
 
