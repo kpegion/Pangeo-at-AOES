@@ -20,14 +20,17 @@ Expectations Prior to these Tutorials
 **Why this Documentation?**
 
 .. toctree::
-   :maxdepth: 1
-   :Caption: Why this Documentation?
+   :maxdepth: 2
+   :caption: Why this Documentation?
+
    what-is-pangeo
+   other-useful-python-packages
 
 **Getting Setup**
 
 .. toctree::
    :maxdepth: 1
+   :caption: Getting Started
   
    setting-up-pangeo
    setting-up-jupyter
@@ -36,6 +39,7 @@ Expectations Prior to these Tutorials
 
 .. toctree::
    :maxdepth: 1
+   caption: Basic Readin and Plotting
 
    read-netcdf-data
    read-grib-data
@@ -45,6 +49,7 @@ Expectations Prior to these Tutorials
 
 .. toctree::
    :maxdepth: 1
+   caption: Advanced Analysis 
 
    example1
 
@@ -52,6 +57,7 @@ Expectations Prior to these Tutorials
 
 .. toctree::
    :maxdepth: 1
+   caption: Hindcasts with climpred
 
    example1
 
@@ -59,5 +65,14 @@ Expectations Prior to these Tutorials
 
 .. toctree::
    :maxdepth: 1
+   caption: Making Qualiiy Plots
+
+   example1
+
+**Working with Hindcast Datasets using `climpred`**
+
+.. toctree::
+   :maxdepth: 1
+   caption: Hindcasts with climpred
 
    example1
