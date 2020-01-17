@@ -21,7 +21,7 @@ Expectations Prior to these Tutorials
 
 .. toctree::
    :maxdepth: 1
-
+   :Caption: Why this Documentation?
    what-is-pangeo
 
 **Getting Setup**
