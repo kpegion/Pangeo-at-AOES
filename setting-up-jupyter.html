@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Search &mdash; Pangeo-at-AOES 0.1.1 documentation</title>
+  <title>Setting up Jupyter on COLA Servers &mdash; Pangeo-at-AOES 0.1.1 documentation</title>
   
 
   
@@ -25,7 +25,6 @@
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
         <script type="text/javascript" src="_static/language_data.js"></script>
-        <script type="text/javascript" src="_static/searchtools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -35,7 +34,8 @@
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="#" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Setting up Pangeo on the COLA Servers" href="setting-up-pangeo.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -62,7 +62,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="#" method="get">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -79,9 +79,9 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="setting-up-pangeo.html">Setting up Pangeo on the COLA Servers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="setting-up-jupyter.html">Setting up Jupyter on COLA Servers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Setting up Jupyter on COLA Servers</a></li>
 </ul>
 
             
@@ -127,12 +127,14 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Search</li>
+      <li>Setting up Jupyter on COLA Servers</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="_sources/setting-up-jupyter.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -144,24 +146,32 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <noscript>
-  <div id="fallback" class="admonition warning">
-    <p class="last">
-      Please activate JavaScript to enable the search
-      functionality.
-    </p>
-  </div>
-  </noscript>
+  <div class="section" id="setting-up-jupyter-on-cola-servers">
+<h1>Setting up Jupyter on COLA Servers<a class="headerlink" href="#setting-up-jupyter-on-cola-servers" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li>Follow the steps in &lt;Configure Jupyter <a class="reference external" href="http://pangeo.io/setup_guides/hpc.html#configure-jupyter">http://pangeo.io/setup_guides/hpc.html#configure-jupyter</a>&gt;. The main point of this step is to create a password for when you log in to the Jupyter server you will start up on COLA.</li>
+<li>Log in to colaX.gmu.edu, where X refers to a COLA Server</li>
+<li>Start up the jupyter server with the following command::
+jupyter lab –no-browser –ip=`hostname` –port=8877</li>
+<li>In a separate terminal, log in to colaX again with the following command::
+ssh -N -L 8877:colaX.gmu.edu:8877 -L 8878:colaX.gmu.edu:8878 &lt;your user name&gt;&#64;colaS.gmu.edu</li>
+<li>Open your browser and go to <a class="reference external" href="http://localhost:8877">http://localhost:8877</a>. It will ask you to enter the password you created in step 1.</li>
+<li>Your jupyter server should appear in your local browser.</li>
+</ol>
+</div>
 
-  
-  <div id="search-results">
-  
-  </div>
 
            </div>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="setting-up-pangeo.html" class="btn btn-neutral float-left" title="Setting up Pangeo on the COLA Servers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
@@ -194,14 +204,7 @@
   
   
     
-  
-  <script type="text/javascript">
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
-  <script type="text/javascript" id="searchindexloader"></script>
    
-
 
 </body>
 </html>
