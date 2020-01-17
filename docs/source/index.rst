@@ -6,7 +6,7 @@
 Welcome to Pangeo-at-AOES
 ==========================================
 
-This is a set of Tutorials, including example Jupyter Notebooks, for using the Pangeo Environment for data analysis on the AOES COLA Servers
+This is a set of Tutorials, including example Jupyter Notebooks, for using the Python and the Pangeo Software stack for data analysis on the AOES COLA Servers
 
 This set of tutorials is specifically designed for the Mason AOES COLA Servers, datasets available on our servers, and use cases around common data analyses used by our students and faculty
 
