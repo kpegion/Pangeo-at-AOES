@@ -37,12 +37,39 @@ Expectations Prior to these Tutorials
    setting-up-pangeo
    setting-up-jupyter
 
-**Basic Examples**
+**Basic Reading and Plotting of AOES COLA Datasets**
 
-* :doc:'read-netcdf-data'
-* :doc:'read-grib-data'
+* :doc:`read-netcdf-data`
+* :doc:`read-grib-data`
 
-**Use Cases**
+. toctree::
+   :maxdepth: 1
+
+   read-netcdf-data
+   read-grib-data
+
+**Advanced Reading and Analysis of some AOES COLA Datasets**
+
+* :doc:`example1`
+
+.. toctree::
+   :maxdepth: 1
+
+   example1
+
+**Working with Hindcast Datasets using `climpred`**
+
+* :doc:`example1`
+
+.. toctree::
+   :maxdepth: 1
+
+   example1
+
+**Making Quality Plots that your advisor and colleagues will love**
+
+* :doc:`example1`
+
 .. toctree::
    :maxdepth: 1
 
