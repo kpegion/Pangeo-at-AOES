@@ -168,31 +168,42 @@
 </dl>
 <p>However, the COLA Anaconda Module may not have the latest version or may not include Python packages that you wish to use, especially non-standard packages such as <cite>climpred</cite> are not included.</p>
 <p>I recommend installing your own version of miniconda (a mini version of Anaconda Python) which will allow you to install additional packages as you need without needing to ask Tom to install a package and so that you can develop custom testing environments in the future.  You may not see now why you would want this flexibility, but you will likely encounter the need down the road.  To do this I have reproduced the necessary steps from <a class="reference external" href="https://pangeo.io/setup_guides/hpc.html">https://pangeo.io/setup_guides/hpc.html</a>.</p>
-<ol class="arabic">
-<li><p class="first">Log into a COLA Server and from your home directory execute the following</p>
-<p>wget <a class="reference external" href="https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh">https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh</a>
+<ol class="arabic simple">
+<li>Log into a COLA Server and from your home directory execute the following:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 chmod +x Miniconda3-latest-Linux-x86_64.sh
-./Miniconda3-latest-Linux-x86_64.sh</p>
+./Miniconda3-latest-Linux-x86_64.sh
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>The following command is necessary so that your new Python environment is not initiaized by default on login:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda config --set auto_activate_base <span class="nb">false</span>
+</pre></div>
+</div>
+<ol class="arabic" start="3">
+<li><p class="first">Next, you want to make sure that your conda package manager is updated :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<p>conda update conda</p>
 </li>
-<li><p class="first">The following command is necessary so that your new Python environment is not initiaized by default on login ::
-conda config –set auto_activate_base false</p>
-</li>
-<li><p class="first">Next, you want to make sure that your conda package manager is updated ::
-conda update conda</p>
-</li>
-<li><p class="first">We will now create a conda (Python) environment with a specific set of packages installed</p>
-<dl class="docutils">
-<dt>conda create -n pangeo -c conda-forge </dt>
-<dd><p class="first last">python=3.6 jupyterlab nbserverproxy xarray scipy netcdf4 matplotlib cartopy dask</p>
-</dd>
-</dl>
+<li><p class="first">We will now create a conda (Python) environment with a specific set of packages installed:</p>
 </li>
 </ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create -n pangeo -c conda-forge <span class="se">\</span>
+    <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.6 jupyterlab nbserverproxy <span class="se">\</span>
+    xarray scipy netcdf4 matplotlib cartopy dask
+</pre></div>
+</div>
 <p>You have now created a conda environment called pangeo. When you activiate this environment, you have access to Python 3.6 and all the packages listed here.  You may wonder, how do I know what packages to install?  No need to worry, you can install these for now and add others later if you realize you need them.</p>
 <ol class="arabic simple" start="5">
-<li>Now, let’s activiate this environment so you can work in Python with these packages ::
-conda activate pangeo</li>
+<li>Now, let’s activiate this environment so you can work in Python with these packages:</li>
 </ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda activate pangeo
+</pre></div>
+</div>
 </div>
 
 
