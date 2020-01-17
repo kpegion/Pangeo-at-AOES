@@ -1,5 +1,5 @@
-Setting up Pangeo on the COLA Servers
-######################################
+Setting up Pangeo & other Pytbon Packages  on the COLA Servers
+################################################################
 
 Now that we understand what Pangeo is and why we want to use it, let's talk about how to set it up and run it on the COLA servers.
 
