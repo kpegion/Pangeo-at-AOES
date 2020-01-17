@@ -30,6 +30,6 @@ There are a large collection of open source software packages that build off of 
 
 There are some that I want to mention here because I have contributed to them, used them, and/or find themparticularly useful for my word.  I will add others if/when I try them and find that they are useful for my purposesk: 
 1. climpred (https://climpred.readthedocs.io/en/stable/) --analysis of ensemble forecast models for climate prediction
-   I have contributed to this software development and will provide some examples and use cases.  Built off of xskillscore
+I have contributed to this software development and will provide some examples and use cases.  Built off of xskillscore
 2. xskillscore (https://github.com/raybellwaves/xskillscore) -- underlying definitions for calculating skill scores
 

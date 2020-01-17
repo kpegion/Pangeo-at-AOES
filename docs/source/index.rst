@@ -28,9 +28,6 @@ Expectations Prior to these Tutorials
 
 **Getting Setup**
 
-* :doc:`setting-up-pangeo`
-* :doc:`setting-up-jupyter`
-
 .. toctree::
    :maxdepth: 1
   
@@ -38,9 +35,6 @@ Expectations Prior to these Tutorials
    setting-up-jupyter
 
 **Basic Reading and Plotting of AOES COLA Datasets**
-
-* :doc:`read-netcdf-data`
-* :doc:`read-grib-data`
 
 .. toctree::
    :maxdepth: 1
@@ -50,7 +44,6 @@ Expectations Prior to these Tutorials
 
 **Advanced Reading and Analysis of some AOES COLA Datasets**
 
-* :doc:`example1`
 
 .. toctree::
    :maxdepth: 1
@@ -59,16 +52,12 @@ Expectations Prior to these Tutorials
 
 **Working with Hindcast Datasets using `climpred`**
 
-* :doc:`example1`
-
 .. toctree::
    :maxdepth: 1
 
    example1
 
 **Making Quality Plots that your advisor and colleagues will love**
-
-* :doc:`example1`
 
 .. toctree::
    :maxdepth: 1
