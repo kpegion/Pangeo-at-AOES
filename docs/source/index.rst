@@ -22,3 +22,4 @@ Expectations Prior to these Tutorials
   
    what-is-pangeo
    setting-up-pangeo
+   setting-up-jupyter
