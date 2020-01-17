@@ -21,7 +21,7 @@ Expectations Prior to these Tutorials
 
 .. toctree::
    :maxdepth: 2
-   :Caption: Why this Documentation?
+   :caption: Why this Documentation?
 
    what-is-pangeo
    other-useful-python-packages
