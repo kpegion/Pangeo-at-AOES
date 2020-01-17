@@ -9,7 +9,7 @@ before_install:
 
 install:
     - conda install --yes sphinx
-    - conda install --yes --file requirements.txt
+    - pip install sphinx_rtd_theme
 
 script:
   - pushd docs
