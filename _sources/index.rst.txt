@@ -19,14 +19,12 @@ Expectations Prior to these Tutorials
 
 **Why this Documentation?**
 
-
-
 * :doc:`what-is-pangeo`
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
-   :what-is-pangeo
+   what-is-pangeo
 
 **Getting Setup**
 
