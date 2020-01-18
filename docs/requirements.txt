@@ -1,7 +1,5 @@
 jupyterlab
 nbsphinx
-pandas
 sphinx
 sphinxcontrib-napoleon
 sphinx_rtd_theme
-xarray>=0.14.1
