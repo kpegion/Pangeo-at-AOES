@@ -25,6 +25,7 @@
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
         <script type="text/javascript" src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -35,7 +36,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="What is Pangeo and why are we using it?" href="what-is-pangeo.html" /> 
+    <link rel="next" title="Scientific Python Packages" href="scientific-python-packages.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -52,6 +53,9 @@
             <a href="#" class="icon icon-home"> Pangeo-at-AOES
           
 
+          
+            
+            <img src="_static/AOES-logo.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -79,11 +83,15 @@
               
             
             
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="what-is-pangeo.html">What is Pangeo and why are we using it?</a></li>
-</ul>
+              <p class="caption"><span class="caption-text">Python Packages</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="setting-up-pangeo.html">Setting up Pangeo on the COLA Servers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scientific-python-packages.html">Scientific Python Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="what-is-pangeo.html">The Pangeo Software Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="other-useful-python-packages.html">Some other useful Python Packages</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="setting-up-pangeo.html">Setting up Pangeo &amp; other Pytbon Packages  on the COLA Servers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setting-up-jupyter.html">Setting up Jupyter on COLA Servers</a></li>
 </ul>
 
@@ -149,9 +157,33 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="welcome-to-pangeo-at-aoes">
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="welcome-to-pangeo-at-aoes">
 <h1>Welcome to Pangeo-at-AOES<a class="headerlink" href="#welcome-to-pangeo-at-aoes" title="Permalink to this headline">¶</a></h1>
-<p>This is a set of Tutorials, including example Jupyter Notebooks, for using the Pangeo Environment for data analysis on the AOES COLA Servers</p>
+<p>This is a set of Tutorials, including example Jupyter Notebooks, for using the Python and the Pangeo Software stack for data analysis on the AOES COLA Servers</p>
 <p>This set of tutorials is specifically designed for the Mason AOES COLA Servers, datasets available on our servers, and use cases around common data analyses used by our students and faculty</p>
 <div class="section" id="expectations-prior-to-these-tutorials">
 <h2>Expectations Prior to these Tutorials<a class="headerlink" href="#expectations-prior-to-these-tutorials" title="Permalink to this headline">¶</a></h2>
@@ -161,50 +193,44 @@
 <li><p>You are familiar with basic Unix.  If you are not familiar with Unix, [Software Carpentry](<a class="reference external" href="https://software-carpentry.org/">https://software-carpentry.org/</a>) provides a good basic [Unix Tutorial](<a class="reference external" href="http://swcarpentry.github.io/shell-novice/">http://swcarpentry.github.io/shell-novice/</a>)</p></li>
 <li><p>You have programming experience and a basic understandng of Python syntax. If you need to refresh your programming skills and/or learn Python syntax, [Software Carpentry](<a class="reference external" href="https://software-carpentry.org/">https://software-carpentry.org/</a>) provides a [Programming with Python Tutorial](<a class="reference external" href="http://swcarpentry.github.io/python-novice-inflammation/">http://swcarpentry.github.io/python-novice-inflammation/</a>)</p></li>
 </ol>
-<p><strong>Why this Documentation?</strong></p>
-<ul class="simple">
-<li><p><a class="reference internal" href="what-is-pangeo.html"><span class="doc">What is Pangeo and why are we using it?</span></a></p></li>
-</ul>
 <div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Python Packages</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="what-is-pangeo.html">What is Pangeo and why are we using it?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scientific-python-packages.html">Scientific Python Packages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scientific-python-packages.html#numpy">numPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scientific-python-packages.html#scipy">scipy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scientific-python-packages.html#matplotlib">matplotlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scientific-python-packages.html#pandas">pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scientific-python-packages.html#cartopy">cartopy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="what-is-pangeo.html">The Pangeo Software Stack</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="what-is-pangeo.html#core-packages">Core Packages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="what-is-pangeo.html#xarray">Xarray</a></li>
+<li class="toctree-l3"><a class="reference internal" href="what-is-pangeo.html#dask">Dask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="what-is-pangeo.html#iris">Iris</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="what-is-pangeo.html#useful-affiliated-packages">Useful Affiliated Packages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="what-is-pangeo.html#climpred">climpred</a></li>
+<li class="toctree-l3"><a class="reference internal" href="what-is-pangeo.html#xskillscore">xskillscore</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="other-useful-python-packages.html">Some other useful Python Packages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="other-useful-python-packages.html#metpy">MetPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other-useful-python-packages.html#xesmf">xESMF</a></li>
+</ul>
+</li>
 </ul>
 </div>
-<p><strong>Getting Setup</strong></p>
-<ul class="simple">
-<li><p><a class="reference internal" href="setting-up-pangeo.html"><span class="doc">Setting up Pangeo on the COLA Servers</span></a></p></li>
-<li><p><a class="reference internal" href="setting-up-jupyter.html"><span class="doc">Setting up Jupyter on COLA Servers</span></a></p></li>
-</ul>
 <div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="setting-up-pangeo.html">Setting up Pangeo on the COLA Servers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setting-up-pangeo.html">Setting up Pangeo &amp; other Pytbon Packages  on the COLA Servers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setting-up-jupyter.html">Setting up Jupyter on COLA Servers</a></li>
 </ul>
-</div>
-<p><strong>Basic Reading and Plotting of AOES COLA Datasets</strong></p>
-<ul class="simple">
-<li><p><span class="xref std std-doc">read-netcdf-data</span></p></li>
-<li><p><span class="xref std std-doc">read-grib-data</span></p></li>
-</ul>
-<div class="toctree-wrapper compound">
-</div>
-<p><strong>Advanced Reading and Analysis of some AOES COLA Datasets</strong></p>
-<ul class="simple">
-<li><p><span class="xref std std-doc">example1</span></p></li>
-</ul>
-<div class="toctree-wrapper compound">
-</div>
-<p><strong>Working with Hindcast Datasets using `climpred`</strong></p>
-<ul class="simple">
-<li><p><span class="xref std std-doc">example1</span></p></li>
-</ul>
-<div class="toctree-wrapper compound">
-</div>
-<p><strong>Making Quality Plots that your advisor and colleagues will love</strong></p>
-<ul class="simple">
-<li><p><span class="xref std std-doc">example1</span></p></li>
-</ul>
-<div class="toctree-wrapper compound">
 </div>
 </div>
 </div>
@@ -217,7 +243,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="what-is-pangeo.html" class="btn btn-neutral float-right" title="What is Pangeo and why are we using it?" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="scientific-python-packages.html" class="btn btn-neutral float-right" title="Scientific Python Packages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>

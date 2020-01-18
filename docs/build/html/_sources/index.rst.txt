@@ -6,7 +6,7 @@
 Welcome to Pangeo-at-AOES
 ==========================================
 
-This is a set of Tutorials, including example Jupyter Notebooks, for using the Pangeo Environment for data analysis on the AOES COLA Servers
+This is a set of Tutorials, including example Jupyter Notebooks, for using the Python and the Pangeo Software stack for data analysis on the AOES COLA Servers
 
 This set of tutorials is specifically designed for the Mason AOES COLA Servers, datasets available on our servers, and use cases around common data analyses used by our students and faculty
 
@@ -17,60 +17,47 @@ Expectations Prior to these Tutorials
 3. You are familiar with basic Unix.  If you are not familiar with Unix, [Software Carpentry](https://software-carpentry.org/) provides a good basic [Unix Tutorial](http://swcarpentry.github.io/shell-novice/)
 4. You have programming experience and a basic understandng of Python syntax. If you need to refresh your programming skills and/or learn Python syntax, [Software Carpentry](https://software-carpentry.org/) provides a [Programming with Python Tutorial](http://swcarpentry.github.io/python-novice-inflammation/)
 
-**Why this Documentation?**
-
-* :doc:`what-is-pangeo`
-
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 3
+   :caption: Python Packages
 
+   scientific-python-packages
    what-is-pangeo
-
-**Getting Setup**
-
-* :doc:`setting-up-pangeo`
-* :doc:`setting-up-jupyter`
+   other-useful-python-packages
 
 .. toctree::
    :maxdepth: 1
+   :caption: Getting Started
   
    setting-up-pangeo
    setting-up-jupyter
 
-**Basic Reading and Plotting of AOES COLA Datasets**
+.. toctree::
+   :maxdepth: 1
+   caption: Basic Reading and Plotting
 
-* :doc:`read-netcdf-data`
-* :doc:`read-grib-data`
+   read-netcdf.ipynb
 
 .. toctree::
    :maxdepth: 1
-
-   read-netcdf-data
-   read-grib-data
-
-**Advanced Reading and Analysis of some AOES COLA Datasets**
-
-* :doc:`example1`
-
-.. toctree::
-   :maxdepth: 1
+   caption: Advanced Analysis 
 
    example1
 
-**Working with Hindcast Datasets using `climpred`**
-
-* :doc:`example1`
-
 .. toctree::
    :maxdepth: 1
+   caption: Hindcasts with climpred
 
    example1
 
-**Making Quality Plots that your advisor and colleagues will love**
+.. toctree::
+   :maxdepth: 1
+   caption: Making Qualiiy Plots
 
-* :doc:`example1`
+   example1
 
 .. toctree::
    :maxdepth: 1
+   caption: Hindcasts with climpred
 
    example1
