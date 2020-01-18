@@ -24,3 +24,11 @@ Expectations Prior to these Tutorials
    scientific-python-packages
    what-is-pangeo
    other-useful-python-packages
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Getting Started
+
+   setting-up-pangeo
+   setting-up-jupyter
