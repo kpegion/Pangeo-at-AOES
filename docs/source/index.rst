@@ -36,7 +36,7 @@ Expectations Prior to these Tutorials
 
 .. toctree::
    :maxdepth: 1
-   :caption: Getting Started Again
+   :caption: Basic Reading and Plotting
 
-   setting-up-pangeo
+   read-netcdf.ipynb
    setting-up-jupyter
