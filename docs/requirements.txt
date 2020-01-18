@@ -1,5 +1,6 @@
 jupyterlab
 nbsphinx
+pandoc
 sphinx
 sphinxcontrib-napoleon
 sphinx_rtd_theme
