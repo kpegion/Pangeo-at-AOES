@@ -25,6 +25,7 @@
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
         <script type="text/javascript" src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -156,17 +157,41 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="welcome-to-pangeo-at-aoes">
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="welcome-to-pangeo-at-aoes">
 <h1>Welcome to Pangeo-at-AOES<a class="headerlink" href="#welcome-to-pangeo-at-aoes" title="Permalink to this headline">¶</a></h1>
 <p>This is a set of Tutorials, including example Jupyter Notebooks, for using the Python and the Pangeo Software stack for data analysis on the AOES COLA Servers</p>
 <p>This set of tutorials is specifically designed for the Mason AOES COLA Servers, datasets available on our servers, and use cases around common data analyses used by our students and faculty</p>
 <div class="section" id="expectations-prior-to-these-tutorials">
 <h2>Expectations Prior to these Tutorials<a class="headerlink" href="#expectations-prior-to-these-tutorials" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>You are a student or faculty in the GMU AOES Department</li>
-<li>You have an account on the COLA servers.</li>
-<li>You are familiar with basic Unix.  If you are not familiar with Unix, [Software Carpentry](<a class="reference external" href="https://software-carpentry.org/">https://software-carpentry.org/</a>) provides a good basic [Unix Tutorial](<a class="reference external" href="http://swcarpentry.github.io/shell-novice/">http://swcarpentry.github.io/shell-novice/</a>)</li>
-<li>You have programming experience and a basic understandng of Python syntax. If you need to refresh your programming skills and/or learn Python syntax, [Software Carpentry](<a class="reference external" href="https://software-carpentry.org/">https://software-carpentry.org/</a>) provides a [Programming with Python Tutorial](<a class="reference external" href="http://swcarpentry.github.io/python-novice-inflammation/">http://swcarpentry.github.io/python-novice-inflammation/</a>)</li>
+<li><p>You are a student or faculty in the GMU AOES Department</p></li>
+<li><p>You have an account on the COLA servers.</p></li>
+<li><p>You are familiar with basic Unix.  If you are not familiar with Unix, [Software Carpentry](<a class="reference external" href="https://software-carpentry.org/">https://software-carpentry.org/</a>) provides a good basic [Unix Tutorial](<a class="reference external" href="http://swcarpentry.github.io/shell-novice/">http://swcarpentry.github.io/shell-novice/</a>)</p></li>
+<li><p>You have programming experience and a basic understandng of Python syntax. If you need to refresh your programming skills and/or learn Python syntax, [Software Carpentry](<a class="reference external" href="https://software-carpentry.org/">https://software-carpentry.org/</a>) provides a [Programming with Python Tutorial](<a class="reference external" href="http://swcarpentry.github.io/python-novice-inflammation/">http://swcarpentry.github.io/python-novice-inflammation/</a>)</p></li>
 </ol>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Python Packages</span></p>

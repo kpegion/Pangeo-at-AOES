@@ -36,29 +36,18 @@ Expectations Prior to these Tutorials
    :maxdepth: 1
    caption: Basic Reading and Plotting
 
-   read-netcdf.ipynb
-   read-grib.ipynb
-
 .. toctree::
    :maxdepth: 1
    caption: Advanced Analysis 
 
-   example1
-
 .. toctree::
    :maxdepth: 1
    caption: Hindcasts with climpred
-
-   example1
 
 .. toctree::
    :maxdepth: 1
    caption: Making Qualiiy Plots
 
-   example1
-
 .. toctree::
    :maxdepth: 1
    caption: Hindcasts with climpred
-
-   example1

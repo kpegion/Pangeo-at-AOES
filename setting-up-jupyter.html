@@ -25,6 +25,7 @@
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
         <script type="text/javascript" src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -156,17 +157,41 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="setting-up-jupyter-on-cola-servers">
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="setting-up-jupyter-on-cola-servers">
 <h1>Setting up Jupyter on COLA Servers<a class="headerlink" href="#setting-up-jupyter-on-cola-servers" title="Permalink to this headline">¶</a></h1>
 <ol class="arabic simple">
-<li>Follow the steps in <cite>Configure Jupyter http://pangeo.io/setup_guides/hpc.html#configure-jupyter</cite> The main point of this step is to create a password for when you log in to the Jupyter server you will start up on COLA.</li>
-<li>Log in to colaX.gmu.edu, where X refers to a COLA Server</li>
-<li>Start up the jupyter server with the following command::
-jupyter lab –no-browser –ip=`hostname` –port=8877</li>
-<li>In a separate terminal, log in to colaX again with the following command::
-ssh -N -L 8877:colaX.gmu.edu:8877 -L 8878:colaX.gmu.edu:8878 &lt;your user name&gt;&#64;colaS.gmu.edu</li>
-<li>Open your browser and go to <a class="reference external" href="http://localhost:8877">http://localhost:8877</a>. It will ask you to enter the password you created in step 1.</li>
-<li>Your jupyter server should appear in your local browser.</li>
+<li><p>Follow the steps in <cite>Configure Jupyter http://pangeo.io/setup_guides/hpc.html#configure-jupyter</cite> The main point of this step is to create a password for when you log in to the Jupyter server you will start up on COLA.</p></li>
+<li><p>Log in to colaX.gmu.edu, where X refers to a COLA Server</p></li>
+<li><p>Start up the jupyter server with the following command::
+jupyter lab –no-browser –ip=`hostname` –port=8877</p></li>
+<li><p>In a separate terminal, log in to colaX again with the following command::
+ssh -N -L 8877:colaX.gmu.edu:8877 -L 8878:colaX.gmu.edu:8878 &lt;your user name&gt;&#64;colaS.gmu.edu</p></li>
+<li><p>Open your browser and go to <a class="reference external" href="http://localhost:8877">http://localhost:8877</a>. It will ask you to enter the password you created in step 1.</p></li>
+<li><p>Your jupyter server should appear in your local browser.</p></li>
 </ol>
 </div>
 

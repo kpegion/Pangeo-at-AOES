@@ -1,0 +1,648 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Read a grib file and make a contour plot of the data &mdash; Pangeo-at-AOES 0.1.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Pangeo-at-AOES
+          
+
+          
+            
+            <img src="_static/AOES-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Python Packages</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="scientific-python-packages.html">Scientific Python Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="what-is-pangeo.html">The Pangeo Software Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="other-useful-python-packages.html">Some other useful Python Packages</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="setting-up-pangeo.html">Setting up Pangeo &amp; other Pytbon Packages  on the COLA Servers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setting-up-jupyter.html">Setting up Jupyter on COLA Servers</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Pangeo-at-AOES</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Read a grib file and make a contour plot of the data</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/read-grib.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Read-a-grib-file-and-make-a-contour-plot-of-the-data">
+<h1>Read a grib file and make a contour plot of the data<a class="headerlink" href="#Read-a-grib-file-and-make-a-contour-plot-of-the-data" title="Permalink to this headline">¶</a></h1>
+<p>In this example, we demonstrate: 1. How to read a grib file in Python using <code class="docutils literal notranslate"><span class="pre">xarray</span></code> 2. How to make a contour plot of the data</p>
+<div class="section" id="Data">
+<h2>Data<a class="headerlink" href="#Data" title="Permalink to this headline">¶</a></h2>
+<p>We will read the ERA-Interim for geopotential height at 500hPa for Jan 6, 2010</p>
+<p>The data are located on the COLA severs in the following directory: <code class="docutils literal notranslate"><span class="pre">/shared/working/rean/era-interim/daily/data/2010/</span></code></p>
+<p>The filename is: <code class="docutils literal notranslate"><span class="pre">ei.oper.an.pl.regn128cm.2010010600</span></code></p>
+</div>
+</div>
+<div class="section" id="Python-import-statements">
+<h1>Python import statements<a class="headerlink" href="#Python-import-statements" title="Permalink to this headline">¶</a></h1>
+<p>You must first import the Python packages you wish to use. This is a common set of basic import statments you can start with.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+<p>Set the path and filename</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;/shared/working/rean/era-interim/daily/data/2010/&#39;</span>
+<span class="n">fname</span><span class="o">=</span><span class="s1">&#39;ei.oper.an.pl.regn128cm.2010010600&#39;</span>
+</pre></div>
+</div>
+</div>
+<p>Read the data using <code class="docutils literal notranslate"><span class="pre">xarray</span></code> <code class="docutils literal notranslate"><span class="pre">open_dataset</span></code> <a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.open_dataset.html">http://xarray.pydata.org/en/stable/generated/xarray.open_dataset.html</a></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ds</span><span class="o">=</span><span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">path</span><span class="o">+</span><span class="n">fname</span><span class="p">,</span><span class="n">engine</span><span class="o">=</span><span class="s1">&#39;cfgrib&#39;</span><span class="p">,</span><span class="n">backend_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;indexpath&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<p>When you read in data using <code class="docutils literal notranslate"><span class="pre">xarray</span></code>, it creates an object called an <code class="docutils literal notranslate"><span class="pre">xarray.Dataset</span></code> which consists of your data and all its metadata. If we print out our <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> which is called <code class="docutils literal notranslate"><span class="pre">ds</span></code>, its similar to doing a <code class="docutils literal notranslate"><span class="pre">ncdump</span> <span class="pre">-h</span></code> on a netcdf file. You can see all the dimensions, size, and attributes of the data in the file.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ds</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<pre>&lt;xarray.Dataset&gt;
+Dimensions:        (isobaricInhPa: 37, latitude: 256, longitude: 512)
+Coordinates:
+    number         int64 ...
+    time           datetime64[ns] ...
+    step           timedelta64[ns] ...
+  * isobaricInhPa  (isobaricInhPa) int64 1000 975 950 925 900 875 ... 7 5 3 2 1
+  * latitude       (latitude) float64 89.46 88.77 88.07 ... -88.07 -88.77 -89.46
+  * longitude      (longitude) float64 0.0 0.7031 1.406 ... 357.9 358.6 359.3
+    valid_time     datetime64[ns] ...
+Data variables:
+    pv             (isobaricInhPa, latitude, longitude) float32 ...
+    z              (isobaricInhPa, latitude, longitude) float32 ...
+    t              (isobaricInhPa, latitude, longitude) float32 ...
+    q              (isobaricInhPa, latitude, longitude) float32 ...
+    w              (isobaricInhPa, latitude, longitude) float32 ...
+    vo             (isobaricInhPa, latitude, longitude) float32 ...
+    d              (isobaricInhPa, latitude, longitude) float32 ...
+    r              (isobaricInhPa, latitude, longitude) float32 ...
+    o3             (isobaricInhPa, latitude, longitude) float32 ...
+    clwc           (isobaricInhPa, latitude, longitude) float32 ...
+    ciwc           (isobaricInhPa, latitude, longitude) float32 ...
+    cc             (isobaricInhPa, latitude, longitude) float32 ...
+    u              (isobaricInhPa, latitude, longitude) float32 ...
+    v              (isobaricInhPa, latitude, longitude) float32 ...
+Attributes:
+    GRIB_edition:            1
+    GRIB_centre:             ecmf
+    GRIB_centreDescription:  European Centre for Medium-Range Weather Forecasts
+    GRIB_subCentre:          0
+    Conventions:             CF-1.7
+    institution:             European Centre for Medium-Range Weather Forecasts
+    history:                 2020-01-17T22:50:24 GRIB to CDM+CF via cfgrib-0....</pre></div>
+</div>
+<p>If you want to access just the Geopotential Height, without all the other variables, you can do that by supplying the name of the variable</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ds</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<pre>&lt;xarray.DataArray &#x27;z&#x27; (isobaricInhPa: 37, latitude: 256, longitude: 512)&gt;
+[4849664 values with dtype=float32]
+Coordinates:
+    number         int64 ...
+    time           datetime64[ns] ...
+    step           timedelta64[ns] ...
+  * isobaricInhPa  (isobaricInhPa) int64 1000 975 950 925 900 875 ... 7 5 3 2 1
+  * latitude       (latitude) float64 89.46 88.77 88.07 ... -88.07 -88.77 -89.46
+  * longitude      (longitude) float64 0.0 0.7031 1.406 ... 357.9 358.6 359.3
+    valid_time     datetime64[ns] ...
+Attributes:
+    GRIB_paramId:                             129
+    GRIB_shortName:                           z
+    GRIB_units:                               m**2 s**-2
+    GRIB_name:                                Geopotential
+    GRIB_cfName:                              geopotential
+    GRIB_cfVarName:                           z
+    GRIB_dataType:                            an
+    GRIB_missingValue:                        9999
+    GRIB_numberOfPoints:                      131072
+    GRIB_totalNumber:                         0
+    GRIB_typeOfLevel:                         isobaricInhPa
+    GRIB_NV:                                  0
+    GRIB_stepUnits:                           1
+    GRIB_stepType:                            instant
+    GRIB_gridType:                            regular_gg
+    GRIB_gridDefinitionDescription:           Gaussian Latitude/Longitude Grid
+    GRIB_Nx:                                  512
+    GRIB_iDirectionIncrementInDegrees:        0.703
+    GRIB_iScansNegatively:                    0
+    GRIB_longitudeOfFirstGridPointInDegrees:  0.0
+    GRIB_longitudeOfLastGridPointInDegrees:   359.297
+    GRIB_N:                                   128
+    GRIB_Ny:                                  256
+    long_name:                                Geopotential
+    units:                                    m**2 s**-2
+    standard_name:                            geopotential</pre></div>
+</div>
+<p>We can also use <code class="docutils literal notranslate"><span class="pre">xarray</span></code> to select only the 500 hPa level using the coordinate information rather than having to identify the array index. This is done using the <code class="docutils literal notranslate"><span class="pre">xr.sel</span></code> method</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ds_z500</span><span class="o">=</span><span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">isobaricInhPa</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">ds_z500</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<pre>&lt;xarray.Dataset&gt;
+Dimensions:        (latitude: 256, longitude: 512)
+Coordinates:
+    number         int64 ...
+    time           datetime64[ns] ...
+    step           timedelta64[ns] ...
+    isobaricInhPa  int64 500
+  * latitude       (latitude) float64 89.46 88.77 88.07 ... -88.07 -88.77 -89.46
+  * longitude      (longitude) float64 0.0 0.7031 1.406 ... 357.9 358.6 359.3
+    valid_time     datetime64[ns] ...
+Data variables:
+    pv             (latitude, longitude) float32 ...
+    z              (latitude, longitude) float32 ...
+    t              (latitude, longitude) float32 ...
+    q              (latitude, longitude) float32 ...
+    w              (latitude, longitude) float32 ...
+    vo             (latitude, longitude) float32 ...
+    d              (latitude, longitude) float32 ...
+    r              (latitude, longitude) float32 ...
+    o3             (latitude, longitude) float32 ...
+    clwc           (latitude, longitude) float32 ...
+    ciwc           (latitude, longitude) float32 ...
+    cc             (latitude, longitude) float32 ...
+    u              (latitude, longitude) float32 ...
+    v              (latitude, longitude) float32 ...
+Attributes:
+    GRIB_edition:            1
+    GRIB_centre:             ecmf
+    GRIB_centreDescription:  European Centre for Medium-Range Weather Forecasts
+    GRIB_subCentre:          0
+    Conventions:             CF-1.7
+    institution:             European Centre for Medium-Range Weather Forecasts
+    history:                 2020-01-17T22:50:24 GRIB to CDM+CF via cfgrib-0....</pre></div>
+</div>
+<p>Let’s make a very simple contour plot to convince ourselves that we indeed have geopotential height at 500 hPa. We will use the <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> <code class="docutils literal notranslate"><span class="pre">plt.contourf</span></code> function for a filled contour plot. It works very similar to Matlab plotting functions.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">ds_z500</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.colorbar.Colorbar at 0x7f8cd9760860&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/read-grib_16_1.png" src="_images/read-grib_16_1.png" />
+</div>
+</div>
+<p>This is a very simple plot, but it looks like we have global 500 hPa geopotential height. More details on how to plot maps, make nice lables, and colors, can be found in other examples.</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Kathy Pegion
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,447 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Read a grib file and make a contour plot of the data"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "In this example, we demonstrate:\n",
+    "1. How to read a grib file in Python using `xarray` \n",
+    "2. How to make a contour plot of the data"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Data\n",
+    "We will read the ERA-Interim for geopotential height at 500hPa for Jan 6, 2010\n",
+    "\n",
+    "The data are located on the COLA severs in the following directory:\n",
+    "```/shared/working/rean/era-interim/daily/data/2010/```\n",
+    "\n",
+    "The filename is:\n",
+    "```ei.oper.an.pl.regn128cm.2010010600```"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Python import statements\n",
+    "You must first import the Python packages you wish to use. \n",
+    "This is a common set of basic import statments you can start with."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "import xarray as xr\n",
+    "import matplotlib.pyplot as plt"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Set the path and filename"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "path='/shared/working/rean/era-interim/daily/data/2010/'\n",
+    "fname='ei.oper.an.pl.regn128cm.2010010600'"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Read the data using `xarray` `open_dataset` http://xarray.pydata.org/en/stable/generated/xarray.open_dataset.html"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "ds=xr.open_dataset(path+fname,engine='cfgrib',backend_kwargs={'indexpath': ''})"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "When you read in data using `xarray`, it creates an object called an `xarray.Dataset` which consists of your data and all its metadata. If we print out our `Dataset` which is called `ds`, its similar to doing a `ncdump -h` on a netcdf file. You can see all the dimensions, size, and attributes of the data in the file."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<pre>&lt;xarray.Dataset&gt;\n",
+       "Dimensions:        (isobaricInhPa: 37, latitude: 256, longitude: 512)\n",
+       "Coordinates:\n",
+       "    number         int64 ...\n",
+       "    time           datetime64[ns] ...\n",
+       "    step           timedelta64[ns] ...\n",
+       "  * isobaricInhPa  (isobaricInhPa) int64 1000 975 950 925 900 875 ... 7 5 3 2 1\n",
+       "  * latitude       (latitude) float64 89.46 88.77 88.07 ... -88.07 -88.77 -89.46\n",
+       "  * longitude      (longitude) float64 0.0 0.7031 1.406 ... 357.9 358.6 359.3\n",
+       "    valid_time     datetime64[ns] ...\n",
+       "Data variables:\n",
+       "    pv             (isobaricInhPa, latitude, longitude) float32 ...\n",
+       "    z              (isobaricInhPa, latitude, longitude) float32 ...\n",
+       "    t              (isobaricInhPa, latitude, longitude) float32 ...\n",
+       "    q              (isobaricInhPa, latitude, longitude) float32 ...\n",
+       "    w              (isobaricInhPa, latitude, longitude) float32 ...\n",
+       "    vo             (isobaricInhPa, latitude, longitude) float32 ...\n",
+       "    d              (isobaricInhPa, latitude, longitude) float32 ...\n",
+       "    r              (isobaricInhPa, latitude, longitude) float32 ...\n",
+       "    o3             (isobaricInhPa, latitude, longitude) float32 ...\n",
+       "    clwc           (isobaricInhPa, latitude, longitude) float32 ...\n",
+       "    ciwc           (isobaricInhPa, latitude, longitude) float32 ...\n",
+       "    cc             (isobaricInhPa, latitude, longitude) float32 ...\n",
+       "    u              (isobaricInhPa, latitude, longitude) float32 ...\n",
+       "    v              (isobaricInhPa, latitude, longitude) float32 ...\n",
+       "Attributes:\n",
+       "    GRIB_edition:            1\n",
+       "    GRIB_centre:             ecmf\n",
+       "    GRIB_centreDescription:  European Centre for Medium-Range Weather Forecasts\n",
+       "    GRIB_subCentre:          0\n",
+       "    Conventions:             CF-1.7\n",
+       "    institution:             European Centre for Medium-Range Weather Forecasts\n",
+       "    history:                 2020-01-17T22:50:24 GRIB to CDM+CF via cfgrib-0....</pre>"
+      ],
+      "text/plain": [
+       "<xarray.Dataset>\n",
+       "Dimensions:        (isobaricInhPa: 37, latitude: 256, longitude: 512)\n",
+       "Coordinates:\n",
+       "    number         int64 ...\n",
+       "    time           datetime64[ns] ...\n",
+       "    step           timedelta64[ns] ...\n",
+       "  * isobaricInhPa  (isobaricInhPa) int64 1000 975 950 925 900 875 ... 7 5 3 2 1\n",
+       "  * latitude       (latitude) float64 89.46 88.77 88.07 ... -88.07 -88.77 -89.46\n",
+       "  * longitude      (longitude) float64 0.0 0.7031 1.406 ... 357.9 358.6 359.3\n",
+       "    valid_time     datetime64[ns] ...\n",
+       "Data variables:\n",
+       "    pv             (isobaricInhPa, latitude, longitude) float32 ...\n",
+       "    z              (isobaricInhPa, latitude, longitude) float32 ...\n",
+       "    t              (isobaricInhPa, latitude, longitude) float32 ...\n",
+       "    q              (isobaricInhPa, latitude, longitude) float32 ...\n",
+       "    w              (isobaricInhPa, latitude, longitude) float32 ...\n",
+       "    vo             (isobaricInhPa, latitude, longitude) float32 ...\n",
+       "    d              (isobaricInhPa, latitude, longitude) float32 ...\n",
+       "    r              (isobaricInhPa, latitude, longitude) float32 ...\n",
+       "    o3             (isobaricInhPa, latitude, longitude) float32 ...\n",
+       "    clwc           (isobaricInhPa, latitude, longitude) float32 ...\n",
+       "    ciwc           (isobaricInhPa, latitude, longitude) float32 ...\n",
+       "    cc             (isobaricInhPa, latitude, longitude) float32 ...\n",
+       "    u              (isobaricInhPa, latitude, longitude) float32 ...\n",
+       "    v              (isobaricInhPa, latitude, longitude) float32 ...\n",
+       "Attributes:\n",
+       "    GRIB_edition:            1\n",
+       "    GRIB_centre:             ecmf\n",
+       "    GRIB_centreDescription:  European Centre for Medium-Range Weather Forecasts\n",
+       "    GRIB_subCentre:          0\n",
+       "    Conventions:             CF-1.7\n",
+       "    institution:             European Centre for Medium-Range Weather Forecasts\n",
+       "    history:                 2020-01-17T22:50:24 GRIB to CDM+CF via cfgrib-0...."
+      ]
+     },
+     "execution_count": 5,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "ds"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "If you want to access just the Geopotential Height, without all the other variables, you can do that by supplying the name of the variable"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<pre>&lt;xarray.DataArray &#x27;z&#x27; (isobaricInhPa: 37, latitude: 256, longitude: 512)&gt;\n",
+       "[4849664 values with dtype=float32]\n",
+       "Coordinates:\n",
+       "    number         int64 ...\n",
+       "    time           datetime64[ns] ...\n",
+       "    step           timedelta64[ns] ...\n",
+       "  * isobaricInhPa  (isobaricInhPa) int64 1000 975 950 925 900 875 ... 7 5 3 2 1\n",
+       "  * latitude       (latitude) float64 89.46 88.77 88.07 ... -88.07 -88.77 -89.46\n",
+       "  * longitude      (longitude) float64 0.0 0.7031 1.406 ... 357.9 358.6 359.3\n",
+       "    valid_time     datetime64[ns] ...\n",
+       "Attributes:\n",
+       "    GRIB_paramId:                             129\n",
+       "    GRIB_shortName:                           z\n",
+       "    GRIB_units:                               m**2 s**-2\n",
+       "    GRIB_name:                                Geopotential\n",
+       "    GRIB_cfName:                              geopotential\n",
+       "    GRIB_cfVarName:                           z\n",
+       "    GRIB_dataType:                            an\n",
+       "    GRIB_missingValue:                        9999\n",
+       "    GRIB_numberOfPoints:                      131072\n",
+       "    GRIB_totalNumber:                         0\n",
+       "    GRIB_typeOfLevel:                         isobaricInhPa\n",
+       "    GRIB_NV:                                  0\n",
+       "    GRIB_stepUnits:                           1\n",
+       "    GRIB_stepType:                            instant\n",
+       "    GRIB_gridType:                            regular_gg\n",
+       "    GRIB_gridDefinitionDescription:           Gaussian Latitude/Longitude Grid\n",
+       "    GRIB_Nx:                                  512\n",
+       "    GRIB_iDirectionIncrementInDegrees:        0.703\n",
+       "    GRIB_iScansNegatively:                    0\n",
+       "    GRIB_longitudeOfFirstGridPointInDegrees:  0.0\n",
+       "    GRIB_longitudeOfLastGridPointInDegrees:   359.297\n",
+       "    GRIB_N:                                   128\n",
+       "    GRIB_Ny:                                  256\n",
+       "    long_name:                                Geopotential\n",
+       "    units:                                    m**2 s**-2\n",
+       "    standard_name:                            geopotential</pre>"
+      ],
+      "text/plain": [
+       "<xarray.DataArray 'z' (isobaricInhPa: 37, latitude: 256, longitude: 512)>\n",
+       "[4849664 values with dtype=float32]\n",
+       "Coordinates:\n",
+       "    number         int64 ...\n",
+       "    time           datetime64[ns] ...\n",
+       "    step           timedelta64[ns] ...\n",
+       "  * isobaricInhPa  (isobaricInhPa) int64 1000 975 950 925 900 875 ... 7 5 3 2 1\n",
+       "  * latitude       (latitude) float64 89.46 88.77 88.07 ... -88.07 -88.77 -89.46\n",
+       "  * longitude      (longitude) float64 0.0 0.7031 1.406 ... 357.9 358.6 359.3\n",
+       "    valid_time     datetime64[ns] ...\n",
+       "Attributes:\n",
+       "    GRIB_paramId:                             129\n",
+       "    GRIB_shortName:                           z\n",
+       "    GRIB_units:                               m**2 s**-2\n",
+       "    GRIB_name:                                Geopotential\n",
+       "    GRIB_cfName:                              geopotential\n",
+       "    GRIB_cfVarName:                           z\n",
+       "    GRIB_dataType:                            an\n",
+       "    GRIB_missingValue:                        9999\n",
+       "    GRIB_numberOfPoints:                      131072\n",
+       "    GRIB_totalNumber:                         0\n",
+       "    GRIB_typeOfLevel:                         isobaricInhPa\n",
+       "    GRIB_NV:                                  0\n",
+       "    GRIB_stepUnits:                           1\n",
+       "    GRIB_stepType:                            instant\n",
+       "    GRIB_gridType:                            regular_gg\n",
+       "    GRIB_gridDefinitionDescription:           Gaussian Latitude/Longitude Grid\n",
+       "    GRIB_Nx:                                  512\n",
+       "    GRIB_iDirectionIncrementInDegrees:        0.703\n",
+       "    GRIB_iScansNegatively:                    0\n",
+       "    GRIB_longitudeOfFirstGridPointInDegrees:  0.0\n",
+       "    GRIB_longitudeOfLastGridPointInDegrees:   359.297\n",
+       "    GRIB_N:                                   128\n",
+       "    GRIB_Ny:                                  256\n",
+       "    long_name:                                Geopotential\n",
+       "    units:                                    m**2 s**-2\n",
+       "    standard_name:                            geopotential"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "ds['z']"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We can also use `xarray` to select only the 500 hPa level using the coordinate information rather than having to identify the array index.\n",
+    "This is done using the `xr.sel` method"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<pre>&lt;xarray.Dataset&gt;\n",
+       "Dimensions:        (latitude: 256, longitude: 512)\n",
+       "Coordinates:\n",
+       "    number         int64 ...\n",
+       "    time           datetime64[ns] ...\n",
+       "    step           timedelta64[ns] ...\n",
+       "    isobaricInhPa  int64 500\n",
+       "  * latitude       (latitude) float64 89.46 88.77 88.07 ... -88.07 -88.77 -89.46\n",
+       "  * longitude      (longitude) float64 0.0 0.7031 1.406 ... 357.9 358.6 359.3\n",
+       "    valid_time     datetime64[ns] ...\n",
+       "Data variables:\n",
+       "    pv             (latitude, longitude) float32 ...\n",
+       "    z              (latitude, longitude) float32 ...\n",
+       "    t              (latitude, longitude) float32 ...\n",
+       "    q              (latitude, longitude) float32 ...\n",
+       "    w              (latitude, longitude) float32 ...\n",
+       "    vo             (latitude, longitude) float32 ...\n",
+       "    d              (latitude, longitude) float32 ...\n",
+       "    r              (latitude, longitude) float32 ...\n",
+       "    o3             (latitude, longitude) float32 ...\n",
+       "    clwc           (latitude, longitude) float32 ...\n",
+       "    ciwc           (latitude, longitude) float32 ...\n",
+       "    cc             (latitude, longitude) float32 ...\n",
+       "    u              (latitude, longitude) float32 ...\n",
+       "    v              (latitude, longitude) float32 ...\n",
+       "Attributes:\n",
+       "    GRIB_edition:            1\n",
+       "    GRIB_centre:             ecmf\n",
+       "    GRIB_centreDescription:  European Centre for Medium-Range Weather Forecasts\n",
+       "    GRIB_subCentre:          0\n",
+       "    Conventions:             CF-1.7\n",
+       "    institution:             European Centre for Medium-Range Weather Forecasts\n",
+       "    history:                 2020-01-17T22:50:24 GRIB to CDM+CF via cfgrib-0....</pre>"
+      ],
+      "text/plain": [
+       "<xarray.Dataset>\n",
+       "Dimensions:        (latitude: 256, longitude: 512)\n",
+       "Coordinates:\n",
+       "    number         int64 ...\n",
+       "    time           datetime64[ns] ...\n",
+       "    step           timedelta64[ns] ...\n",
+       "    isobaricInhPa  int64 500\n",
+       "  * latitude       (latitude) float64 89.46 88.77 88.07 ... -88.07 -88.77 -89.46\n",
+       "  * longitude      (longitude) float64 0.0 0.7031 1.406 ... 357.9 358.6 359.3\n",
+       "    valid_time     datetime64[ns] ...\n",
+       "Data variables:\n",
+       "    pv             (latitude, longitude) float32 ...\n",
+       "    z              (latitude, longitude) float32 ...\n",
+       "    t              (latitude, longitude) float32 ...\n",
+       "    q              (latitude, longitude) float32 ...\n",
+       "    w              (latitude, longitude) float32 ...\n",
+       "    vo             (latitude, longitude) float32 ...\n",
+       "    d              (latitude, longitude) float32 ...\n",
+       "    r              (latitude, longitude) float32 ...\n",
+       "    o3             (latitude, longitude) float32 ...\n",
+       "    clwc           (latitude, longitude) float32 ...\n",
+       "    ciwc           (latitude, longitude) float32 ...\n",
+       "    cc             (latitude, longitude) float32 ...\n",
+       "    u              (latitude, longitude) float32 ...\n",
+       "    v              (latitude, longitude) float32 ...\n",
+       "Attributes:\n",
+       "    GRIB_edition:            1\n",
+       "    GRIB_centre:             ecmf\n",
+       "    GRIB_centreDescription:  European Centre for Medium-Range Weather Forecasts\n",
+       "    GRIB_subCentre:          0\n",
+       "    Conventions:             CF-1.7\n",
+       "    institution:             European Centre for Medium-Range Weather Forecasts\n",
+       "    history:                 2020-01-17T22:50:24 GRIB to CDM+CF via cfgrib-0...."
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "ds_z500=ds.sel(isobaricInhPa=500)\n",
+    "ds_z500"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Let's make a very simple contour plot to convince ourselves that we indeed have geopotential height at 500 hPa. We will use the `matplotlib` `plt.contourf` function for a filled contour plot.  It works very similar to Matlab plotting functions.  "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<matplotlib.colorbar.Colorbar at 0x7f8cd9760860>"
+      ]
+     },
+     "execution_count": 15,
+     "metadata": {},
+     "output_type": "execute_result"
+    },
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/plain": [
+       "<Figure size 432x288 with 2 Axes>"
+      ]
+     },
+     "metadata": {
+      "needs_background": "light"
+     },
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "plt.contourf(ds_z500['z'])\n",
+    "plt.colorbar()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "This is a very simple plot, but it looks like we have global 500 hPa geopotential height.  More details on how to plot maps, make nice lables, and colors, can be found in other examples."
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python (myenv)",
+   "language": "python",
+   "name": "myenv"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.7"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
