@@ -24,30 +24,3 @@ Expectations Prior to these Tutorials
    scientific-python-packages
    what-is-pangeo
    other-useful-python-packages
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Getting Started
-  
-   setting-up-pangeo
-   setting-up-jupyter
-
-.. toctree::
-   :maxdepth: 1
-   caption: Basic Reading and Plotting
-
-.. toctree::
-   :maxdepth: 1
-   caption: Advanced Analysis 
-
-.. toctree::
-   :maxdepth: 1
-   caption: Hindcasts with climpred
-
-.. toctree::
-   :maxdepth: 1
-   caption: Making Qualiiy Plots
-
-.. toctree::
-   :maxdepth: 1
-   caption: Hindcasts with climpred
