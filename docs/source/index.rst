@@ -18,38 +18,38 @@ Expectations Prior to these Tutorials
 4. You have programming experience and a basic understandng of Python syntax. If you need to refresh your programming skills and/or learn Python syntax, [Software Carpentry](https://software-carpentry.org/) provides a [Programming with Python Tutorial](http://swcarpentry.github.io/python-novice-inflammation/)
 
 .. toctree::
-    :maxdepth: 3
-    :caption: Python Packages
+   :maxdepth: 3
+   :caption: Python Packages
 
-    scientific-python-packages
-    what-is-pangeo
-    other-useful-python-packages
+   scientific-python-packages
+   what-is-pangeo
+   other-useful-python-packages
 
 .. toctree::
-    :maxdepth: 1
-    :caption: Getting Started
+   :maxdepth: 1
+   :caption: Getting Started
   
-    setting-up-pangeo
-    setting-up-jupyter
+   setting-up-pangeo
+   setting-up-jupyter
 
 .. toctree::
-    :maxdepth: 1
-    caption: Basic Reading and Plotting
+   :maxdepth: 1
+   caption: Basic Reading and Plotting
 
-    read-netcdf.ipynb
-
-.. toctree::
-    :maxdepth: 1
-    caption: Advanced Analysis 
+   read-netcdf.ipynb
 
 .. toctree::
-    :maxdepth: 1
-    caption: Hindcasts with climpred
+   :maxdepth: 1
+   caption: Advanced Analysis 
 
 .. toctree::
-    :maxdepth: 1
-    caption: Making Qualiiy Plots
+   :maxdepth: 1
+   caption: Hindcasts with climpred
 
 .. toctree::
-    :maxdepth: 1
-    caption: Hindcasts with climpred
+   :maxdepth: 1
+   caption: Making Qualiiy Plots
+
+.. toctree::
+   :maxdepth: 1
+   caption: Hindcasts with climpred
