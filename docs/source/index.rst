@@ -37,7 +37,6 @@ Expectations Prior to these Tutorials
    caption: Basic Reading and Plotting
 
    read-netcdf.ipynb
-   read-grib.ipynb
 
 .. toctree::
    :maxdepth: 1
