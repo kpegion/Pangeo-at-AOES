@@ -8,7 +8,7 @@ before_install:
     - conda update --yes conda
 
 install:
-   - conda install --yes --file requirements.txt
+   - conda install --yes --file docs/requirements.txt
 
 script:
   - pushd docs
