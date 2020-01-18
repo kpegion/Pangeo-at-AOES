@@ -97,12 +97,11 @@
 <p class="caption"><span class="caption-text">Basic Reading and Plotting</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="read-netcdf.html">Read a netcdf file and make a contour plot of the data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="read-netcdf.html#Python-import-statements">Python import statements</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Read a grib file and make a contour plot of the data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Data">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Python-import-statements">Python import statements</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#Python-import-statements">Python import statements</a></li>
 </ul>
 
             
@@ -398,9 +397,8 @@ div.rendered_html tbody tr:hover {
 <p>The data are located on the COLA severs in the following directory: <code class="docutils literal notranslate"><span class="pre">/shared/working/rean/era-interim/daily/data/2010/</span></code></p>
 <p>The filename is: <code class="docutils literal notranslate"><span class="pre">ei.oper.an.pl.regn128cm.2010010600</span></code></p>
 </div>
-</div>
 <div class="section" id="Python-import-statements">
-<h1>Python import statements<a class="headerlink" href="#Python-import-statements" title="Permalink to this headline">¶</a></h1>
+<h2>Python import statements<a class="headerlink" href="#Python-import-statements" title="Permalink to this headline">¶</a></h2>
 <p>You must first import the Python packages you wish to use. This is a common set of basic import statments you can start with.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
@@ -426,7 +424,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <p>Read the data using <code class="docutils literal notranslate"><span class="pre">xarray</span></code> <code class="docutils literal notranslate"><span class="pre">open_dataset</span></code> <a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.open_dataset.html">http://xarray.pydata.org/en/stable/generated/xarray.open_dataset.html</a></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -436,7 +434,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <p>When you read in data using <code class="docutils literal notranslate"><span class="pre">xarray</span></code>, it creates an object called an <code class="docutils literal notranslate"><span class="pre">xarray.Dataset</span></code> which consists of your data and all its metadata. If we print out our <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> which is called <code class="docutils literal notranslate"><span class="pre">ds</span></code>, its similar to doing a <code class="docutils literal notranslate"><span class="pre">ncdump</span> <span class="pre">-h</span></code> on a netcdf file. You can see all the dimensions, size, and attributes of the data in the file.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -445,7 +443,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -481,11 +479,11 @@ Attributes:
     GRIB_subCentre:          0
     Conventions:             CF-1.7
     institution:             European Centre for Medium-Range Weather Forecasts
-    history:                 2020-01-17T22:50:24 GRIB to CDM+CF via cfgrib-0....</pre></div>
+    history:                 2020-01-18T17:30:21 GRIB to CDM+CF via cfgrib-0....</pre></div>
 </div>
 <p>If you want to access just the Geopotential Height, without all the other variables, you can do that by supplying the name of the variable</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -494,7 +492,7 @@ Attributes:
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -538,7 +536,7 @@ Attributes:
 </div>
 <p>We can also use <code class="docutils literal notranslate"><span class="pre">xarray</span></code> to select only the 500 hPa level using the coordinate information rather than having to identify the array index. This is done using the <code class="docutils literal notranslate"><span class="pre">xr.sel</span></code> method</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -548,7 +546,7 @@ Attributes:
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -584,11 +582,11 @@ Attributes:
     GRIB_subCentre:          0
     Conventions:             CF-1.7
     institution:             European Centre for Medium-Range Weather Forecasts
-    history:                 2020-01-17T22:50:24 GRIB to CDM+CF via cfgrib-0....</pre></div>
+    history:                 2020-01-18T17:30:21 GRIB to CDM+CF via cfgrib-0....</pre></div>
 </div>
 <p>Let’s make a very simple contour plot to convince ourselves that we indeed have geopotential height at 500 hPa. We will use the <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> <code class="docutils literal notranslate"><span class="pre">plt.contourf</span></code> function for a filled contour plot. It works very similar to Matlab plotting functions.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -598,12 +596,12 @@ Attributes:
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.colorbar.Colorbar at 0x7f8cd9760860&gt;
+&lt;matplotlib.colorbar.Colorbar at 0x7efba8cdbda0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -614,6 +612,7 @@ Attributes:
 </div>
 </div>
 <p>This is a very simple plot, but it looks like we have global 500 hPa geopotential height. More details on how to plot maps, make nice lables, and colors, can be found in other examples.</p>
+</div>
 </div>
 
 

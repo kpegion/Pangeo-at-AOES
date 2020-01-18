@@ -34,14 +34,14 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Python import statements\n",
+    "## Python import statements\n",
     "You must first import the Python packages you wish to use. \n",
     "This is a common set of basic import statments you can start with."
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 21,
+   "execution_count": 1,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -59,7 +59,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 22,
+   "execution_count": 2,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -76,7 +76,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 23,
+   "execution_count": 3,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -92,7 +92,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 24,
+   "execution_count": 4,
    "metadata": {},
    "outputs": [
     {
@@ -202,7 +202,7 @@
        "    cmor_version:                 2.8.1"
       ]
      },
-     "execution_count": 24,
+     "execution_count": 4,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -220,7 +220,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 25,
+   "execution_count": 5,
    "metadata": {},
    "outputs": [
     {
@@ -264,7 +264,7 @@
        "    associated_files:  baseURL: http://cmip-pcmdi.llnl.gov/CMIP5/dataLocation..."
       ]
      },
-     "execution_count": 25,
+     "execution_count": 5,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -285,16 +285,16 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 26,
+   "execution_count": 6,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "<matplotlib.colorbar.Colorbar at 0x7f5f6d47f5c0>"
+       "<matplotlib.colorbar.Colorbar at 0x7ff094ce2f28>"
       ]
      },
-     "execution_count": 26,
+     "execution_count": 6,
      "metadata": {},
      "output_type": "execute_result"
     },

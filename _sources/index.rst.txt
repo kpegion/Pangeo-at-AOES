@@ -40,3 +40,4 @@ Expectations Prior to these Tutorials
 
    read-netcdf.ipynb
    read-grib.ipynb
+   read-opendap.ipynb

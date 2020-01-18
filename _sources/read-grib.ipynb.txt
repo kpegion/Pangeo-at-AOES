@@ -34,7 +34,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# Python import statements\n",
+    "## Python import statements\n",
     "You must first import the Python packages you wish to use. \n",
     "This is a common set of basic import statments you can start with."
    ]
@@ -76,7 +76,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 4,
+   "execution_count": 3,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -92,7 +92,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 5,
+   "execution_count": 4,
    "metadata": {},
    "outputs": [
     {
@@ -130,7 +130,7 @@
        "    GRIB_subCentre:          0\n",
        "    Conventions:             CF-1.7\n",
        "    institution:             European Centre for Medium-Range Weather Forecasts\n",
-       "    history:                 2020-01-17T22:50:24 GRIB to CDM+CF via cfgrib-0....</pre>"
+       "    history:                 2020-01-18T17:30:21 GRIB to CDM+CF via cfgrib-0....</pre>"
       ],
       "text/plain": [
        "<xarray.Dataset>\n",
@@ -165,10 +165,10 @@
        "    GRIB_subCentre:          0\n",
        "    Conventions:             CF-1.7\n",
        "    institution:             European Centre for Medium-Range Weather Forecasts\n",
-       "    history:                 2020-01-17T22:50:24 GRIB to CDM+CF via cfgrib-0...."
+       "    history:                 2020-01-18T17:30:21 GRIB to CDM+CF via cfgrib-0...."
       ]
      },
-     "execution_count": 5,
+     "execution_count": 4,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -186,7 +186,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 7,
+   "execution_count": 5,
    "metadata": {},
    "outputs": [
     {
@@ -270,7 +270,7 @@
        "    standard_name:                            geopotential"
       ]
      },
-     "execution_count": 7,
+     "execution_count": 5,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -289,7 +289,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 10,
+   "execution_count": 6,
    "metadata": {},
    "outputs": [
     {
@@ -327,7 +327,7 @@
        "    GRIB_subCentre:          0\n",
        "    Conventions:             CF-1.7\n",
        "    institution:             European Centre for Medium-Range Weather Forecasts\n",
-       "    history:                 2020-01-17T22:50:24 GRIB to CDM+CF via cfgrib-0....</pre>"
+       "    history:                 2020-01-18T17:30:21 GRIB to CDM+CF via cfgrib-0....</pre>"
       ],
       "text/plain": [
        "<xarray.Dataset>\n",
@@ -362,10 +362,10 @@
        "    GRIB_subCentre:          0\n",
        "    Conventions:             CF-1.7\n",
        "    institution:             European Centre for Medium-Range Weather Forecasts\n",
-       "    history:                 2020-01-17T22:50:24 GRIB to CDM+CF via cfgrib-0...."
+       "    history:                 2020-01-18T17:30:21 GRIB to CDM+CF via cfgrib-0...."
       ]
      },
-     "execution_count": 10,
+     "execution_count": 6,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -384,16 +384,16 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 15,
+   "execution_count": 7,
    "metadata": {},
    "outputs": [
     {
      "data": {
       "text/plain": [
-       "<matplotlib.colorbar.Colorbar at 0x7f8cd9760860>"
+       "<matplotlib.colorbar.Colorbar at 0x7efba8cdbda0>"
       ]
      },
-     "execution_count": 15,
+     "execution_count": 7,
      "metadata": {},
      "output_type": "execute_result"
     },
