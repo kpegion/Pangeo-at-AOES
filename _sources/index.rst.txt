@@ -41,3 +41,11 @@ Expectations Prior to these Tutorials
    read-netcdf.ipynb
    read-grib.ipynb
    read-opendap.ipynb
+
+ 
+.. toctree::
+   :maxdepth: 1
+   :caption: Hindcasts with climpred
+
+   monthly-enso-subx-example.ipynb
+   daily-subx-example.ipynb

@@ -1,0 +1,702 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Calculate the skill of a MJO Index as a function of lead time &mdash; Pangeo-at-AOES 0.1.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Calculate ENSO Skill as a Function of Initial Month vs. Lead Time" href="monthly-enso-subx-example.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Pangeo-at-AOES
+          
+
+          
+            
+            <img src="_static/AOES-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Python Packages</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="scientific-python-packages.html">Scientific Python Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="what-is-pangeo.html">The Pangeo Software Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="other-useful-python-packages.html">Some other useful Python Packages</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="setting-up-pangeo.html">Setting up Pangeo &amp; other Pytbon Packages  on the COLA Servers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setting-up-jupyter.html">Setting up Jupyter on COLA Servers</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Basic Reading and Plotting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="read-netcdf.html">Read a netcdf file and make a contour plot of the data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="read-grib.html">Read a grib file and make a contour plot of the data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="read-opendap.html">Read a file from an remote OPeNDAP server and make a contour plot of the data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="read-opendap.html#Python-import-statements">Python import statements</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Hindcasts with climpred</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="monthly-enso-subx-example.html">Calculate ENSO Skill as a Function of Initial Month vs. Lead Time</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Calculate the skill of a MJO Index as a function of lead time</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#In-this-example,-we-demonstrate:">In this example, we demonstrate:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#The-Subseasonal-Experiment-(SubX)">The Subseasonal Experiment (SubX)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Definitions">Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#References">References</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Pangeo-at-AOES</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Calculate the skill of a MJO Index as a function of lead time</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/daily-subx-example.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Calculate-the-skill-of-a-MJO-Index-as-a-function-of-lead-time">
+<h1>Calculate the skill of a MJO Index as a function of lead time<a class="headerlink" href="#Calculate-the-skill-of-a-MJO-Index-as-a-function-of-lead-time" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="In-this-example,-we-demonstrate:">
+<h2>In this example, we demonstrate:<a class="headerlink" href="#In-this-example,-we-demonstrate:" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>How to remotely access data from the Subseasonal Experiment (SubX) hindcast database and set it up to be used in <code class="docutils literal notranslate"><span class="pre">climpred</span></code>.</p></li>
+<li><p>How to calculate the Anomaly Correlation Coefficient (ACC) using daily data with <code class="docutils literal notranslate"><span class="pre">climpred</span></code></p></li>
+<li><p>How to calculate and plot historical forecast skill of the real-time multivariate MJO (RMM) indices as function of lead time.</p></li>
+</ol>
+</div>
+<div class="section" id="The-Subseasonal-Experiment-(SubX)">
+<h2>The Subseasonal Experiment (SubX)<a class="headerlink" href="#The-Subseasonal-Experiment-(SubX)" title="Permalink to this headline">¶</a></h2>
+<p>Further information on SubX is available from <a class="reference external" href="https://journals.ametsoc.org/doi/full/10.1175/BAMS-D-18-0270.1">Pegion et al. 2019</a> and the <a class="reference external" href="http://cola.gmu.edu/subx/">SubX project website</a></p>
+<p>The SubX public database is hosted on the International Research Institute for Climate and Society (IRI) data server <a class="reference external" href="http://iridl.ldeo.columbia.edu/SOURCES/.Models/.SubX/">http://iridl.ldeo.columbia.edu/SOURCES/.Models/.SubX/</a></p>
+<p>Since the SubX data server is accessed via this notebook, the time for the notebook to run may is several minutes and will vary depending on the speed that data can be downloaded. This is a large dataset, so please be patient. If you prefer to download SubX data locally, scripts are available from <a class="reference external" href="https://github.com/kpegion/SubX">https://github.com/kpegion/SubX</a>.</p>
+</div>
+<div class="section" id="Definitions">
+<h2>Definitions<a class="headerlink" href="#Definitions" title="Permalink to this headline">¶</a></h2>
+<dl class="simple">
+<dt>RMM</dt><dd><p>Two indices (RMM1 and RMM2) are used to represent the MJO. Together they define the MJO based on 8 phases and can represent both the phase and amplitude of the MJO (Wheeler and Hendon 2004). This example uses the observed RMM1 provided by Matthew Wheeler at the Center for Australian Weather and Climate Research. It is the version of the indices in which interannual variability has not been removed.</p>
+</dd>
+<dt>Skill of RMM</dt><dd><p>Traditionally, the skill of the RMM is calculated as a bivariate correlation encompassing the skill of the two indices together (Rashid et al. 2010; Gottschalck et al. 2010). Currently, <code class="docutils literal notranslate"><span class="pre">climpred</span></code> does not have the functionality to calculate the bivariate correlation, thus the anomaly correlation coefficient for RMM1 index is calculated here as a demonstration. The bivariate correlation metric will be added in a future version of <code class="docutils literal notranslate"><span class="pre">climpred</span></code></p>
+</dd>
+</dl>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">climpred</span> <span class="kn">import</span> <span class="n">HindcastEnsemble</span>
+<span class="kn">import</span> <span class="nn">climpred</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Function to set 360 calendar to 360_day calendar and decond cf times</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">decode_cf</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">time_var</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">ds</span><span class="p">[</span><span class="n">time_var</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;calendar&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;360&#39;</span><span class="p">:</span>
+        <span class="n">ds</span><span class="p">[</span><span class="n">time_var</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;calendar&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;360_day&#39;</span>
+    <span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">decode_cf</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ds</span>
+</pre></div>
+</div>
+</div>
+<p>Read the observed RMM Indices</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">obsds</span> <span class="o">=</span> <span class="n">climpred</span><span class="o">.</span><span class="n">tutorial</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;RMM-INTERANN-OBS&#39;</span><span class="p">)[</span><span class="s1">&#39;rmm1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_dataset</span><span class="p">()</span>
+<span class="n">obsds</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<pre>&lt;xarray.Dataset&gt;
+Dimensions:  (time: 15613)
+Coordinates:
+  * time     (time) datetime64[ns] 1974-06-03 1974-06-04 ... 2017-07-24
+Data variables:
+    rmm1     (time) float64 ...</pre></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">obsds</span><span class="p">[</span><span class="s1">&#39;rmm1&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&lt;matplotlib.lines.Line2D at 0x7f8c3568bfd0&gt;]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/daily-subx-example_10_1.png" src="_images/daily-subx-example_10_1.png" />
+</div>
+</div>
+<p>Read the SubX RMM1 data for the GMAO-GEOS_V2p1 model from the SubX data server. It is important to note that the SubX data contains weekly initialized forecasts where the <code class="docutils literal notranslate"><span class="pre">init</span></code> day varies by model. SubX data may have all NaNs for initial dates in which a model does not make a forecast, thus we apply <code class="docutils literal notranslate"><span class="pre">dropna</span></code> over the <code class="docutils literal notranslate"><span class="pre">S=init</span></code> dimension when <code class="docutils literal notranslate"><span class="pre">how=all</span></code> data for a given <code class="docutils literal notranslate"><span class="pre">S=init</span></code> is missing. This can be slow, but allows the rest of the calculations to go more quickly.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://iridl.ldeo.columbia.edu/SOURCES/.Models/.SubX/.GMAO/.GEOS_V2p1/.hindcast/.RMM/.RMM1/dods/&#39;</span>
+<span class="n">fcstds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">:</span> <span class="mi">45</span><span class="p">})</span>  <span class="c1">#.dropna(dim=&#39;S&#39;,how=&#39;all&#39;)</span>
+<span class="n">fcstds</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<pre>&lt;xarray.Dataset&gt;
+Dimensions:  (L: 45, M: 4, S: 6205)
+Coordinates:
+  * S        (S) float32 14245.0 14246.0 14247.0 ... 20447.0 20448.0 20449.0
+  * M        (M) float32 1.0 2.0 3.0 4.0
+  * L        (L) float32 0.5 1.5 2.5 3.5 4.5 5.5 ... 40.5 41.5 42.5 43.5 44.5
+Data variables:
+    RMM1     (S, M, L) float32 dask.array&lt;chunksize=(1, 4, 45), meta=np.ndarray&gt;
+Attributes:
+    Conventions:  IRIDL</pre></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fcstds</span><span class="o">.</span><span class="n">to_netcdf</span><span class="p">(</span><span class="s1">&#39;SubX_GMAO-GEOS_V2p1_RMM1_Hindcast.nc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The SubX data dimensions correspond to the following <code class="docutils literal notranslate"><span class="pre">climpred</span></code> dimension definitions: <code class="docutils literal notranslate"><span class="pre">X=lon</span></code>,<code class="docutils literal notranslate"><span class="pre">L=lead</span></code>,<code class="docutils literal notranslate"><span class="pre">Y=lat</span></code>,<code class="docutils literal notranslate"><span class="pre">M=member</span></code>, <code class="docutils literal notranslate"><span class="pre">S=init</span></code>. We will rename the dimensions to their <code class="docutils literal notranslate"><span class="pre">climpred</span></code> names.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fcstds</span><span class="o">=</span><span class="n">fcstds</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="s1">&#39;init&#39;</span><span class="p">,</span><span class="s1">&#39;L&#39;</span><span class="p">:</span> <span class="s1">&#39;lead&#39;</span><span class="p">,</span><span class="s1">&#39;M&#39;</span><span class="p">:</span> <span class="s1">&#39;member&#39;</span><span class="p">,</span> <span class="s1">&#39;RMM1&#39;</span> <span class="p">:</span> <span class="s1">&#39;rmm1&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s make sure that the <code class="docutils literal notranslate"><span class="pre">lead</span></code> dimension is set properly for <code class="docutils literal notranslate"><span class="pre">climpred</span></code>. SubX data stores <code class="docutils literal notranslate"><span class="pre">leads</span></code> as 0.5, 1.5, 2.5, etc, which correspond to 0, 1, 2, … days since initialization. We will change the <code class="docutils literal notranslate"><span class="pre">lead</span></code> to be integers starting with zero.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fcstds</span><span class="p">[</span><span class="s1">&#39;lead&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="n">fcstds</span><span class="p">[</span><span class="s1">&#39;lead&#39;</span><span class="p">]</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Now we need to make sure that the <code class="docutils literal notranslate"><span class="pre">init</span></code> dimension is set properly for <code class="docutils literal notranslate"><span class="pre">climpred</span></code>. For daily data, the <code class="docutils literal notranslate"><span class="pre">init</span></code> dimension must be a <code class="docutils literal notranslate"><span class="pre">xr.cfdateTimeIndex</span></code> or a <code class="docutils literal notranslate"><span class="pre">pd.datetimeIndex</span></code>. We convert the <code class="docutils literal notranslate"><span class="pre">init</span></code> values to <code class="docutils literal notranslate"><span class="pre">pd.datatimeIndex</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fcstds</span><span class="o">=</span><span class="n">decode_cf</span><span class="p">(</span><span class="n">fcstds</span><span class="p">,</span><span class="s1">&#39;init&#39;</span><span class="p">)</span>
+<span class="n">fcstds</span><span class="p">[</span><span class="s1">&#39;init&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">fcstds</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span>
+<span class="n">fcstds</span><span class="p">[</span><span class="s1">&#39;init&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">fcstds</span><span class="p">[</span><span class="s1">&#39;init&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y%m</span><span class="si">%d</span><span class="s1"> 00:00&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">climpred</span></code> also requires that <code class="docutils literal notranslate"><span class="pre">lead</span></code> dimension has an attribute called <code class="docutils literal notranslate"><span class="pre">units</span></code> indicating what time units the <code class="docutils literal notranslate"><span class="pre">lead</span></code> is assocated with. Options are: <code class="docutils literal notranslate"><span class="pre">years,seasons,months,weeks,pentads,days</span></code>. For the SubX data, the <code class="docutils literal notranslate"><span class="pre">lead</span></code> <code class="docutils literal notranslate"><span class="pre">units</span></code> are <code class="docutils literal notranslate"><span class="pre">days</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fcstds</span><span class="p">[</span><span class="s1">&#39;lead&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s1">&#39;days&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>Create the <code class="docutils literal notranslate"><span class="pre">climpred</span> <span class="pre">HindcastEnsemble</span></code> object and add the observations as the reference/verification</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">hindcast</span> <span class="o">=</span> <span class="n">HindcastEnsemble</span><span class="p">(</span><span class="n">fcstds</span><span class="p">)</span>
+<span class="n">hindcast</span><span class="o">=</span><span class="n">hindcast</span><span class="o">.</span><span class="n">add_reference</span><span class="p">(</span><span class="n">obsds</span><span class="p">,</span> <span class="s1">&#39;observations&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Calculate the Anomaly Correlation Coefficient (ACC)</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">skill</span> <span class="o">=</span> <span class="n">hindcast</span><span class="o">.</span><span class="n">compute_metric</span><span class="p">(</span><span class="n">metric</span><span class="o">=</span><span class="s1">&#39;acc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Plot the skill as a function of lead time</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">skill</span><span class="p">[</span><span class="s1">&#39;rmm1&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;GMAO-GEOS_V2p1 RMM1 Skill&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Lead Time (Days)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;ACC&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Text(0, 0.5, &#39;ACC&#39;)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="_images/daily-subx-example_27_1.png" src="_images/daily-subx-example_27_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="References">
+<h2>References<a class="headerlink" href="#References" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Pegion, K., B.P. Kirtman, E. Becker, D.C. Collins, E. LaJoie, R. Burgman, R. Bell, T. DelSole, D. Min, Y. Zhu, W. Li, E. Sinsky, H. Guan, J. Gottschalck, E.J. Metzger, N.P. Barton, D. Achuthavarier, J. Marshak, R.D. Koster, H. Lin, N. Gagnon, M. Bell, M.K. Tippett, A.W. Robertson, S. Sun, S.G. Benjamin, B.W. Green, R. Bleck, and H. Kim, 2019: The Subseasonal Experiment (SubX): A Multimodel Subseasonal Prediction Experiment. Bull. Amer. Meteor. Soc., 100, 2043–2060,
+<a class="reference external" href="https://doi.org/10.1175/BAMS-D-18-0270.1">https://doi.org/10.1175/BAMS-D-18-0270.1</a></p></li>
+<li><p>Kirtman, B. P., Pegion, K., DelSole, T., Tippett, M., Robertson, A. W., Bell, M., … Green, B. W. (2017). The Subseasonal Experiment (SubX) [Data set]. IRI Data Library. <a class="reference external" href="https://doi.org/10.7916/D8PG249H">https://doi.org/10.7916/D8PG249H</a></p></li>
+<li><p>Wheeler, M. C., &amp; (null), H. H. (2004). An all-season real-time multivariate MJO index: Development of an index for monitoring and prediction. Monthly Weather Review, 132(8), 1917–1932. <a class="reference external" href="http://doi.org/10.1175/1520-0493(2004)132">http://doi.org/10.1175/1520-0493(2004)132</a></p></li>
+<li><p>Rashid, H. A., Hendon, H. H., Wheeler, M. C., &amp; Alves, O. (2010). Prediction of the Madden–Julian oscillation with the POAMA dynamical prediction system. Climate Dynamics, 36(3-4), 649–661. <a class="reference external" href="http://doi.org/10.1007/s00382-010-0754-x">http://doi.org/10.1007/s00382-010-0754-x</a></p></li>
+<li><p>Gottschalck, J., Wheeler, M., Weickmann, K., Vitart, F., Savage, N., Lin, H., et al. (2010). A Framework for Assessing Operational Madden–Julian Oscillation Forecasts: A CLIVAR MJO Working Group Project. Bulletin of the American Meteorological Society, 91(9), 1247–1258. <a class="reference external" href="http://doi.org/10.1175/2010BAMS2816.1">http://doi.org/10.1175/2010BAMS2816.1</a></p></li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="monthly-enso-subx-example.html" class="btn btn-neutral float-left" title="Calculate ENSO Skill as a Function of Initial Month vs. Lead Time" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Kathy Pegion
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
