@@ -1,8 +1,8 @@
 jupyterlab
-matplotlib
 nbsphinx
 netcdf4
 numpy
+pip >=9.0.1
 pandas
 sphinx
 sphinxcontrib-napoleon
