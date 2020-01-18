@@ -36,8 +36,6 @@ Expectations Prior to these Tutorials
    :maxdepth: 1
    caption: Basic Reading and Plotting
 
-   read-netcdf.ipynb
-
 .. toctree::
    :maxdepth: 1
    caption: Advanced Analysis 
