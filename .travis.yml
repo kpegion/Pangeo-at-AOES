@@ -7,15 +7,15 @@ before_install:
     - export PATH=/home/travis/miniconda2/bin:$PATH
     - conda update --yes conda
 
+install:
+   - pip install -r docs/requirements.txt
+
 script:
   - pushd docs
   # Use Sphinx to make the html docs
   - make html
   # Tell GitHub not to use jekyll to compile the docs
   - touch build/html/.nojekyll
-
-install:
-   - pip install -r requirements.txt
 
 # Tell Travis CI to copy the documentation to the gh-pages branch of
 # your GitHub repository.
