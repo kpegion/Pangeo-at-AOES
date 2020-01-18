@@ -1,0 +1,14 @@
+bottleneck
+importlib_metadata
+jupyterlab
+matplotlib
+nbsphinx
+netcdf4
+numpy
+pandas
+sphinx
+sphinxcontrib-napoleon
+sphinx_rtd_theme
+toolz
+tqdm
+xarray>=0.14.1
