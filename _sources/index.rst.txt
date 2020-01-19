@@ -49,3 +49,10 @@ Expectations Prior to these Tutorials
 
    monthly-enso-subx-example.ipynb
    daily-subx-example.ipynb
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Analysis Using Xarray
+
+   advanced-anakysis.ipynb
