@@ -55,4 +55,4 @@ Expectations Prior to these Tutorials
    :maxdepth: 1
    :caption: Analysis Using Xarray
 
-   advanced-anakysis.ipynb
+   advanced-analysis.ipynb
