@@ -101,9 +101,9 @@
 <li class="toctree-l1"><a class="reference internal" href="read-grib.html">Read a grib file and make a contour plot of the data</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Read a file from an remote OPeNDAP server and make a contour plot of the data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Data">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Python-import-statements">Python import statements</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#Python-import-statements">Python import statements</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Analysis Using Xarray</span></p>
 <ul>
@@ -412,12 +412,11 @@ div.rendered_html tbody tr:hover {
 <p>We will read data from the North American Multi-model Ensemble (NMME) database. Specifially, we will read the sea surface temperature (SST) data hindcast data for the COLA-RSMAS-CCSM4 model.</p>
 <p>The NMME public database is hosted on the International Research Institute for Climate and Society (IRI) data server <a class="reference external" href="http://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME/">http://iridl.ldeo.columbia.edu/SOURCES/.Models/.NMME/</a></p>
 </div>
-</div>
 <div class="section" id="Python-import-statements">
-<h1>Python import statements<a class="headerlink" href="#Python-import-statements" title="Permalink to this headline">¶</a></h1>
+<h2>Python import statements<a class="headerlink" href="#Python-import-statements" title="Permalink to this headline">¶</a></h2>
 <p>You must first import the Python packages you wish to use. This is a common set of basic import statments you can start with.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -429,7 +428,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <p>Set the path and filename</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -439,7 +438,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <p>Read the data using <code class="docutils literal notranslate"><span class="pre">xarray</span></code> <code class="docutils literal notranslate"><span class="pre">open_dataset</span></code> <a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.open_dataset.html">http://xarray.pydata.org/en/stable/generated/xarray.open_dataset.html</a></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -449,7 +448,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <p>When you read in data using <code class="docutils literal notranslate"><span class="pre">xarray</span></code>, it creates an object called an <code class="docutils literal notranslate"><span class="pre">xarray.Dataset</span></code> which consists of your data and all its metadata. If we print out our <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> which is called <code class="docutils literal notranslate"><span class="pre">ds</span></code>, its similar to doing a <code class="docutils literal notranslate"><span class="pre">ncdump</span> <span class="pre">-h</span></code> on a netcdf file. You can see all the dimensions, size, and attributes of the data in the file.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -458,7 +457,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -477,7 +476,7 @@ Attributes:
 </div>
 <p>If you want to access just the surface air tempeature (tas) data itself, without all the gloal attributes, you can do that by supplying the name of the variable</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -486,7 +485,7 @@ Attributes:
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -515,7 +514,7 @@ Attributes:
 <div class="line">2. We can only make a contour plot with 2-D data (Y,X) and we have 4-D (S,L,M,Y,X), so we will need to access a single time using brackets notation. 3. We will want to add a colorbar to see that values are reasonable</div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -525,12 +524,12 @@ Attributes:
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.colorbar.Colorbar at 0x7fc7e871fe48&gt;
+&lt;matplotlib.colorbar.Colorbar at 0x7fadfc9f06d8&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -541,6 +540,7 @@ Attributes:
 </div>
 </div>
 <p>This is a very simple plot, but it looks like we have global temperature data. More details on how to plot maps, make nice lables, and colors, can be found in other examples.</p>
+</div>
 </div>
 
 
