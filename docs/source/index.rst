@@ -45,14 +45,22 @@ Expectations Prior to these Tutorials
  
 .. toctree::
    :maxdepth: 1
-   :caption: Hindcasts with climpred
+   :caption: Analysis Using Xarray
 
-   monthly-enso-subx-example.ipynb
-   daily-subx-example.ipynb
+   advanced-analysis.ipynb
 
 
 .. toctree::
    :maxdepth: 1
-   :caption: Analysis Using Xarray
+   :caption: Making Nice Plots
 
-   advanced-analysis.ipynb
+   matplotlib-tutorial.ipynb
+   cartopy-tutorial.ipynb
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Hindcasts with climpred
+
+   monthly-enso-subx-example.ipynb
+   daily-subx-example.ipynb
