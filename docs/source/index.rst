@@ -18,15 +18,6 @@ Expectations Prior to these Tutorials
 4. You have programming experience and a basic understandng of Python syntax. If you need to refresh your programming skills and/or learn Python syntax, [Software Carpentry](https://software-carpentry.org/) provides a [Programming with Python Tutorial](http://swcarpentry.github.io/python-novice-inflammation/)
 
 .. toctree::
-   :maxdepth: 3
-   :caption: Python Packages
-
-   scientific-python-packages
-   what-is-pangeo
-   other-useful-python-packages
-
-
-.. toctree::
    :maxdepth: 1
    :caption: Getting Started
 
@@ -64,3 +55,12 @@ Expectations Prior to these Tutorials
 
    monthly-enso-subx-example.ipynb
    daily-subx-example.ipynb
+
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Python Packages
+
+   scientific-python-packages
+   what-is-pangeo
+   other-useful-python-packages
