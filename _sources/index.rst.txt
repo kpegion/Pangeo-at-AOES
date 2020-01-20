@@ -64,6 +64,7 @@ Expectations Prior to these Tutorials
    :maxdepth: 1
    :caption: Weather Data with Metpy
 
+   metpy-tutorial.rst
    examples/metpy-constants-and-units.ipynb
 
 
