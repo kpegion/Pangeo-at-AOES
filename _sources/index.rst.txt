@@ -3,17 +3,18 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Pangeo-at-AOES
+Welcome to Pangeo at AOES
 ==========================================
 
-This is a set of Tutorials, including example Jupyter Notebooks, for using the Python and the Pangeo Software stack for data analysis on the AOES COLA Servers
+This is a collection of information and example Jupyter Notebooks, for using the Python and the Pangeo Software stack for data analysis on the AOES COLA Servers
 
-This set of tutorials is specifically designed for the Mason AOES COLA Servers, datasets available on our servers, and use cases around common data analyses used by our students and faculty
+This set of exampless is specifically designed for the Mason AOES COLA Servers, datasets available on our servers, and use cases around common data analyses used by our students and faculty.
 
 .. toctree::
    :maxdepth: 1
    :caption: Getting Started
 
+   why-python-and-pangeo
    setting-up-pangeo
    setting-up-jupyter
 
