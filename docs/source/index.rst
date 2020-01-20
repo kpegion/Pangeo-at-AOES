@@ -59,11 +59,13 @@ Expectations Prior to these Tutorials
    examples/monthly-enso-subx-example.ipynb
    examples/daily-subx-example.ipynb
 
+
 .. toctree::
    :maxdepth: 1
    :caption: Weather Data with Metpy
 
    examples/metpy-constants-and-units.ipynb
+
 
 .. toctree::
    :maxdepth: 3
