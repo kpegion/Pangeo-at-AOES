@@ -40,6 +40,7 @@ Expectations Prior to these Tutorials
 .. toctree::
    :maxdepth: 2
    :caption: Analysis Using Xarray
+   :hidden:
 
    examples/advanced-analysis.ipynb
 
@@ -75,6 +76,6 @@ Expectations Prior to these Tutorials
    :maxdepth: 3
    :caption: Python Packages
 
-   examples/scientific-python-packages
-   examples/what-is-pangeo
-   examples/other-useful-python-packages
+   scientific-python-packages
+   what-is-pangeo
+   other-useful-python-packages
