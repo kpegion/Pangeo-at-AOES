@@ -39,15 +39,14 @@ This set of tutorials is specifically designed for the Mason AOES COLA Servers, 
  
 .. toctree::
    :maxdepth: 2
-   :caption: Multi-dimensional Data with Xarray
-   :hidden:
+   :caption: Multi-dimensional Data
 
    examples/advanced-analysis.ipynb
 
 
 .. toctree::
    :maxdepth: 1
-   :caption: Plotting Matplotlib and Cartopy
+   :caption: Plotting 
 
    examples/matplotlib-tutorial.ipynb
    examples/cartopy-tutorial.ipynb
