@@ -35,9 +35,10 @@ I recommend installing your own version of miniconda (a mini version of Anaconda
 
 .. code-block:: bash
 
-   conda create -n pangeo -c conda-forge \
+   conda create -n aoes -c conda-forge \
        python=3.6 jupyterlab nbserverproxy \
-       xarray scipy netcdf4 matplotlib cartopy dask
+       xarray scipy netcdf4 matplotlib cartopy dask \
+       metpy climpred
 
 
 You have now created a conda environment called pangeo. When you activiate this environment, you have access to Python 3.6 and all the packages listed here.  You may wonder, how do I know what packages to install?  No need to worry, you can install these for now and add others later if you realize you need them.
@@ -46,5 +47,5 @@ You have now created a conda environment called pangeo. When you activiate this 
 
 .. code-block:: bash
 
-   conda activate pangeo
+   conda activate aoes
 
