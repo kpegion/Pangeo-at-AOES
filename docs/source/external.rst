@@ -1,3 +1,5 @@
+.. _external-tutorial:
+
 Why this External Tutorial?
 ############################
 

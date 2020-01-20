@@ -6,9 +6,12 @@
 Welcome to Pangeo at AOES
 ==========================================
 
-This is a collection of information and example Jupyter Notebooks, for using the Python and the Pangeo Software stack for data analysis on the AOES COLA Servers
+This is a collection of information and example Jupyter Notebooks, for using the Python and the Pangeo Software stack for data analysis on the Mason AOES/COLA Servers
 
-This set of exampless is specifically designed for the Mason AOES COLA Servers, datasets available on our servers, and use cases around common data analyses used by our students and faculty.
+This set of exampless is specifically designed for the Mason AOES/COLA Servers, datasets available on our servers, and use cases around common data analyses used by our students and faculty.
+
+
+The examples are generally relevant to for basic climate data analysis.  Therefore, an external-tutorial_ is also provided for those without access to the Mason AOES/COLA Servers.
 
 
 .. toctree::
@@ -37,10 +40,10 @@ This set of exampless is specifically designed for the Mason AOES COLA Servers, 
 
  
 .. toctree::
-   :maxdepth: 2
-   :caption: Analyses
+   :maxdepth: s12
+   :caption: Climate Data using Xarray
 
-   about-xarry
+   about-xarray
    examples/advanced-analysis.ipynb
 
 
