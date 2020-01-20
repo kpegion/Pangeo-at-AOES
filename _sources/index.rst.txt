@@ -10,6 +10,14 @@ This is a collection of information and example Jupyter Notebooks, for using the
 
 This set of exampless is specifically designed for the Mason AOES COLA Servers, datasets available on our servers, and use cases around common data analyses used by our students and faculty.
 
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Prerequisites
+
+   prereq.rst
+
+
 .. toctree::
    :maxdepth: 1
    :caption: Getting Started
@@ -17,13 +25,6 @@ This set of exampless is specifically designed for the Mason AOES COLA Servers, 
    why-python-and-pangeo
    setting-up-pangeo
    setting-up-jupyter
-
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Prerequisites
-
-   prereq.rst
 
 
 .. toctree::
