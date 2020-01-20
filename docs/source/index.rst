@@ -38,7 +38,7 @@ Expectations Prior to these Tutorials
 
  
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: Analysis Using Xarray
 
    examples/advanced-analysis.ipynb
