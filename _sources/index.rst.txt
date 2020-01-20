@@ -32,38 +32,43 @@ Expectations Prior to these Tutorials
    :maxdepth: 1
    :caption: Basic Reading and Plotting
 
-   read-netcdf.ipynb
-   read-grib.ipynb
-   read-opendap.ipynb
+   examples/read-netcdf.ipynb
+   examples/read-grib.ipynb
+   examples/read-opendap.ipynb
 
  
 .. toctree::
    :maxdepth: 1
    :caption: Analysis Using Xarray
 
-   advanced-analysis.ipynb
+   examples/advanced-analysis.ipynb
 
 
 .. toctree::
    :maxdepth: 1
    :caption: Making Nice Plots
 
-   matplotlib-tutorial.ipynb
-   cartopy-tutorial.ipynb
+   examples/matplotlib-tutorial.ipynb
+   examples/cartopy-tutorial.ipynb
 
 
 .. toctree::
    :maxdepth: 1
    :caption: Hindcasts with climpred
 
-   monthly-enso-subx-example.ipynb
-   daily-subx-example.ipynb
+   examples/monthly-enso-subx-example.ipynb
+   examples/daily-subx-example.ipynb
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Weather Data with Metpy
+
+   examples/metpy-constants-and-units.ipynb
 
 .. toctree::
    :maxdepth: 3
    :caption: Python Packages
 
-   scientific-python-packages
-   what-is-pangeo
-   other-useful-python-packages
+   examples/scientific-python-packages
+   examples/what-is-pangeo
+   examples/other-useful-python-packages

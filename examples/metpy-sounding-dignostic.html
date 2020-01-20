@@ -1,0 +1,784 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Example 2: Analysis of ERA5 profiles &mdash; Pangeo-at-AOES 0.1.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Pangeo-at-AOES
+          
+
+          
+            
+            <img src="../_static/AOES-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../setting-up-pangeo.html">Setting up Pangeo &amp; other Pytbon Packages  on the COLA Servers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setting-up-jupyter.html">Setting up Jupyter on COLA Servers</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Basic Reading and Plotting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="read-netcdf.html">Read a netcdf file and make a contour plot of the data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="read-grib.html">Read a grib file and make a contour plot of the data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="read-opendap.html">Read a file from an remote OPeNDAP server and make a contour plot of the data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Analysis Using Xarray</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="advanced-analysis.html">Analysis using <code class="docutils literal notranslate"><span class="pre">Xarray</span></code></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Making Nice Plots</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib-tutorial.html">Making Plots Using <code class="docutils literal notranslate"><span class="pre">Matplotlib</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="cartopy-tutorial.html">Making Maps using <code class="docutils literal notranslate"><span class="pre">Cartopy</span></code></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Hindcasts with climpred</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="monthly-enso-subx-example.html">Calculate ENSO Skill as a Function of Initial Month vs. Lead Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="daily-subx-example.html">Calculate the skill of a MJO Index as a function of lead time</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weather Data with Metpy</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="metpy-constants-and-units.html">MetPy Constants and Units</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Pangeo-at-AOES</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Example 2: Analysis of ERA5 profiles</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/examples/metpy-sounding-dignostic.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+<div class="section" id="Example-2:-Analysis-of-ERA5-profiles">
+<h1>Example 2: Analysis of ERA5 profiles<a class="headerlink" href="#Example-2:-Analysis-of-ERA5-profiles" title="Permalink to this headline">¶</a></h1>
+<p>Using hourly data from ERA5 (ea) model-level (ml) and surface (sfc) analyses (an).</p>
+<p>This is for single-point profile data in .nc format - here the LAFE field campaign site at the DOE-ARM Southern Great Plains facility in Oklahoma.</p>
+<p>Calculates thermodynamic variables, indices for profile, and L-A metrics.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">metpy.plots</span> <span class="kn">import</span> <span class="n">SkewT</span>
+<span class="kn">from</span> <span class="nn">metpy.units</span> <span class="kn">import</span> <span class="n">units</span>
+<span class="kn">import</span> <span class="nn">metpy.calc</span> <span class="k">as</span> <span class="nn">calc</span>
+<span class="kn">import</span> <span class="nn">metpy.constants</span> <span class="k">as</span> <span class="nn">c</span>
+<span class="c1">#import metpy.interpolate as interp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> <span class="c1"># Gonna use dataframes to manage profile data</span>
+<span class="kn">from</span> <span class="nn">netCDF4</span> <span class="kn">import</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">date2index</span>
+</pre></div>
+</div>
+</div>
+<p>Path to ERA5 data.</p>
+<p>Set requested time using a datetime object (in range of MJJAS 2011-2019).</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">epath</span> <span class="o">=</span> <span class="s1">&#39;/Users/dirmeyer/MyFiles/Data Sets/CLASP/SGP_hourly/&#39;</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span> <span class="c1"># YYYY, M, D, H(UTC) for &quot;sounding&quot;</span>
+
+<span class="c1"># This is a table of the pseudo-levels for ERA5 model-level data</span>
+<span class="n">plevels</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">epath</span><span class="o">+</span><span class="s1">&#39;ERA5_levels.csv&#39;</span><span class="p">)</span>
+<span class="n">plevs</span> <span class="o">=</span> <span class="n">plevels</span><span class="o">.</span><span class="n">loc</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;plevel&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">pascals</span>
+<span class="n">ptops</span> <span class="o">=</span> <span class="n">plevels</span><span class="o">.</span><span class="n">loc</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;ptop&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">pascals</span>
+<span class="c1">#print(ptops)</span>
+
+<span class="c1"># Surface and model-level data files for indicated year</span>
+<span class="n">sfcfile</span> <span class="o">=</span> <span class="n">epath</span><span class="o">+</span><span class="s1">&#39;ea_an_sfc_lafe_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;0501_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;0930.nc&#39;</span>
+<span class="n">fcfile</span> <span class="o">=</span> <span class="n">epath</span><span class="o">+</span><span class="s1">&#39;ea_fc_sfc_lafe_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;0501_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;0930.nc&#39;</span>
+<span class="n">mlfile</span> <span class="o">=</span> <span class="n">epath</span><span class="o">+</span><span class="s1">&#39;ea_an_ml_lafe_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;0501_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;0930.nc&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Extract-Data">
+<h2>Extract Data<a class="headerlink" href="#Extract-Data" title="Permalink to this headline">¶</a></h2>
+<p>NetCDF data files; sfc has only a time dimension that varies, although there are 1-D latitude and longitude dimensions.</p>
+<p>The ml file has varying time and pseudo-pressure levels that need to be scaled by surface pressure (sp) to get real levels.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># MetPy does not define a constant for mean sea level pressure - why not?</span>
+<span class="n">mean_slp</span> <span class="o">=</span> <span class="mf">101325.0</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">pascal</span>
+
+<span class="c1"># Read sounding data based on time (dt)</span>
+<span class="n">sfcdata</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">sfcfile</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">fcdata</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">fcfile</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">mldata</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">mlfile</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="c1">#print (mldata)</span>
+
+<span class="c1"># Find the time index for the requested date</span>
+<span class="n">all_times</span> <span class="o">=</span> <span class="n">mldata</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span>
+<span class="n">dindex</span> <span class="o">=</span> <span class="n">date2index</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span><span class="n">all_times</span><span class="p">)</span>
+<span class="c1">#print(dindex)</span>
+
+<span class="c1"># Standard sounding data</span>
+<span class="n">ml_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">mldata</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s2">&quot;t&quot;</span><span class="p">][</span><span class="n">dindex</span><span class="p">])</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">kelvin</span>
+<span class="n">ml_u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">mldata</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s2">&quot;u&quot;</span><span class="p">][</span><span class="n">dindex</span><span class="p">])</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">m</span> <span class="o">/</span> <span class="n">units</span><span class="o">.</span><span class="n">sec</span>
+<span class="n">ml_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">mldata</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s2">&quot;v&quot;</span><span class="p">][</span><span class="n">dindex</span><span class="p">])</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">m</span> <span class="o">/</span> <span class="n">units</span><span class="o">.</span><span class="n">sec</span>
+<span class="n">ml_q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">mldata</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s2">&quot;q&quot;</span><span class="p">][</span><span class="n">dindex</span><span class="p">])</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">kg</span> <span class="o">/</span> <span class="n">units</span><span class="o">.</span><span class="n">kg</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Calculate-derived-fields">
+<h2>Calculate derived fields<a class="headerlink" href="#Calculate-derived-fields" title="Permalink to this headline">¶</a></h2>
+<p>Model levels convolved with plevels and surface pressure to get actual pressure.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">sfc_p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">sfcdata</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s2">&quot;sp&quot;</span><span class="p">][</span><span class="n">dindex</span><span class="p">])</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">pascal</span>
+<span class="n">ml_p</span> <span class="o">=</span> <span class="n">plevs</span> <span class="o">*</span> <span class="n">sfc_p</span> <span class="o">/</span> <span class="n">mean_slp</span>
+<span class="n">ml_top</span> <span class="o">=</span> <span class="n">ptops</span> <span class="o">*</span> <span class="n">sfc_p</span> <span class="o">/</span> <span class="n">mean_slp</span>
+</pre></div>
+</div>
+</div>
+<p>Make profile of dew points, mixing ratios</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ml_td</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">dewpoint_from_specific_humidity</span><span class="p">(</span><span class="n">ml_q</span><span class="p">,</span> <span class="n">ml_t</span><span class="p">,</span> <span class="n">ml_p</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;kelvin&#39;</span><span class="p">)</span>
+<span class="n">ml_w</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">mixing_ratio_from_specific_humidity</span><span class="p">(</span><span class="n">ml_q</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Make profiles of various potential temperatures</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ml_pot</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">potential_temperature</span><span class="p">(</span><span class="n">ml_p</span><span class="p">,</span> <span class="n">ml_t</span><span class="p">)</span>
+<span class="n">ml_pote</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">equivalent_potential_temperature</span><span class="p">(</span><span class="n">ml_p</span><span class="p">,</span> <span class="n">ml_t</span><span class="p">,</span> <span class="n">ml_td</span><span class="p">)</span>
+<span class="n">ml_potv</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">virtual_potential_temperature</span><span class="p">(</span><span class="n">ml_p</span><span class="p">,</span> <span class="n">ml_t</span><span class="p">,</span> <span class="n">ml_q</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>To make the stepwise calculations work, we have to add the surface pressure as an additional “level”, then do the same for the other variables used. This is because profile - based calculations must be bounded by profile levels at top and bottom to do the calculations (e.g., can’t extrapolate from center of lowest model level to ground).</p>
+<p>Seems that the numpy append confounds MetPy unit handling - have to redeclare the units</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">mls_p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ml_p</span><span class="p">,</span><span class="n">sfc_p</span><span class="p">)</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">pascal</span>
+<span class="c1">#print(ml_p, ml_p[54])</span>
+
+<span class="c1"># Tack on the other &quot;surface&quot; variables</span>
+<span class="n">sfc_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">sfcdata</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s2">&quot;t2m&quot;</span><span class="p">][</span><span class="n">dindex</span><span class="p">])</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">kelvin</span> <span class="c1"># Will use this again below</span>
+<span class="n">mls_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ml_t</span><span class="p">,</span><span class="n">sfc_t</span><span class="p">)</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">kelvin</span>
+<span class="n">sfc_td</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">sfcdata</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s2">&quot;d2m&quot;</span><span class="p">][</span><span class="n">dindex</span><span class="p">])</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">kelvin</span> <span class="c1"># Will use this again below</span>
+<span class="n">mls_td</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ml_td</span><span class="p">,</span><span class="n">sfc_td</span><span class="p">)</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">kelvin</span>
+<span class="n">mls_u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ml_u</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">sfcdata</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s2">&quot;u10&quot;</span><span class="p">][</span><span class="n">dindex</span><span class="p">]))</span> <span class="o">*</span> <span class="n">units</span><span class="p">(</span><span class="s1">&#39;m/s&#39;</span><span class="p">)</span>
+<span class="n">ml_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ml_v</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">sfcdata</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s2">&quot;v10&quot;</span><span class="p">][</span><span class="n">dindex</span><span class="p">]))</span> <span class="o">*</span> <span class="n">units</span><span class="p">(</span><span class="s1">&#39;m/s&#39;</span><span class="p">)</span>
+
+<span class="c1"># Gotta calcualte a surface mixing ratio</span>
+<span class="n">sfc_q</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">specific_humidity_from_dewpoint</span><span class="p">(</span><span class="n">sfc_td</span><span class="p">,</span><span class="n">sfc_p</span><span class="p">)</span>
+<span class="n">sfc_w</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">mixing_ratio_from_specific_humidity</span><span class="p">(</span><span class="n">sfc_q</span><span class="p">)</span>
+<span class="n">mls_w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ml_w</span><span class="p">,</span><span class="n">sfc_w</span><span class="p">)</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">kg</span> <span class="o">/</span> <span class="n">units</span><span class="o">.</span><span class="n">kg</span>
+</pre></div>
+</div>
+</div>
+<p>More profile variables - these have to be built up from the bottom. Because extrapolation is forbidden, the top layer doesn’t get a value.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Create empty profiles of new variables to fill</span>
+<span class="c1">#ml_thick = np.full_like(ml_p, np.nan) * units.meter</span>
+<span class="c1">#ml_z = np.full_like(ml_p, np.nan) * units.meter</span>
+<span class="n">ml_thick</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">ml_p</span><span class="p">)</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">meter</span>
+<span class="n">ml_z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">ml_p</span><span class="p">)</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">meter</span>
+
+<span class="n">bot_p</span> <span class="o">=</span> <span class="n">sfc_p</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ml_p</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">ii</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ml_p</span><span class="p">)</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">top_p</span> <span class="o">=</span> <span class="n">ml_top</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span>
+    <span class="n">mid_p</span> <span class="o">=</span> <span class="n">ml_p</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span>
+    <span class="n">del_p</span> <span class="o">=</span> <span class="n">bot_p</span> <span class="o">-</span> <span class="n">top_p</span>
+    <span class="n">ml_thick</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">thickness_hydrostatic</span><span class="p">(</span><span class="n">mls_p</span><span class="p">,</span> <span class="n">mls_t</span><span class="p">,</span> <span class="n">mixing</span><span class="o">=</span><span class="n">mls_w</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="n">bot_p</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="n">del_p</span><span class="p">)</span>
+    <span class="n">ml_z</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ml_thick</span><span class="p">)</span> <span class="o">-</span> <span class="n">ml_thick</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span><span class="o">/</span><span class="mf">2.0</span> <span class="c1"># Clever bit of summing to find z at middle of layer</span>
+<span class="c1">#    print(bot_p,mid_p,top_p,ml_z[ii])</span>
+    <span class="n">bot_p</span> <span class="o">=</span> <span class="n">top_p</span>
+<span class="c1">#print(ml_z)</span>
+
+</pre></div>
+</div>
+</div>
+<p>Once we have the heights, we can calculate more profile variables</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ml_mse</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">moist_static_energy</span><span class="p">(</span><span class="n">ml_z</span><span class="p">,</span> <span class="n">ml_t</span><span class="p">,</span> <span class="n">ml_q</span><span class="p">)</span>
+<span class="n">ml_mse</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">ml_mse</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mf">0.0</span>
+
+<span class="n">ml_parcel</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">parcel_profile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">ml_p</span><span class="p">),</span> <span class="n">sfc_t</span><span class="p">,</span> <span class="n">sfc_td</span><span class="p">)</span> <span class="c1"># Note the flipping; goes from surface up.</span>
+<span class="c1">#print(ml_parcel)</span>
+<span class="n">mls_parcel</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">parcel_profile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">mls_p</span><span class="p">),</span> <span class="n">sfc_t</span><span class="p">,</span> <span class="n">sfc_td</span><span class="p">)</span> <span class="c1"># Note the flipping; goes from surface up.</span>
+<span class="c1">#print(mls_parcel)</span>
+</pre></div>
+</div>
+</div>
+<p>Lastly, single value (s_*) indices calculated from the profiles</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Some come in the surface analysis</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">s_pbl_e = np.squeeze(sfcdata.variables[&quot;blh&quot;][dindex]) * units.meter</span>
+<span class="sd">s_cape_e = np.squeeze(sfcdata.variables[&quot;cape&quot;][dindex]) * units.joule / units.kg</span>
+<span class="sd">s_pw_e = np.squeeze(sfcdata.variables[&quot;tcw&quot;][dindex]) * units.kg / units.meter / units.meter</span>
+<span class="sd">s_tclw_e = np.squeeze(sfcdata.variables[&quot;tclw&quot;][dindex]) * units.kg / units.meter / units.meter</span>
+<span class="sd">s_tciw_e = np.squeeze(sfcdata.variables[&quot;tciw&quot;][dindex]) * units.kg / units.meter / units.meter</span>
+<span class="sd">s_pbl_f = np.squeeze(fcdata.variables[&quot;blh&quot;][dindex]) * units.meter</span>
+<span class="sd">s_cape_f = np.squeeze(fcdata.variables[&quot;cape&quot;][dindex]) * units.joule / units.kg</span>
+<span class="sd">s_cin_f = np.squeeze(fcdata.variables[&quot;cin&quot;][dindex]) * units.joule / units.kg</span>
+<span class="sd">s_ustar_f = np.squeeze(fcdata.variables[&quot;zust&quot;][dindex]) * units.meter / units.sec</span>
+<span class="sd">s_cbh_f = np.squeeze(fcdata.variables[&quot;cbh&quot;][dindex]) * units.meter</span>
+<span class="sd">s_sh_f = np.squeeze(fcdata.variables[&quot;msshf&quot;][dindex]) * units.meter</span>
+<span class="sd">s_lh_f = np.squeeze(fcdata.variables[&quot;mslhf&quot;][dindex]) * units.meter</span>
+<span class="sd">s_swd_f = np.squeeze(fcdata.variables[&quot;msdwswrf&quot;][dindex]) * units.watt / units.meter / units.meter</span>
+<span class="sd">s_lwd_f = np.squeeze(fcdata.variables[&quot;msdwlwrf&quot;][dindex]) * units.watt / units.meter / units.meter</span>
+<span class="sd">s_swn_f = np.squeeze(fcdata.variables[&quot;msnswrf&quot;][dindex]) * units.watt / units.meter / units.meter</span>
+<span class="sd">s_lwn_f = np.squeeze(fcdata.variables[&quot;msnlwrf&quot;][dindex]) * units.watt / units.meter / units.meter</span>
+<span class="sd">s_precip_f = np.squeeze(fcdata.variables[&quot;tp&quot;][dindex]) * units.meter / units.hour</span>
+<span class="sd">s_kx_f = np.squeeze(fcdata.variables[&quot;kx&quot;][dindex]) * units.kelvin</span>
+<span class="sd">s_ttx_f = np.squeeze(fcdata.variables[&quot;totalx&quot;][dindex]) * units.kelvin</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># The rest we calculate</span>
+<span class="n">s_el_p</span><span class="p">,</span> <span class="n">s_el_t</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">el</span><span class="p">(</span><span class="n">mls_p</span><span class="p">,</span> <span class="n">mls_t</span><span class="p">,</span> <span class="n">mls_td</span><span class="p">,</span> <span class="n">mls_parcel</span><span class="p">)</span>
+<span class="n">s_lcl_p</span><span class="p">,</span> <span class="n">s_lcl_t</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">lcl</span><span class="p">(</span><span class="n">sfc_p</span><span class="p">,</span> <span class="n">sfc_t</span><span class="p">,</span> <span class="n">sfc_td</span><span class="p">,</span> <span class="n">max_iters</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-05</span><span class="p">)</span>
+
+<span class="n">s_lcl_z</span> <span class="o">=</span> <span class="p">(</span><span class="n">sfc_t</span> <span class="o">-</span> <span class="n">sfc_td</span><span class="p">)</span> <span class="o">/</span> <span class="n">c</span><span class="o">.</span><span class="n">dry_adiabatic_lapse_rate</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;K/m&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">m</span>
+<span class="n">s_lfc</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">lfc</span><span class="p">(</span><span class="n">mls_p</span><span class="p">,</span> <span class="n">mls_t</span><span class="p">,</span> <span class="n">mls_td</span><span class="p">)</span>
+<span class="n">s_cape</span><span class="p">,</span> <span class="n">s_cin</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">cape_cin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">mls_p</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">mls_t</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">mls_td</span><span class="p">),</span> <span class="n">mls_parcel</span><span class="p">)</span>
+<span class="n">s_pw</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">precipitable_water</span><span class="p">(</span><span class="n">mls_td</span><span class="p">,</span> <span class="n">mls_p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/Users/dirmeyer/miniconda3/envs/unidata/lib/python3.7/site-packages/metpy/interpolate/one_dimension.py:154: UserWarning: Interpolation point out of data bounds encountered
+  warnings.warn(&#39;Interpolation point out of data bounds encountered&#39;)
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Make-Skew-T-Plot">
+<h2>Make Skew-T Plot<a class="headerlink" href="#Make-Skew-T-Plot" title="Permalink to this headline">¶</a></h2>
+<p>The code below makes a basic skew-T plot using the MetPy plot module that contains a SkewT class.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Change default to be better for skew-T</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
+
+<span class="c1"># Initiate the skew-T plot type from MetPy class loaded earlier</span>
+<span class="n">skew</span> <span class="o">=</span> <span class="n">SkewT</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+
+<span class="c1"># Plot the data using normal plotting functions, in this case using</span>
+<span class="c1"># log scaling in Y, as dictated by the typical meteorological plot</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ml_p</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;hectopascal&#39;</span><span class="p">),</span> <span class="n">ml_t</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;degC&#39;</span><span class="p">),</span> <span class="s1">&#39;crimson&#39;</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ml_p</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;hectopascal&#39;</span><span class="p">),</span> <span class="n">ml_td</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;degC&#39;</span><span class="p">),</span> <span class="s1">&#39;teal&#39;</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sfc_p</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;hectopascal&#39;</span><span class="p">),</span> <span class="n">sfc_t</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;degC&#39;</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;maroon&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sfc_p</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;hectopascal&#39;</span><span class="p">),</span> <span class="n">sfc_td</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;degC&#39;</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkslategrey&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+
+<span class="n">skew</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mls_p</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;hectopascal&#39;</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">mls_parcel</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;degC&#39;</span><span class="p">),</span> <span class="s1">&#39;hotpink&#39;</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">plot_barbs</span><span class="p">(</span><span class="n">ml_p</span><span class="p">[::</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;hectopascal&#39;</span><span class="p">),</span> <span class="n">ml_u</span><span class="p">[::</span><span class="mi">3</span><span class="p">],</span> <span class="n">ml_v</span><span class="p">[::</span><span class="mi">3</span><span class="p">],</span> <span class="n">y_clip_radius</span><span class="o">=</span><span class="mf">0.03</span><span class="p">)</span>
+
+<span class="c1"># Set some appropriate axes limits for x and y</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">1020</span><span class="p">,</span> <span class="mi">250</span><span class="p">)</span>
+
+<span class="c1"># Shade areas of CAPE and CIN</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">shade_cin</span><span class="p">(</span><span class="n">mls_p</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;hectopascal&#39;</span><span class="p">),</span> <span class="n">mls_t</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;degC&#39;</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">mls_parcel</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;degC&#39;</span><span class="p">))</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">shade_cape</span><span class="p">(</span><span class="n">mls_p</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;hectopascal&#39;</span><span class="p">),</span> <span class="n">mls_t</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;degC&#39;</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">mls_parcel</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s1">&#39;degC&#39;</span><span class="p">))</span>
+
+<span class="c1"># Add the relevant special lines to plot throughout the figure</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">plot_dry_adiabats</span><span class="p">(</span><span class="n">t0</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">233</span><span class="p">,</span> <span class="mi">533</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">K</span><span class="p">,</span>
+                       <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orangered&#39;</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">plot_moist_adiabats</span><span class="p">(</span><span class="n">t0</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">233</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">K</span><span class="p">,</span>
+                         <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:green&#39;</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">plot_mixing_lines</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">)</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">hPa</span><span class="p">,</span>
+                       <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add some descriptive titles</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;ERA5 Pseudo-Sounding at LAFE site&#39;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Valid Time: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dt</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1">#print(&quot;EL:&quot;,s_el_p, s_el_t)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LCL:&quot;</span><span class="p">,</span><span class="n">s_lcl_z</span><span class="p">,</span> <span class="n">s_lcl_p</span><span class="p">,</span> <span class="n">s_lcl_t</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CAPE:&quot;</span><span class="p">,</span><span class="n">s_cape</span><span class="p">,</span><span class="n">s_cape_e</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CIN:&quot;</span><span class="p">,</span><span class="n">s_cin</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;PW:&quot;</span><span class="p">,</span><span class="n">s_pw</span><span class="p">,</span><span class="n">s_pw_e</span><span class="p">)</span>
+
+
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/examples_metpy-sounding-dignostic_22_0.png" src="../_images/examples_metpy-sounding-dignostic_22_0.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+LCL: 166.4088406617337 meter 95290.70836816098 pascal 294.371084350111 kelvin
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-12-18ddabc8da71&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">     38</span> <span class="ansi-red-fg">#print(&#34;EL:&#34;,s_el_p, s_el_t)</span>
+<span class="ansi-green-intense-fg ansi-bold">     39</span> print<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;LCL:&#34;</span><span class="ansi-blue-fg">,</span>s_lcl_z<span class="ansi-blue-fg">,</span> s_lcl_p<span class="ansi-blue-fg">,</span> s_lcl_t<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">---&gt; 40</span><span class="ansi-red-fg"> </span>print<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;CAPE:&#34;</span><span class="ansi-blue-fg">,</span>s_cape<span class="ansi-blue-fg">,</span>s_cape_e<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     41</span> print<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;CIN:&#34;</span><span class="ansi-blue-fg">,</span>s_cin<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     42</span> print<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;PW:&#34;</span><span class="ansi-blue-fg">,</span>s_pw<span class="ansi-blue-fg">,</span>s_pw_e<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">NameError</span>: name &#39;s_cape_e&#39; is not defined
+</pre></div></div>
+</div>
+<p>Red is CAPE area, blue is CIN; surface values are ‘x’.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Kathy Pegion
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

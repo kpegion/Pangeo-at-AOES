@@ -1,0 +1,697 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>MetPy calc &mdash; Pangeo-at-AOES 0.1.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Pangeo-at-AOES
+          
+
+          
+            
+            <img src="../_static/AOES-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../setting-up-pangeo.html">Setting up Pangeo &amp; other Pytbon Packages  on the COLA Servers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setting-up-jupyter.html">Setting up Jupyter on COLA Servers</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Basic Reading and Plotting</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="read-netcdf.html">Read a netcdf file and make a contour plot of the data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="read-grib.html">Read a grib file and make a contour plot of the data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="read-opendap.html">Read a file from an remote OPeNDAP server and make a contour plot of the data</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Analysis Using Xarray</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="advanced-analysis.html">Analysis using <code class="docutils literal notranslate"><span class="pre">Xarray</span></code></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Making Nice Plots</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib-tutorial.html">Making Plots Using <code class="docutils literal notranslate"><span class="pre">Matplotlib</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="cartopy-tutorial.html">Making Maps using <code class="docutils literal notranslate"><span class="pre">Cartopy</span></code></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Hindcasts with climpred</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="monthly-enso-subx-example.html">Calculate ENSO Skill as a Function of Initial Month vs. Lead Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="daily-subx-example.html">Calculate the skill of a MJO Index as a function of lead time</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weather Data with Metpy</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="metpy-constants-and-units.html">MetPy Constants and Units</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Pangeo-at-AOES</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>MetPy calc</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/examples/metpy-calc.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    min-width: 5ex;
+    padding-top: 0.4em;
+    padding-right: 0.4em;
+    text-align: right;
+    flex: 0;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    padding: 0.4em;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="MetPy-calc">
+<h1>MetPy calc<a class="headerlink" href="#MetPy-calc" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Provides-tools-for-unit-aware,-meteorological-calculations-in-the-following-categories:">
+<h2>Provides tools for unit-aware, meteorological calculations in the following categories:<a class="headerlink" href="#Provides-tools-for-unit-aware,-meteorological-calculations-in-the-following-categories:" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Dry Thermodynamics</p></li>
+<li><p>Moist Thermodynamics</p></li>
+<li><p>Soundings</p></li>
+<li><p>Dynamic/Kinematic</p></li>
+<li><p>Boundary Layer/Turbulence</p></li>
+<li><p>Mathematical Functions</p></li>
+<li><p>Apparent Temperature</p></li>
+<li><p>Standard Atmosphere</p></li>
+<li><p>Other</p></li>
+</ul>
+<p>Some methods require a vector or grid as input (e.g., calculations based on sounding profiles).</p>
+<p>Those that do not can still be passed dimensional arrays, and will return like-sized arrays, even if they appear to be scalar functions.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">metpy.calc</span> <span class="k">as</span> <span class="nn">calc</span>
+<span class="kn">import</span> <span class="nn">metpy.constants</span> <span class="k">as</span> <span class="nn">c</span>
+<span class="kn">from</span> <span class="nn">metpy.units</span> <span class="kn">import</span> <span class="n">units</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+<p>.</p>
+<p>There are some very simple calculations, like potential temperature from pressure and temperature:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">calc</span><span class="o">.</span><span class="n">potential_temperature</span><span class="p">(</span><span class="mf">800.</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">hectopascal</span><span class="p">,</span> <span class="mf">273.</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">kelvin</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Series-example">
+<h3>Series example<a class="headerlink" href="#Series-example" title="Permalink to this headline">¶</a></h3>
+<p>Given a list of model sigma coordinates in the vertical and the surface pressure, return the list of model pressure levels:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">sigma</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.995</span><span class="p">,</span> <span class="mf">0.9821</span><span class="p">,</span> <span class="mf">0.9644</span><span class="p">,</span> <span class="mf">0.9425</span><span class="p">,</span> <span class="mf">0.9159</span><span class="p">,</span> <span class="mf">0.8838</span><span class="p">,</span> <span class="mf">0.8458</span><span class="p">,</span>
+         <span class="mf">0.8014</span><span class="p">,</span> <span class="mf">0.7508</span><span class="p">,</span> <span class="mf">0.6943</span><span class="p">,</span> <span class="mf">0.6329</span><span class="p">,</span> <span class="mf">0.5681</span><span class="p">,</span> <span class="mf">0.5017</span><span class="p">,</span> <span class="mf">0.4357</span><span class="p">,</span>
+         <span class="mf">0.372</span><span class="p">,</span> <span class="mf">0.3125</span><span class="p">,</span> <span class="mf">0.2582</span><span class="p">,</span> <span class="mf">0.2101</span><span class="p">,</span> <span class="mf">0.1682</span><span class="p">,</span> <span class="mf">0.1326</span><span class="p">,</span> <span class="mf">0.1028</span><span class="p">,</span>
+         <span class="mf">0.0782</span><span class="p">,</span> <span class="mf">0.058</span><span class="p">,</span> <span class="mf">0.0418</span><span class="p">,</span> <span class="mf">0.0288</span><span class="p">,</span> <span class="mf">0.0183</span><span class="p">,</span> <span class="mf">0.0101</span><span class="p">,</span> <span class="mf">0.0027</span><span class="p">]</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">dimensionless</span>
+<span class="n">plevs</span> <span class="o">=</span> <span class="n">calc</span><span class="o">.</span><span class="n">sigma_to_pressure</span><span class="p">(</span><span class="n">sigma</span><span class="p">,</span><span class="mf">1013.0</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">millibar</span><span class="p">,</span> <span class="mf">0.0</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">millibar</span><span class="p">)</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">plevs</span><span class="p">,</span><span class="n">decimals</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plevs</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">units</span><span class="o">.</span><span class="n">pascal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Nesting">
+<h3>Nesting<a class="headerlink" href="#Nesting" title="Permalink to this headline">¶</a></h3>
+<p>Functions can be nested. For example, there is not a function to calculate specific humidity directly from relative humidity, but there are functions for relative humidity to dewpoint, and then dewpoint to specific humidity:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">calc</span><span class="o">.</span><span class="n">specific_humidity_from_dewpoint</span><span class="p">(</span><span class="n">calc</span><span class="o">.</span><span class="n">dewpoint_rh</span><span class="p">(</span><span class="mi">95</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">degF</span><span class="p">,</span> <span class="mi">50</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">percent</span><span class="p">),</span> <span class="mf">29.92</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">inHg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="More-powerful-functions">
+<h3>More powerful functions<a class="headerlink" href="#More-powerful-functions" title="Permalink to this headline">¶</a></h3>
+<p>Here is an example of calculating CAPE and CIN from profiles of temperature and dewpoint (e.g., from a radiosonde):</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">t_profile</span> <span class="o">=</span> <span class="p">[</span><span class="mf">299.10</span><span class="p">,</span> <span class="mf">300.08</span><span class="p">,</span> <span class="mf">300.18</span><span class="p">,</span> <span class="mf">300.28</span><span class="p">,</span> <span class="mf">300.40</span><span class="p">,</span> <span class="mf">300.50</span><span class="p">,</span> <span class="mf">300.57</span><span class="p">,</span> <span class="mf">300.59</span><span class="p">,</span>
+       <span class="mf">300.56</span><span class="p">,</span> <span class="mf">300.52</span><span class="p">,</span> <span class="mf">300.59</span><span class="p">,</span> <span class="mf">300.26</span><span class="p">,</span> <span class="mf">299.30</span><span class="p">,</span> <span class="mf">298.96</span><span class="p">,</span> <span class="mf">298.47</span><span class="p">,</span> <span class="mf">297.90</span><span class="p">,</span>
+       <span class="mf">297.23</span><span class="p">,</span> <span class="mf">296.46</span><span class="p">,</span> <span class="mf">295.58</span><span class="p">,</span> <span class="mf">294.68</span><span class="p">,</span> <span class="mf">293.94</span><span class="p">,</span> <span class="mf">293.46</span><span class="p">,</span> <span class="mf">293.13</span><span class="p">,</span> <span class="mf">292.65</span><span class="p">,</span>
+       <span class="mf">291.96</span><span class="p">,</span> <span class="mf">291.15</span><span class="p">,</span> <span class="mf">290.26</span><span class="p">,</span> <span class="mf">289.34</span><span class="p">,</span> <span class="mf">288.23</span><span class="p">,</span> <span class="mf">286.91</span><span class="p">,</span> <span class="mf">285.51</span><span class="p">,</span> <span class="mf">284.15</span><span class="p">,</span>
+       <span class="mf">281.99</span><span class="p">,</span> <span class="mf">280.00</span><span class="p">,</span> <span class="mf">278.20</span><span class="p">,</span> <span class="mf">276.52</span><span class="p">,</span> <span class="mf">275.46</span><span class="p">,</span> <span class="mf">273.96</span><span class="p">,</span> <span class="mf">271.22</span><span class="p">,</span> <span class="mf">269.24</span><span class="p">,</span>
+       <span class="mf">265.27</span><span class="p">,</span> <span class="mf">265.24</span><span class="p">,</span> <span class="mf">264.11</span><span class="p">,</span> <span class="mf">262.99</span><span class="p">,</span> <span class="mf">260.92</span><span class="p">,</span> <span class="mf">259.68</span><span class="p">,</span> <span class="mf">257.17</span><span class="p">,</span> <span class="mf">256.84</span><span class="p">,</span>
+       <span class="mf">254.82</span><span class="p">,</span> <span class="mf">252.79</span><span class="p">,</span> <span class="mf">250.66</span><span class="p">,</span> <span class="mf">248.49</span><span class="p">,</span> <span class="mf">246.34</span><span class="p">,</span> <span class="mf">244.41</span><span class="p">,</span> <span class="mf">242.85</span><span class="p">,</span> <span class="mf">240.85</span><span class="p">]</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">kelvin</span>
+<span class="n">td_profile</span> <span class="o">=</span> <span class="p">[</span><span class="mf">294.94</span><span class="p">,</span> <span class="mf">295.25</span><span class="p">,</span> <span class="mf">295.18</span><span class="p">,</span> <span class="mf">295.12</span><span class="p">,</span> <span class="mf">295.07</span><span class="p">,</span> <span class="mf">295.01</span><span class="p">,</span> <span class="mf">294.95</span><span class="p">,</span> <span class="mf">294.88</span><span class="p">,</span>
+       <span class="mf">294.79</span><span class="p">,</span> <span class="mf">294.66</span><span class="p">,</span> <span class="mf">294.41</span><span class="p">,</span> <span class="mf">293.35</span><span class="p">,</span> <span class="mf">292.61</span><span class="p">,</span> <span class="mf">292.12</span><span class="p">,</span> <span class="mf">291.72</span><span class="p">,</span> <span class="mf">291.28</span><span class="p">,</span>
+       <span class="mf">290.77</span><span class="p">,</span> <span class="mf">290.63</span><span class="p">,</span> <span class="mf">290.54</span><span class="p">,</span> <span class="mf">290.38</span><span class="p">,</span> <span class="mf">289.62</span><span class="p">,</span> <span class="mf">287.89</span><span class="p">,</span> <span class="mf">285.89</span><span class="p">,</span> <span class="mf">284.3</span> <span class="p">,</span>
+       <span class="mf">282.83</span><span class="p">,</span> <span class="mf">281.19</span><span class="p">,</span> <span class="mf">279.36</span><span class="p">,</span> <span class="mf">277.59</span><span class="p">,</span> <span class="mf">276.23</span><span class="p">,</span> <span class="mf">275.34</span><span class="p">,</span> <span class="mf">273.88</span><span class="p">,</span> <span class="mf">270.3</span> <span class="p">,</span>
+       <span class="mf">263.84</span><span class="p">,</span> <span class="mf">256.68</span><span class="p">,</span> <span class="mf">250.94</span><span class="p">,</span> <span class="mf">247.86</span><span class="p">,</span> <span class="mf">243.36</span><span class="p">,</span> <span class="mf">240.34</span><span class="p">,</span> <span class="mf">237.07</span><span class="p">,</span> <span class="mf">239.96</span><span class="p">,</span>
+       <span class="mf">238.58</span><span class="p">,</span> <span class="mf">235.17</span><span class="p">,</span> <span class="mf">232.41</span><span class="p">,</span> <span class="mf">231.57</span><span class="p">,</span> <span class="mf">233.72</span><span class="p">,</span> <span class="mf">240.21</span><span class="p">,</span> <span class="mf">244.34</span><span class="p">,</span> <span class="mf">243.2</span> <span class="p">,</span>
+       <span class="mf">239.54</span><span class="p">,</span> <span class="mf">236.16</span><span class="p">,</span> <span class="mf">234.42</span><span class="p">,</span> <span class="mf">235.03</span><span class="p">,</span> <span class="mf">237.08</span><span class="p">,</span> <span class="mf">235.84</span><span class="p">,</span> <span class="mf">230.25</span><span class="p">,</span> <span class="mf">224.31</span><span class="p">]</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">kelvin</span>
+<span class="n">p_profile</span> <span class="o">=</span> <span class="p">[</span><span class="mf">978.08</span><span class="p">,</span> <span class="mf">976.92</span><span class="p">,</span> <span class="mf">974.49</span><span class="p">,</span> <span class="mf">971.84</span><span class="p">,</span> <span class="mf">968.94</span><span class="p">,</span> <span class="mf">965.78</span><span class="p">,</span> <span class="mf">962.34</span><span class="p">,</span> <span class="mf">958.58</span><span class="p">,</span>
+       <span class="mf">954.49</span><span class="p">,</span> <span class="mf">950.03</span><span class="p">,</span> <span class="mf">945.19</span><span class="p">,</span> <span class="mf">939.94</span><span class="p">,</span> <span class="mf">934.23</span><span class="p">,</span> <span class="mf">928.06</span><span class="p">,</span> <span class="mf">921.37</span><span class="p">,</span> <span class="mf">914.15</span><span class="p">,</span>
+       <span class="mf">906.36</span><span class="p">,</span> <span class="mf">897.97</span><span class="p">,</span> <span class="mf">888.95</span><span class="p">,</span> <span class="mf">879.27</span><span class="p">,</span> <span class="mf">868.92</span><span class="p">,</span> <span class="mf">857.86</span><span class="p">,</span> <span class="mf">846.07</span><span class="p">,</span> <span class="mf">833.54</span><span class="p">,</span>
+       <span class="mf">820.27</span><span class="p">,</span> <span class="mf">806.24</span><span class="p">,</span> <span class="mf">791.47</span><span class="p">,</span> <span class="mf">775.96</span><span class="p">,</span> <span class="mf">759.73</span><span class="p">,</span> <span class="mf">742.82</span><span class="p">,</span> <span class="mf">725.26</span><span class="p">,</span> <span class="mf">707.1</span> <span class="p">,</span>
+       <span class="mf">688.41</span><span class="p">,</span> <span class="mf">669.24</span><span class="p">,</span> <span class="mf">649.67</span><span class="p">,</span> <span class="mf">629.79</span><span class="p">,</span> <span class="mf">609.69</span><span class="p">,</span> <span class="mf">589.47</span><span class="p">,</span> <span class="mf">569.21</span><span class="p">,</span> <span class="mf">549.02</span><span class="p">,</span>
+       <span class="mf">529.01</span><span class="p">,</span> <span class="mf">509.26</span><span class="p">,</span> <span class="mf">489.88</span><span class="p">,</span> <span class="mf">471.01</span><span class="p">,</span> <span class="mf">452.69</span><span class="p">,</span> <span class="mf">434.94</span><span class="p">,</span> <span class="mf">417.76</span><span class="p">,</span> <span class="mf">401.11</span><span class="p">,</span>
+       <span class="mf">385.01</span><span class="p">,</span> <span class="mf">369.42</span><span class="p">,</span> <span class="mf">354.35</span><span class="p">,</span> <span class="mf">339.77</span><span class="p">,</span> <span class="mf">325.68</span><span class="p">,</span> <span class="mf">312.07</span><span class="p">,</span> <span class="mf">298.92</span><span class="p">,</span> <span class="mf">286.22</span><span class="p">]</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">hectopascal</span>
+<span class="n">calc</span><span class="o">.</span><span class="n">surface_based_cape_cin</span><span class="p">(</span><span class="n">p_profile</span><span class="p">,</span> <span class="n">t_profile</span><span class="p">,</span> <span class="n">td_profile</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Dry-Thermodynamics">
+<h3>Dry Thermodynamics<a class="headerlink" href="#Dry-Thermodynamics" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">add_height_to_pressure(pressure,</span> <span class="pre">height)</span></code> Calculate the pressure at a certain height above another pressure level.</p>
+<p><code class="docutils literal notranslate"><span class="pre">add_pressure_to_height(height,</span> <span class="pre">pressure)</span></code> Calculate the height at a certain pressure above another height.</p>
+<p><code class="docutils literal notranslate"><span class="pre">density(pressure,</span> <span class="pre">temperature,</span> <span class="pre">mixing[,</span> <span class="pre">…])</span></code> Calculate density.</p>
+<p><code class="docutils literal notranslate"><span class="pre">dry_lapse(pressure,</span> <span class="pre">temperature[,</span> <span class="pre">ref_pressure])</span></code> Calculate the temperature at a level assuming only dry processes.</p>
+<p><code class="docutils literal notranslate"><span class="pre">dry_static_energy(heights,</span> <span class="pre">temperature)</span></code> Calculate the dry static energy of parcels.</p>
+<p><code class="docutils literal notranslate"><span class="pre">geopotential_to_height(geopot)</span></code> Compute height from a given geopotential.</p>
+<p><code class="docutils literal notranslate"><span class="pre">height_to_geopotential(height)</span></code> Compute geopotential for a given height.</p>
+<p><code class="docutils literal notranslate"><span class="pre">mean_pressure_weighted(pressure,</span> <span class="pre">*args,</span> <span class="pre">**kwargs)</span></code> Calculate pressure-weighted mean of an arbitrary variable through a layer.</p>
+<p><code class="docutils literal notranslate"><span class="pre">potential_temperature(pressure,</span> <span class="pre">temperature)</span></code> Calculate the potential temperature.</p>
+<p><code class="docutils literal notranslate"><span class="pre">sigma_to_pressure(sigma,</span> <span class="pre">psfc,</span> <span class="pre">ptop)</span></code> Calculate pressure from sigma values.</p>
+<p><code class="docutils literal notranslate"><span class="pre">static_stability(pressure,</span> <span class="pre">temperature[,</span> <span class="pre">axis])</span></code> Calculate the static stability within a vertical profile.</p>
+<p><code class="docutils literal notranslate"><span class="pre">temperature_from_potential_temperature(…)</span></code> Calculate the temperature from a given potential temperature.</p>
+<p><code class="docutils literal notranslate"><span class="pre">thickness_hydrostatic(pressure,</span> <span class="pre">temperature,</span> <span class="pre">…)</span></code> Calculate the thickness of a layer via the hypsometric equation.</p>
+</div>
+<div class="section" id="Moist-Thermodynamics">
+<h3>Moist Thermodynamics<a class="headerlink" href="#Moist-Thermodynamics" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">dewpoint(e)</span></code> Calculate the ambient dewpoint given the vapor pressure.</p>
+<p><code class="docutils literal notranslate"><span class="pre">dewpoint_from_specific_humidity(…)</span></code> Calculate the dewpoint from specific humidity, temperature, and pressure.</p>
+<p><code class="docutils literal notranslate"><span class="pre">dewpoint_rh(temperature,</span> <span class="pre">rh)</span></code> Calculate the ambient dewpoint given air temperature and relative humidity.</p>
+<p><code class="docutils literal notranslate"><span class="pre">equivalent_potential_temperature(pressure,</span> <span class="pre">…)</span></code> Calculate equivalent potential temperature.</p>
+<p><code class="docutils literal notranslate"><span class="pre">mixing_ratio(part_press,</span> <span class="pre">tot_press[,</span> <span class="pre">…])</span></code> Calculate the mixing ratio of a gas.</p>
+<p><code class="docutils literal notranslate"><span class="pre">mixing_ratio_from_relative_humidity(…)</span></code> Calculate the mixing ratio from relative humidity, temperature, and pressure.</p>
+<p><code class="docutils literal notranslate"><span class="pre">mixing_ratio_from_specific_humidity(…)</span></code> Calculate the mixing ratio from specific humidity.</p>
+<p><code class="docutils literal notranslate"><span class="pre">moist_lapse(pressure,</span> <span class="pre">temperature[,</span> <span class="pre">…])</span></code> Calculate the temperature at a level assuming liquid saturation processes.</p>
+<p><code class="docutils literal notranslate"><span class="pre">moist_static_energy(heights,</span> <span class="pre">temperature,</span> <span class="pre">…)</span></code> Calculate the moist static energy of parcels.</p>
+<p><code class="docutils literal notranslate"><span class="pre">precipitable_water(dewpt,</span> <span class="pre">pressure[,</span> <span class="pre">…])</span></code> Calculate precipitable water through the depth of a sounding.</p>
+<p><code class="docutils literal notranslate"><span class="pre">psychrometric_vapor_pressure_wet(…[,</span> <span class="pre">…])</span></code> Calculate the vapor pressure with wet bulb and dry bulb temperatures.</p>
+<p><code class="docutils literal notranslate"><span class="pre">relative_humidity_from_dewpoint(temperature,</span> <span class="pre">…)</span></code> Calculate the relative humidity.</p>
+<p><code class="docutils literal notranslate"><span class="pre">relative_humidity_from_mixing_ratio(…)</span></code> Calculate the relative humidity from mixing ratio, temperature, and pressure.</p>
+<p><code class="docutils literal notranslate"><span class="pre">relative_humidity_from_specific_humidity(…)</span></code> Calculate the relative humidity from specific humidity, temperature, and pressure.</p>
+<p><code class="docutils literal notranslate"><span class="pre">relative_humidity_wet_psychrometric(…)</span></code> Calculate the relative humidity with wet bulb and dry bulb temperatures.</p>
+<p><code class="docutils literal notranslate"><span class="pre">saturation_equivalent_potential_temperature(…)</span></code> Calculate saturation equivalent potential temperature.</p>
+<p><code class="docutils literal notranslate"><span class="pre">saturation_mixing_ratio(tot_press,</span> <span class="pre">temperature)</span></code> Calculate the saturation mixing ratio of water vapor.</p>
+<p><code class="docutils literal notranslate"><span class="pre">saturation_vapor_pressure(temperature)</span></code> Calculate the saturation water vapor (partial) pressure.</p>
+<p><code class="docutils literal notranslate"><span class="pre">specific_humidity_from_dewpoint(dewpoint,</span> <span class="pre">…)</span></code> Calculate the specific humidity from the dewpoint temperature and pressure.</p>
+<p><code class="docutils literal notranslate"><span class="pre">specific_humidity_from_mixing_ratio(mixing_ratio)</span></code> Calculate the specific humidity from the mixing ratio.</p>
+<p><code class="docutils literal notranslate"><span class="pre">thickness_hydrostatic_from_relative_humidity(…)</span></code> Calculate the thickness of a layer given pressure, temperature and relative humidity.</p>
+<p><code class="docutils literal notranslate"><span class="pre">vapor_pressure(pressure,</span> <span class="pre">mixing)</span></code> Calculate water vapor (partial) pressure.</p>
+<p><code class="docutils literal notranslate"><span class="pre">vertical_velocity(omega,</span> <span class="pre">pressure,</span> <span class="pre">temperature)</span></code> Calculate w from omega assuming hydrostatic conditions.</p>
+<p><code class="docutils literal notranslate"><span class="pre">vertical_velocity_pressure(w,</span> <span class="pre">pressure,</span> <span class="pre">…)</span></code> Calculate omega from w assuming hydrostatic conditions.</p>
+<p><code class="docutils literal notranslate"><span class="pre">virtual_potential_temperature(pressure,</span> <span class="pre">…)</span></code> Calculate virtual potential temperature.</p>
+<p><code class="docutils literal notranslate"><span class="pre">virtual_temperature(temperature,</span> <span class="pre">mixing[,</span> <span class="pre">…])</span></code> Calculate virtual temperature.</p>
+<p><code class="docutils literal notranslate"><span class="pre">wet_bulb_temperature(pressure,</span> <span class="pre">temperature,</span> <span class="pre">…)</span></code> Calculate the wet-bulb temperature using Normand’s rule.</p>
+</div>
+<div class="section" id="Soundings">
+<h3>Soundings<a class="headerlink" href="#Soundings" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">bulk_shear(pressure,</span> <span class="pre">u,</span> <span class="pre">v[,</span> <span class="pre">heights,</span> <span class="pre">…])</span></code> Calculate bulk shear through a layer.</p>
+<p><code class="docutils literal notranslate"><span class="pre">bunkers_storm_motion(pressure,</span> <span class="pre">u,</span> <span class="pre">v,</span> <span class="pre">heights)</span></code> Calculate the Bunkers right-mover and left-mover storm motions and sfc-6km mean flow.</p>
+<p><code class="docutils literal notranslate"><span class="pre">cape_cin(pressure,</span> <span class="pre">temperature,</span> <span class="pre">dewpt,</span> <span class="pre">…)</span></code> Calculate CAPE and CIN.</p>
+<p><code class="docutils literal notranslate"><span class="pre">critical_angle(pressure,</span> <span class="pre">u,</span> <span class="pre">v,</span> <span class="pre">heights,</span> <span class="pre">…)</span></code> Calculate the critical angle.</p>
+<p><code class="docutils literal notranslate"><span class="pre">el(pressure,</span> <span class="pre">temperature,</span> <span class="pre">dewpt[,</span> <span class="pre">…])</span></code> Calculate the equilibrium level.</p>
+<p><code class="docutils literal notranslate"><span class="pre">lcl(pressure,</span> <span class="pre">temperature,</span> <span class="pre">dewpt[,</span> <span class="pre">…])</span></code> Calculate the lifted condensation level (LCL) using from the starting point.</p>
+<p><code class="docutils literal notranslate"><span class="pre">lfc(pressure,</span> <span class="pre">temperature,</span> <span class="pre">dewpt[,</span> <span class="pre">…])</span></code> Calculate the level of free convection (LFC).</p>
+<p><code class="docutils literal notranslate"><span class="pre">mixed_layer(p,</span> <span class="pre">*args,</span> <span class="pre">**kwargs)</span></code> Mix variable(s) over a layer, yielding a mass-weighted average.</p>
+<p><code class="docutils literal notranslate"><span class="pre">mixed_parcel(p,</span> <span class="pre">temperature,</span> <span class="pre">dewpt[,</span> <span class="pre">…])</span></code> Calculate the properties of a parcel mixed from a layer.</p>
+<p><code class="docutils literal notranslate"><span class="pre">most_unstable_cape_cin(pressure,</span> <span class="pre">…)</span></code> Calculate most unstable CAPE/CIN.</p>
+<p><code class="docutils literal notranslate"><span class="pre">most_unstable_parcel(pressure,</span> <span class="pre">temperature,</span> <span class="pre">…)</span></code> Determine the most unstable parcel in a layer.</p>
+<p><code class="docutils literal notranslate"><span class="pre">parcel_profile(pressure,</span> <span class="pre">temperature,</span> <span class="pre">dewpt)</span></code> Calculate the profile a parcel takes through the atmosphere.</p>
+<p><code class="docutils literal notranslate"><span class="pre">parcel_profile_with_lcl(pressure,</span> <span class="pre">…)</span></code> Calculate the profile a parcel takes through the atmosphere.</p>
+<p><code class="docutils literal notranslate"><span class="pre">significant_tornado(sbcape,</span> <span class="pre">…)</span></code> Calculate the significant tornado parameter (fixed layer).</p>
+<p><code class="docutils literal notranslate"><span class="pre">storm_relative_helicity(u,</span> <span class="pre">v,</span> <span class="pre">heights,</span> <span class="pre">depth)</span></code> Calculate storm relative helicity.</p>
+<p><code class="docutils literal notranslate"><span class="pre">supercell_composite(mucape,</span> <span class="pre">…)</span></code> Calculate the supercell composite parameter.</p>
+<p><code class="docutils literal notranslate"><span class="pre">surface_based_cape_cin(pressure,</span> <span class="pre">…)</span></code> Calculate surface-based CAPE and CIN.</p>
+</div>
+<div class="section" id="Dynamic/Kinematic">
+<h3>Dynamic/Kinematic<a class="headerlink" href="#Dynamic/Kinematic" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">absolute_momentum(u_wind,</span> <span class="pre">v_wind[,</span> <span class="pre">index])</span></code> Calculate cross-sectional absolute momentum (also called pseudoangular momentum).</p>
+<p><code class="docutils literal notranslate"><span class="pre">absolute_vorticity(u,</span> <span class="pre">v,</span> <span class="pre">dx,</span> <span class="pre">dy,</span> <span class="pre">lats[,</span> <span class="pre">…])</span></code> Calculate the absolute vorticity of the horizontal wind.</p>
+<p><code class="docutils literal notranslate"><span class="pre">advection(scalar,</span> <span class="pre">wind,</span> <span class="pre">deltas)</span></code> Calculate the advection of a scalar field by the wind.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ageostrophic_wind(heights,</span> <span class="pre">f,</span> <span class="pre">dx,</span> <span class="pre">dy,</span> <span class="pre">u,</span> <span class="pre">v)</span></code> Calculate the ageostrophic wind given from the heights or geopotential.</p>
+<p><code class="docutils literal notranslate"><span class="pre">coriolis_parameter(latitude)</span></code> Calculate the coriolis parameter at each point.</p>
+<p><code class="docutils literal notranslate"><span class="pre">divergence(u,</span> <span class="pre">v,</span> <span class="pre">dx,</span> <span class="pre">dy)</span></code> Calculate the horizontal divergence of a vector.</p>
+<p><code class="docutils literal notranslate"><span class="pre">exner_function(pressure[,</span> <span class="pre">reference_pressure])</span></code> Calculate the Exner function.</p>
+<p><code class="docutils literal notranslate"><span class="pre">frontogenesis(thta,</span> <span class="pre">u,</span> <span class="pre">v,</span> <span class="pre">dx,</span> <span class="pre">dy[,</span> <span class="pre">dim_order])</span></code> Calculate the 2D kinematic frontogenesis of a temperature field.</p>
+<p><code class="docutils literal notranslate"><span class="pre">geostrophic_wind(heights,</span> <span class="pre">f,</span> <span class="pre">dx,</span> <span class="pre">dy)</span></code> Calculate the geostrophic wind given from the heights or geopotential.</p>
+<p><code class="docutils literal notranslate"><span class="pre">inertial_advective_wind(u,</span> <span class="pre">v,</span> <span class="pre">u_geostrophic,</span> <span class="pre">…)</span></code> Calculate the inertial advective wind.</p>
+<p><code class="docutils literal notranslate"><span class="pre">kinematic_flux(vel,</span> <span class="pre">b[,</span> <span class="pre">perturbation,</span> <span class="pre">axis])</span></code> Compute the kinematic flux from two time series.</p>
+<p><code class="docutils literal notranslate"><span class="pre">montgomery_streamfunction(height,</span> <span class="pre">temperature)</span></code> Compute the Montgomery Streamfunction on isentropic surfaces.</p>
+<p><code class="docutils literal notranslate"><span class="pre">potential_vorticity_baroclinic(…)</span></code> Calculate the baroclinic potential vorticity.</p>
+<p><code class="docutils literal notranslate"><span class="pre">potential_vorticity_barotropic(heights,</span> <span class="pre">u,</span> <span class="pre">…)</span></code> Calculate the barotropic (Rossby) potential vorticity.</p>
+<p><code class="docutils literal notranslate"><span class="pre">q_vector(u,</span> <span class="pre">v,</span> <span class="pre">temperature,</span> <span class="pre">pressure,</span> <span class="pre">dx,</span> <span class="pre">dy)</span></code> Calculate Q-vector at a given pressure level using the u, v winds and temperature.</p>
+<p><code class="docutils literal notranslate"><span class="pre">shearing_deformation(u,</span> <span class="pre">v,</span> <span class="pre">dx,</span> <span class="pre">dy)</span></code> Calculate the shearing deformation of the horizontal wind.</p>
+<p><code class="docutils literal notranslate"><span class="pre">stretching_deformation(u,</span> <span class="pre">v,</span> <span class="pre">dx,</span> <span class="pre">dy)</span></code> Calculate the stretching deformation of the horizontal wind.</p>
+<p><code class="docutils literal notranslate"><span class="pre">total_deformation(u,</span> <span class="pre">v,</span> <span class="pre">dx,</span> <span class="pre">dy)</span></code> Calculate the horizontal total deformation of the horizontal wind.</p>
+<p><code class="docutils literal notranslate"><span class="pre">vorticity(u,</span> <span class="pre">v,</span> <span class="pre">dx,</span> <span class="pre">dy)</span></code> Calculate the vertical vorticity of the horizontal wind.</p>
+<p><code class="docutils literal notranslate"><span class="pre">wind_components(speed,</span> <span class="pre">wdir)</span></code> Calculate the U, V wind vector components from the speed and direction.</p>
+<p><code class="docutils literal notranslate"><span class="pre">wind_direction(u,</span> <span class="pre">v[,</span> <span class="pre">convention])</span></code> Compute the wind direction from u and v-components.</p>
+<p><code class="docutils literal notranslate"><span class="pre">wind_speed(u,</span> <span class="pre">v)</span></code> Compute the wind speed from u and v-components.</p>
+</div>
+<div class="section" id="Boundary-Layer/Turbulence">
+<h3>Boundary Layer/Turbulence<a class="headerlink" href="#Boundary-Layer/Turbulence" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">brunt_vaisala_frequency(heights,</span> <span class="pre">…[,</span> <span class="pre">axis])</span></code> Calculate the Brunt-Vaisala frequency.</p>
+<p><code class="docutils literal notranslate"><span class="pre">brunt_vaisala_frequency_squared(heights,</span> <span class="pre">…)</span></code> Calculate the square of the Brunt-Vaisala frequency.</p>
+<p><code class="docutils literal notranslate"><span class="pre">brunt_vaisala_period(heights,</span> <span class="pre">…[,</span> <span class="pre">axis])</span></code> Calculate the Brunt-Vaisala period.</p>
+<p><code class="docutils literal notranslate"><span class="pre">friction_velocity(u,</span> <span class="pre">w[,</span> <span class="pre">v,</span> <span class="pre">perturbation,</span> <span class="pre">axis])</span></code> Compute the friction velocity from the time series of velocity components.</p>
+<p><code class="docutils literal notranslate"><span class="pre">tke(u,</span> <span class="pre">v,</span> <span class="pre">w[,</span> <span class="pre">perturbation,</span> <span class="pre">axis])</span></code> Compute turbulence kinetic energy.</p>
+</div>
+<div class="section" id="Mathematical-Functions">
+<h3>Mathematical Functions<a class="headerlink" href="#Mathematical-Functions" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">cross_section_components(data_x,</span> <span class="pre">data_y[,</span> <span class="pre">index])</span></code> Obtain the tangential and normal components of a cross-section of a vector field.</p>
+<p><code class="docutils literal notranslate"><span class="pre">first_derivative(f,</span> <span class="pre">**kwargs)</span></code> Calculate the first derivative of a grid of values.</p>
+<p><code class="docutils literal notranslate"><span class="pre">gradient(f,</span> <span class="pre">**kwargs)</span></code> Calculate the gradient of a grid of values.</p>
+<p><code class="docutils literal notranslate"><span class="pre">grid_deltas_from_dataarray(f)</span></code> Calculate the horizontal deltas between grid points of a DataArray.</p>
+<p><code class="docutils literal notranslate"><span class="pre">laplacian(f,</span> <span class="pre">**kwargs)</span></code> Calculate the laplacian of a grid of values.</p>
+<p><code class="docutils literal notranslate"><span class="pre">lat_lon_grid_deltas(longitude,</span> <span class="pre">latitude,</span> <span class="pre">…)</span></code> Calculate the delta between grid points that are in a latitude/longitude format.</p>
+<p><code class="docutils literal notranslate"><span class="pre">normal_component(data_x,</span> <span class="pre">data_y[,</span> <span class="pre">index])</span></code> Obtain the normal component of a cross-section of a vector field.</p>
+<p><code class="docutils literal notranslate"><span class="pre">second_derivative(f,</span> <span class="pre">**kwargs)</span></code> Calculate the second derivative of a grid of values.</p>
+<p><code class="docutils literal notranslate"><span class="pre">tangential_component(data_x,</span> <span class="pre">data_y[,</span> <span class="pre">index])</span></code> Obtain the tangential component of a cross-section of a vector field.</p>
+<p><code class="docutils literal notranslate"><span class="pre">unit_vectors_from_cross_section(cross[,</span> <span class="pre">index])</span></code> Calculate the unit tanget and unit normal vectors from a cross-section.</p>
+</div>
+<div class="section" id="Apparent-Temperature">
+<h3>Apparent Temperature<a class="headerlink" href="#Apparent-Temperature" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">apparent_temperature(temperature,</span> <span class="pre">rh,</span> <span class="pre">speed)</span></code> Calculate the current apparent temperature.</p>
+<p><code class="docutils literal notranslate"><span class="pre">heat_index(temperature,</span> <span class="pre">rh[,</span> <span class="pre">mask_undefined])</span></code> Calculate the Heat Index from the current temperature and relative humidity.</p>
+<p><code class="docutils literal notranslate"><span class="pre">windchill(temperature,</span> <span class="pre">speed[,</span> <span class="pre">…])</span></code> Calculate the Wind Chill Temperature Index (WCTI).</p>
+</div>
+<div class="section" id="Standard-Atmosphere">
+<h3>Standard Atmosphere<a class="headerlink" href="#Standard-Atmosphere" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">altimeter_to_sea_level_pressure(…)</span></code> Convert the altimeter setting to sea-level pressure.</p>
+<p><code class="docutils literal notranslate"><span class="pre">altimeter_to_station_pressure(…)</span></code> Convert the altimeter measurement to station pressure.</p>
+<p><code class="docutils literal notranslate"><span class="pre">height_to_pressure_std(height)</span></code> Convert height data to pressures using the U.S.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pressure_to_height_std(pressure)</span></code> Convert pressure data to heights using the U.S.</p>
+</div>
+<div class="section" id="Other">
+<h3>Other<a class="headerlink" href="#Other" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">angle_to_direction(input_angle[,</span> <span class="pre">full,</span> <span class="pre">level])</span></code> Convert the meteorological angle to directional text.</p>
+<p><code class="docutils literal notranslate"><span class="pre">find_bounding_indices(arr,</span> <span class="pre">values,</span> <span class="pre">axis[,</span> <span class="pre">…])</span></code> Find the indices surrounding the values within arr along axis.</p>
+<p><code class="docutils literal notranslate"><span class="pre">find_intersections(x,</span> <span class="pre">a,</span> <span class="pre">b[,</span> <span class="pre">direction,</span> <span class="pre">log_x])</span></code> Calculate the best estimate of intersection.</p>
+<p><code class="docutils literal notranslate"><span class="pre">get_layer(pressure,</span> <span class="pre">*args,</span> <span class="pre">**kwargs)</span></code> Return an atmospheric layer from upper air data with the requested bottom and depth.</p>
+<p><code class="docutils literal notranslate"><span class="pre">get_layer_heights(heights,</span> <span class="pre">depth,</span> <span class="pre">*args,</span> <span class="pre">…)</span></code> Return an atmospheric layer from upper air data with the requested bottom and depth.</p>
+<p><code class="docutils literal notranslate"><span class="pre">get_perturbation(ts[,</span> <span class="pre">axis])</span></code> Compute the perturbation from the mean of a time series.</p>
+<p><code class="docutils literal notranslate"><span class="pre">isentropic_interpolation(theta_levels,</span> <span class="pre">…)</span></code> Interpolate data in isobaric coordinates to isentropic coordinates.</p>
+<p><code class="docutils literal notranslate"><span class="pre">nearest_intersection_idx(a,</span> <span class="pre">b)</span></code> Determine the index of the point just before two lines with common x values.</p>
+<p><code class="docutils literal notranslate"><span class="pre">parse_angle(input_dir)</span></code> Calculate the meteorological angle from directional text.</p>
+<p><code class="docutils literal notranslate"><span class="pre">reduce_point_density(points,</span> <span class="pre">radius[,</span> <span class="pre">priority])</span></code> Return a mask to reduce the density of points in irregularly-spaced data.</p>
+<p><code class="docutils literal notranslate"><span class="pre">resample_nn_1d(a,</span> <span class="pre">centers)</span></code> Return one-dimensional nearest-neighbor indexes based on user-specified centers.</p>
+<p><code class="docutils literal notranslate"><span class="pre">smooth_gaussian(scalar_grid,</span> <span class="pre">n)</span></code> Filter with normal distribution of weights.</p>
+<p><code class="docutils literal notranslate"><span class="pre">smooth_n_point(scalar_grid[,</span> <span class="pre">n,</span> <span class="pre">passes])</span></code> Filter with normal distribution of weights.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Kathy Pegion
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
