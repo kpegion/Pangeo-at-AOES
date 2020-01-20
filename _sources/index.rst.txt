@@ -30,7 +30,7 @@ This set of tutorials is specifically designed for the Mason AOES COLA Servers, 
 
 .. toctree::
    :maxdepth: 1
-   :caption: Basic Reading and Plotting
+   :caption: Reading Data
 
    examples/read-netcdf.ipynb
    examples/read-grib.ipynb
@@ -39,7 +39,7 @@ This set of tutorials is specifically designed for the Mason AOES COLA Servers, 
  
 .. toctree::
    :maxdepth: 2
-   :caption: Analysis Using Xarray
+   :caption: Multi-dimensional Data with Xarray
    :hidden:
 
    examples/advanced-analysis.ipynb
@@ -47,7 +47,7 @@ This set of tutorials is specifically designed for the Mason AOES COLA Servers, 
 
 .. toctree::
    :maxdepth: 1
-   :caption: Making Nice Plots
+   :caption: Plotting Matplotlib and Cartopy
 
    examples/matplotlib-tutorial.ipynb
    examples/cartopy-tutorial.ipynb

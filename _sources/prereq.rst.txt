@@ -1,5 +1,5 @@
-Prerequisites
-****************************************
+What you should know
+#####################
 1. You are familiar with basic Unix.  If you are not familiar with Unix, [Software Carpentry](https://software-carpentry.org/) provides a good basic [Unix Tutorial](http://swcarpentry.github.io/shell-novice/)
 2. You have programming experience and a basic understandng of Python syntax. If you need to refresh your programming skills and/or learn Python syntax, [Software Carpentry](https://software-carpentry.org/) provides a [Programming with Python Tutorial](http://swcarpentry.github.io/python-novice-inflammation/)
 
