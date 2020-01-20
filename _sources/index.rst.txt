@@ -57,6 +57,7 @@ Expectations Prior to these Tutorials
    :maxdepth: 1
    :caption: Hindcasts with climpred
 
+   about-climpred.rst
    examples/monthly-enso-subx-example.ipynb
    examples/daily-subx-example.ipynb
 
