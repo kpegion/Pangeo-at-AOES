@@ -73,3 +73,8 @@ This set of tutorials is specifically designed for the Mason AOES COLA Servers, 
    examples/metpy-sounding-dignostic.ipynb
 
 
+.. toctree::
+   :maxdepth: 1
+   :caption: External Tutorial
+
+   external.rst
