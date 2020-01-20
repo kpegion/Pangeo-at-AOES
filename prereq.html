@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Setting up Pangeo &amp; other Pytbon Packages on the COLA Servers &mdash; Pangeo-at-AOES 0.1.1 documentation</title>
+  <title>Prerequisites &mdash; Pangeo-at-AOES 0.1.1 documentation</title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Setting up Jupyter on COLA Servers" href="setting-up-jupyter.html" />
-    <link rel="prev" title="Welcome to Pangeo-at-AOES" href="index.html" /> 
+    <link rel="next" title="Read a netcdf file and make a contour plot of the data" href="examples/read-netcdf.html" />
+    <link rel="prev" title="Setting up Jupyter on COLA Servers" href="setting-up-jupyter.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -85,13 +85,16 @@
             
             
               <p class="caption"><span class="caption-text">Getting Started</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Setting up Pangeo &amp; other Pytbon Packages  on the COLA Servers</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="setting-up-pangeo.html">Setting up Pangeo &amp; other Pytbon Packages  on the COLA Servers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setting-up-jupyter.html">Setting up Jupyter on COLA Servers</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Prerequisites</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="prereq.html">Prerequisites</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Prerequisites</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#data-access">Data Access</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">Basic Reading and Plotting</span></p>
 <ul>
@@ -172,13 +175,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Setting up Pangeo &amp; other Pytbon Packages  on the COLA Servers</li>
+      <li>Prerequisites</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/setting-up-pangeo.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/prereq.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -215,50 +218,16 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="setting-up-pangeo-other-pytbon-packages-on-the-cola-servers">
-<h1>Setting up Pangeo &amp; other Pytbon Packages  on the COLA Servers<a class="headerlink" href="#setting-up-pangeo-other-pytbon-packages-on-the-cola-servers" title="Permalink to this headline">¶</a></h1>
-<p>Now that we understand what Pangeo is and why we want to use it, let’s talk about how to set it up and run it on the COLA servers.</p>
-<dl class="simple">
-<dt>Many of the examples provided in this tutorial will work using the COLA Anaconda Module, activated using ::</dt><dd><p>module load anaconda/3</p>
-</dd>
-</dl>
-<p>However, the COLA Anaconda Module may not have the latest version or may not include Python packages that you wish to use, especially non-standard packages such as <cite>climpred</cite> are not included.</p>
-<p>I recommend installing your own version of miniconda (a mini version of Anaconda Python) which will allow you to install additional packages as you need without needing to ask Tom to install a package and so that you can develop custom testing environments in the future.  You may not see now why you would want this flexibility, but you will likely encounter the need down the road.  To do this I have reproduced the necessary steps from <a class="reference external" href="https://pangeo.io/setup_guides/hpc.html">https://pangeo.io/setup_guides/hpc.html</a>.</p>
+<div class="section" id="prerequisites">
+<h1>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h1>
 <ol class="arabic simple">
-<li><p>Log into a COLA Server and from your home directory execute the following:</p></li>
+<li><p>You are familiar with basic Unix.  If you are not familiar with Unix, [Software Carpentry](<a class="reference external" href="https://software-carpentry.org/">https://software-carpentry.org/</a>) provides a good basic [Unix Tutorial](<a class="reference external" href="http://swcarpentry.github.io/shell-novice/">http://swcarpentry.github.io/shell-novice/</a>)</p></li>
+<li><p>You have programming experience and a basic understandng of Python syntax. If you need to refresh your programming skills and/or learn Python syntax, [Software Carpentry](<a class="reference external" href="https://software-carpentry.org/">https://software-carpentry.org/</a>) provides a [Programming with Python Tutorial](<a class="reference external" href="http://swcarpentry.github.io/python-novice-inflammation/">http://swcarpentry.github.io/python-novice-inflammation/</a>)</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
-chmod +x Miniconda3-latest-Linux-x86_64.sh
-./Miniconda3-latest-Linux-x86_64.sh
-</pre></div>
-</div>
-<ol class="arabic simple" start="2">
-<li><p>The following command is necessary so that your new Python environment is not initiaized by default on login:</p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda config --set auto_activate_base <span class="nb">false</span>
-</pre></div>
-</div>
-<ol class="arabic" start="3">
-<li><p>Next, you want to make sure that your conda package manager is updated :</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<p>conda update conda</p>
-</li>
-<li><p>We will now create a conda (Python) environment with a specific set of packages installed:</p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create -n aoes -c conda-forge <span class="se">\</span>
-    <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.6 jupyterlab nbserverproxy <span class="se">\</span>
-    xarray scipy netcdf4 matplotlib cartopy dask <span class="se">\</span>
-    metpy climpred
-</pre></div>
-</div>
-<p>You have now created a conda environment called pangeo. When you activiate this environment, you have access to Python 3.6 and all the packages listed here.  You may wonder, how do I know what packages to install?  No need to worry, you can install these for now and add others later if you realize you need them.</p>
-<ol class="arabic simple" start="5">
-<li><p>Now, let’s activiate this environment so you can work in Python with these packages:</p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda activate aoes
-</pre></div>
+<div class="section" id="data-access">
+<h2>Data Access<a class="headerlink" href="#data-access" title="Permalink to this headline">¶</a></h2>
+<p>While many of these examples will have common relevance to the atmospheric, oceanic, and climate science fields, they are designed with the assumption that you have an account on the COLA AOES servers and access to local data there.</p>
+<p>A subset of some of the examples that do not require COLA AOES Server access in the Tutorial section.</p>
 </div>
 </div>
 
@@ -270,10 +239,10 @@ chmod +x Miniconda3-latest-Linux-x86_64.sh
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="setting-up-jupyter.html" class="btn btn-neutral float-right" title="Setting up Jupyter on COLA Servers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="examples/read-netcdf.html" class="btn btn-neutral float-right" title="Read a netcdf file and make a contour plot of the data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Pangeo-at-AOES" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="setting-up-jupyter.html" class="btn btn-neutral float-left" title="Setting up Jupyter on COLA Servers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
