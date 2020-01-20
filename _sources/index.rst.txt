@@ -66,6 +66,9 @@ Expectations Prior to these Tutorials
 
    metpy-tutorial.rst
    examples/metpy-constants-and-units.ipynb
+   examples/metpy-calc.ipynb
+   examples/metpy-plot.ipynb
+   examples/metpy-sounding-dignostic.ipynb
 
 
 .. toctree::
