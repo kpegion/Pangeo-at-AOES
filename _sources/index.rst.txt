@@ -73,10 +73,3 @@ This set of tutorials is specifically designed for the Mason AOES COLA Servers, 
    examples/metpy-sounding-dignostic.ipynb
 
 
-.. toctree::
-   :maxdepth: 3
-   :caption: Python Packages
-
-   scientific-python-packages
-   what-is-pangeo
-   other-useful-python-packages
