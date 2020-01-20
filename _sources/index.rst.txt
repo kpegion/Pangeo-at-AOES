@@ -38,16 +38,25 @@ This set of exampless is specifically designed for the Mason AOES COLA Servers, 
  
 .. toctree::
    :maxdepth: 2
-   :caption: Multi-dimensional Data
+   :caption: Analyses
 
+   about-xarry
    examples/advanced-analysis.ipynb
 
 
 .. toctree::
    :maxdepth: 1
-   :caption: Plotting 
+   :caption: Plotting using Matplotlib 
 
+   about-matplotlib
    examples/matplotlib-tutorial.ipynb
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Maps using Cartopy
+
+   about-cartopy
    examples/cartopy-tutorial.ipynb
 
 
