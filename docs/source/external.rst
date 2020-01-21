@@ -1,4 +1,4 @@
-.. _external-tutorial:
+.. _External Tutorial:
 
 Why this External Tutorial?
 ############################
