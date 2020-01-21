@@ -227,7 +227,10 @@
 <h1>Setting up Pangeo &amp; other Python Packages on the COLA Servers<a class="headerlink" href="#setting-up-pangeo-other-python-packages-on-the-cola-servers" title="Permalink to this headline">¶</a></h1>
 <p>Now that we understand what Pangeo is and why we want to use it, let’s talk about how to set it up and run it on the COLA servers.</p>
 <p>Many of the examples provided in this tutorial will work using the COLA Anaconda Module, activated using</p>
-<p>Also, the COLA Anaconda Module may not have the latest version or may not include Python packages that you wish to use, especially non-standard packages such as <cite>climpred</cite> are not included.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load anaconda/3
+</pre></div>
+</div>
+<p>However, the COLA Anaconda Module may not have the latest version or may not include Python packages that you wish to use. For example, this tutorial uses a non-standard package called <cite>climpred</cite> which is not installed with COLA’s Anaconda Python.</p>
 <p>I recommend installing your own version of miniconda (a mini version of Anaconda Python) which will allow you to install additional packages as you need without needing to ask Tom to install a package and so that you can develop custom testing environments in the future.  You may not see now why you would want this flexibility, but you will likely encounter the need down the road.  To do this I have reproduced the necessary steps from <a class="reference external" href="https://pangeo.io/setup_guides/hpc.html">https://pangeo.io/setup_guides/hpc.html</a>.</p>
 <ol class="arabic simple">
 <li><p>Log into a COLA Server and from your home directory execute the following:</p></li>
@@ -244,34 +247,29 @@ chmod +x Miniconda3-latest-Linux-x86_64.sh
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li><p>Next, you want to make sure that your conda package manager is updated :</p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda update conda
-</pre></div>
-</div>
-<ol class="arabic simple" start="4">
 <li><p>We will now create a conda (Python) environment with a specific set of packages installed:</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create -n aoes -c conda-forge <span class="se">\</span>
     <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.6 jupyterlab nbserverproxy <span class="se">\</span>
     xarray scipy netcdf4 matplotlib cartopy dask <span class="se">\</span>
-    metpy climpred
+    metpy climpred ipykernel
 </pre></div>
 </div>
-<p>You have now created a conda environment called pangeo. When you activiate this environment, you have access to Python 3.6 and all the packages listed here.  You may wonder, how do I know what packages to install?  No need to worry, you can install these for now and add others later if you realize you need them.</p>
-<ol class="arabic simple" start="5">
+<p>You have now created a conda environment called aoes. When you activiate this environment, you have access to Python 3.6 and all the packages listed here.  You may wonder, how do I know what packages to install?  No need to worry, all the packages you need for this tutorial have been installed.  If you want to install additional packages later, you can add them to the environment.</p>
+<ol class="arabic simple" start="4">
 <li><p>Now, let’s activiate this environment so you can work in Python with these packages:</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda activate aoes
 </pre></div>
 </div>
-<p>6. We will want to use the latest version of <cite>climpred</cite> which has not yet been r
-eleased. To do so,  execute the following:</p>
+<ol class="arabic simple" start="5">
+<li><p>We will want to use the latest version of <cite>climpred</cite> which has not yet been officially  released. To do so,  execute the following:</p></li>
+</ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install git+https://github.com/bradyrx/climpred
 </pre></div>
 </div>
-<ol class="arabic simple" start="7">
-<li><p>Finally, you should get the tutorial from github so that you have all the codes available to you to run on the COLA Servers</p></li>
+<ol class="arabic simple" start="6">
+<li><p>Finally, you should get this tutorial from github so that you have all the codes available to you to run on the COLA Servers</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/kpegion/Pangeo-at-AOES.git
 </pre></div>
