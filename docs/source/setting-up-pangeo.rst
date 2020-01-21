@@ -37,7 +37,7 @@ I recommend installing your own version of miniconda (a mini version of Anaconda
        metpy climpred
 
 
-You have now created a conda environment called pangeo. When you activiate this environment, you have access to Python 3.6 and all the packages listed here.  You may wonder, how do I know what packages to install?  No need to worry, you can install these for now and add others later if you realize you need them.
+You have now created a conda environment called aoes. When you activiate this environment, you have access to Python 3.6 and all the packages listed here.  You may wonder, how do I know what packages to install?  No need to worry, you can install these for now and add others later if you realize you need them.
 
 4. Now, let's activiate this environment so you can work in Python with these packages:
 
