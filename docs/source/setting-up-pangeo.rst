@@ -26,14 +26,8 @@ I recommend installing your own version of miniconda (a mini version of Anaconda
 
    conda config --set auto_activate_base false
 
-3. Next, you want to make sure that your conda package manager is updated :
 
-.. code-block:: bash
-
-   conda update conda
-
-
-4. We will now create a conda (Python) environment with a specific set of packages installed:
+3. We will now create a conda (Python) environment with a specific set of packages installed:
 
 .. code-block:: bash
 
@@ -45,20 +39,20 @@ I recommend installing your own version of miniconda (a mini version of Anaconda
 
 You have now created a conda environment called pangeo. When you activiate this environment, you have access to Python 3.6 and all the packages listed here.  You may wonder, how do I know what packages to install?  No need to worry, you can install these for now and add others later if you realize you need them.
 
-5. Now, let's activiate this environment so you can work in Python with these packages:
+4. Now, let's activiate this environment so you can work in Python with these packages:
 
 .. code-block:: bash
 
    conda activate aoes
 
-6. We will want to use the latest version of `climpred` which has not yet been r
+5. We will want to use the latest version of `climpred` which has not yet been r
 eleased. To do so,  execute the following:
 
 .. code-block:: bash
 
    pip install git+https://github.com/bradyrx/climpred
 
-7.  Finally, you should get the tutorial from github so that you have all the codes available to you to run on the COLA Servers
+6.  Finally, you should get the tutorial from github so that you have all the codes available to you to run on the COLA Servers
 
 
 .. code-block:: bash
