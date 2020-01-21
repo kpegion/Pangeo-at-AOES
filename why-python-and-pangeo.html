@@ -92,16 +92,7 @@
 <p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Why Python?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#what-is-pangeo">What is Pangeo?</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#the-pangeo-software-stack">The Pangeo Software Stack</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#xarray">Xarray</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#dask">Dask</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#jupyter">Jupyter</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#iris">Iris</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="#what-is-pangeo">What is Pangeo?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setting-up-pangeo.html">Setting up Pangeo &amp; other Python Packages on the COLA Servers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setting-up-jupyter.html">Setting up Jupyter on COLA Servers</a></li>
 </ul>
@@ -113,26 +104,14 @@
 </ul>
 <p class="caption"><span class="caption-text">Climate Data Analysis Xarray</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="about-xarray.html">About <cite>Xarray</cite>?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about-xarray.html#what-is-xarray">What is <cite>Xarray</cite>?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about-xarray.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about-xarray.html#what-is-it-good-for">What is it good for?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/advanced-analysis.html">Analysis using <code class="docutils literal notranslate"><span class="pre">Xarray</span></code></a></li>
 </ul>
 <p class="caption"><span class="caption-text">Plotting using Matplotlib</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="about-matplotlib.html">About Matplotlib</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about-matplotlib.html#what-is-matplotlib">What is matplotlib?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about-matplotlib.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about-matplotlib.html#what-is-it-good-for">What is it good for?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/matplotlib-tutorial.html">Making Plots Using <code class="docutils literal notranslate"><span class="pre">Matplotlib</span></code></a></li>
 </ul>
 <p class="caption"><span class="caption-text">Maps using Cartopy</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="about-cartopy.html">About Cartopy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about-cartopy.html#what-is-cartopy">What is Cartopy?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about-cartopy.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about-cartopy.html#what-is-it-good-for">What is it good for?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/cartopy-tutorial.html">Making Maps using <code class="docutils literal notranslate"><span class="pre">Cartopy</span></code></a></li>
 </ul>
 <p class="caption"><span class="caption-text">Hindcasts with climpred</span></p>
@@ -257,34 +236,7 @@
 <li><p>An evolving set of software and tools for data analysis in our field</p></li>
 <li><p>An open and helpful community rich with useful information to advance my data analysis capabilities and research and share my knowledge to help others.</p></li>
 </ol>
-<div class="section" id="the-pangeo-software-stack">
-<h2>The Pangeo Software Stack<a class="headerlink" href="#the-pangeo-software-stack" title="Permalink to this headline">¶</a></h2>
-<p>A loose collection of open source software consisting of Core Packages that are fundamental to Geoscience data anaylsis. They include: Xarray, Iris, Dask, and Jupyter.</p>
-<div class="section" id="xarray">
-<h3>Xarray<a class="headerlink" href="#xarray" title="Permalink to this headline">¶</a></h3>
-<p>Website: <a class="reference external" href="http://xarray.pydata.org/en/stable/">http://xarray.pydata.org/en/stable/</a>
-Why is it useful? ::
-Powerful tool for climate data analysis because it can perform operations on what they refer to as N-D labeled arrays and datasets.  What that means to us is that we can easily read in a netcdf or collection of netcdf (or grib) files and perform operations like calculating climatologies, means over specified dimensions, extracting regions, etc. while maintainng all the metadata and coordinate information with your data.  The ability to open many related netcdf files and perform operations over all the data in the files as if it was a single file is particularly useful.</p>
-</div>
-<div class="section" id="dask">
-<h3>Dask<a class="headerlink" href="#dask" title="Permalink to this headline">¶</a></h3>
-<p>Website: <a class="reference external" href="https://dask.org/">https://dask.org/</a>
-Why is it useful? ::
-helps us to solve the problem of too much data to load into memory to accomplish our operations by provding “lazy loading of data” and parallelizing those operations.  This means you don’t have to load all the data into memory to calculate that climatology AND you don’t have to worry too much about how all that parallelization is done.  Xarray and Dask are integrated such that you can perform xarray operations in parallel with minimal effort on your part.</p>
-</div>
-<div class="section" id="jupyter">
-<h3>Jupyter<a class="headerlink" href="#jupyter" title="Permalink to this headline">¶</a></h3>
-<p>Website:  <a class="reference external" href="https://jupyter.org/">https://jupyter.org/</a>
-Why is it useful? ::
-Provide a fabulous notebook environment which combines everything I ever dreamed of in data analysis.  My code, my data, my notes, my references, and my plots are all together in one place.  This makes it easy to write reproducible and sharable code.</p>
-</div>
-<div class="section" id="iris">
-<h3>Iris<a class="headerlink" href="#iris" title="Permalink to this headline">¶</a></h3>
-<p>Website: (<a class="reference external" href="https://scitools.org.uk/iris/docs/latest/">https://scitools.org.uk/iris/docs/latest/</a>)
-Why is it useful?::
-Seeks to provide a powerful, easy to use, and community-driven Python library for analysing and visualising meteorological and oceanographic data sets. This the one core package I am not familiar with.  AOES students or faculty who do work with Iris should feel free to update this documentation to provide more information.</p>
-</div>
-</div>
+<p>The Pangeo Software Stack is a loose collection of open source software consisting of Core Packages that are fundamental to Geoscience data anaylsis. They include: <cite>Xarray</cite>, <cite>Iris</cite>, <cite>Dask</cite>, and <cite>Jupyter</cite>.  This tutorial will explore some of these tools.</p>
 </div>
 
 

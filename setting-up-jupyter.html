@@ -104,26 +104,14 @@
 </ul>
 <p class="caption"><span class="caption-text">Climate Data Analysis Xarray</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="about-xarray.html">About <cite>Xarray</cite>?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about-xarray.html#what-is-xarray">What is <cite>Xarray</cite>?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about-xarray.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about-xarray.html#what-is-it-good-for">What is it good for?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/advanced-analysis.html">Analysis using <code class="docutils literal notranslate"><span class="pre">Xarray</span></code></a></li>
 </ul>
 <p class="caption"><span class="caption-text">Plotting using Matplotlib</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="about-matplotlib.html">About Matplotlib</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about-matplotlib.html#what-is-matplotlib">What is matplotlib?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about-matplotlib.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about-matplotlib.html#what-is-it-good-for">What is it good for?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/matplotlib-tutorial.html">Making Plots Using <code class="docutils literal notranslate"><span class="pre">Matplotlib</span></code></a></li>
 </ul>
 <p class="caption"><span class="caption-text">Maps using Cartopy</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="about-cartopy.html">About Cartopy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about-cartopy.html#what-is-cartopy">What is Cartopy?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about-cartopy.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about-cartopy.html#what-is-it-good-for">What is it good for?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/cartopy-tutorial.html">Making Maps using <code class="docutils literal notranslate"><span class="pre">Cartopy</span></code></a></li>
 </ul>
 <p class="caption"><span class="caption-text">Hindcasts with climpred</span></p>
@@ -234,23 +222,31 @@
 <div class="section" id="setting-up-jupyter-on-cola-servers">
 <h1>Setting up Jupyter on COLA Servers<a class="headerlink" href="#setting-up-jupyter-on-cola-servers" title="Permalink to this headline">¶</a></h1>
 <ol class="arabic simple">
-<li><p>Follow the steps in <cite>Configure Jupyter http://pangeo.io/setup_guides/hpc.html#configure-jupyter_</cite> The main point of this step is to create a password for when you log in to the Jupyter server you will start up on COLA.</p></li>
-<li><p>Setup Jupyter Notebook to find the aoes environment you created:</p></li>
-</ol>
-<ol class="arabic simple" start="2">
+<li><p>Follow the steps in <a href="#id1"><span class="problematic" id="id2">`Configure Jupyter &lt;http://pangeo.io/setup_guides/hpc.html#configure-jupyter`_</span></a>. The main point of this step is to create a password for when you log in to the Jupyter server you will start up on COLA.</p></li>
 <li><p>Log in to colaX.gmu.edu, where X refers to a COLA Server</p></li>
-<li><p>Start up the jupyter server with the following command:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh -Y -l &lt;YOURUSERNAME&gt;@colaX.gmu.edu
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Go to the Pangeo-at-AOES directory:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> Pangeo-at-AOES
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Start up the Jupyter server with the following command:</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter lab --no-browser --ip<span class="o">=</span><span class="sb">`</span>hostname<span class="sb">`</span> --port<span class="o">=</span><span class="m">8878</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="4">
+<ol class="arabic simple" start="5">
 <li><p>In a separate terminal, log in to colaX again with the following command:</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh -N -L <span class="m">8878</span>:colaX.gmu.edu:8878 &lt;YOURUSERNAME&gt;@colaX.gmu.edu
 </pre></div>
 </div>
-<ol class="arabic simple" start="5">
+<ol class="arabic simple" start="6">
 <li><p>Open your browser and go to <a class="reference external" href="http://localhost:8878">http://localhost:8878</a>. It will ask you to enter the password you created in step 1.</p></li>
 <li><p>Your Jupyter server should appear in your local browser.</p></li>
 <li><p>In the upper right corner, you will see your current environemnt is <cite>Python (aoes)</cite></p></li>
