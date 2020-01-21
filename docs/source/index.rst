@@ -41,7 +41,6 @@ The examples are also generally relevant for climate data analysis.  Therefore, 
    :maxdepth: 1
    :caption: Climate Data Analysis Xarray
 
-   about-xarray
    examples/advanced-analysis.ipynb
 
 
@@ -49,7 +48,6 @@ The examples are also generally relevant for climate data analysis.  Therefore, 
    :maxdepth: 1
    :caption: Plotting using Matplotlib 
 
-   about-matplotlib
    examples/matplotlib-tutorial.ipynb
 
 
@@ -57,7 +55,6 @@ The examples are also generally relevant for climate data analysis.  Therefore, 
    :maxdepth: 1
    :caption: Maps using Cartopy
 
-   about-cartopy
    examples/cartopy-tutorial.ipynb
 
 
