@@ -324,9 +324,9 @@
  ],
  "metadata": {
   "kernelspec": {
-   "display_name": "climpred-dev",
+   "display_name": "Python (aoes)",
    "language": "python",
-   "name": "climpred-dev"
+   "name": "aoes"
   },
   "language_info": {
    "codemirror_mode": {
