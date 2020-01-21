@@ -1,8 +1,8 @@
-About Matplotlib
+About Cartopy
 #################
 
 
-What is matplotlib?
+What is Cartopy?
 ###################
 
 
