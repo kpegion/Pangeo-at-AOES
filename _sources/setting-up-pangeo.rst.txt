@@ -15,11 +15,24 @@ I recommend installing your own version of miniconda (a mini version of Anaconda
 
 1. Log into a COLA Server and from your home directory execute the following:
 
+   .. code-block:: bash
+
+   git clone https://github.com/kpegion/Pangeo-at-AOES.git
+
+
+2.  Go to the Pangeo-at-AOES directory:
+
 .. code-block:: bash
 
-   wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
-   chmod +x Miniconda3-latest-Linux-x86_64.sh
-   ./Miniconda3-latest-Linux-x86_64.sh
+   cd Pangeo-at-AOES
+
+3. We will now create a conda (Python) environment with a specific set of packages installed:
+
+.. code-block:: bash
+
+   conda env create -f environment.yml
+
+You have now created a conda environment called aoes. When you activiate this environment, you have access to Python 3.6 and all the packages listed here.  You may wonder, how do I know what packages to install?  No need to worry, all the packages you need for this tutorial have been installed.  If you want to install additional packages later, you can add them to the environment.
 
 2. The following command is necessary so that your new Python environment is not initiaized by default on login:
 
@@ -28,33 +41,9 @@ I recommend installing your own version of miniconda (a mini version of Anaconda
    conda config --set auto_activate_base false
 
 
-3. We will now create a conda (Python) environment with a specific set of packages installed:
-
-.. code-block:: bash
-
-   conda create -n aoes -c conda-forge \
-       python=3.6 jupyterlab nbserverproxy \
-       xarray scipy netcdf4 matplotlib cartopy dask \
-       metpy climpred ipykernel 
-
-
-You have now created a conda environment called aoes. When you activiate this environment, you have access to Python 3.6 and all the packages listed here.  You may wonder, how do I know what packages to install?  No need to worry, all the packages you need for this tutorial have been installed.  If you want to install additional packages later, you can add them to the environment.
-
 4. Now, let's activiate this environment so you can work in Python with these packages:
 
 .. code-block:: bash
 
    conda activate aoes
 
-5. We will want to use the latest version of `climpred` which has not yet been officially  released. To do so,  execute the following:
-
-.. code-block:: bash
-
-   pip install git+https://github.com/bradyrx/climpred
-
-6.  Finally, you should get this tutorial from github so that you have all the codes available to you to run on the COLA Servers
-
-
-.. code-block:: bash
-
-   git clone https://github.com/kpegion/Pangeo-at-AOES.git

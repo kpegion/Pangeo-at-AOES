@@ -27,5 +27,5 @@ Setting up Jupyter on COLA Servers
 
 6. Your Jupyter server should appear in your local browser.
 
-7.  In the upper right corner, you will see your current environemnt (Python).  Click on this and select `Python (aoes)`
+7.  In the upper right corner, you will see your current environemnt is `Python (aoes)`
 
