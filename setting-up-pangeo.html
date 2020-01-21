@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Setting up Pangeo &amp; other Pytbon Packages on the COLA Servers &mdash; Pangeo-at-AOES 0.1.1 documentation</title>
+  <title>Setting up Pangeo &amp; other Python Packages on the COLA Servers &mdash; Pangeo-at-AOES 0.1.1 documentation</title>
   
 
   
@@ -93,7 +93,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="why-python-and-pangeo.html">Why Python?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="why-python-and-pangeo.html#what-is-pangeo">What is Pangeo?</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Setting up Pangeo &amp; other Pytbon Packages  on the COLA Servers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Setting up Pangeo &amp; other Python Packages on the COLA Servers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setting-up-jupyter.html">Setting up Jupyter on COLA Servers</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Reading Data</span></p>
@@ -180,7 +180,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Setting up Pangeo &amp; other Pytbon Packages  on the COLA Servers</li>
+      <li>Setting up Pangeo &amp; other Python Packages on the COLA Servers</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -223,14 +223,11 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="setting-up-pangeo-other-pytbon-packages-on-the-cola-servers">
-<h1>Setting up Pangeo &amp; other Pytbon Packages  on the COLA Servers<a class="headerlink" href="#setting-up-pangeo-other-pytbon-packages-on-the-cola-servers" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="setting-up-pangeo-other-python-packages-on-the-cola-servers">
+<h1>Setting up Pangeo &amp; other Python Packages on the COLA Servers<a class="headerlink" href="#setting-up-pangeo-other-python-packages-on-the-cola-servers" title="Permalink to this headline">¶</a></h1>
 <p>Now that we understand what Pangeo is and why we want to use it, let’s talk about how to set it up and run it on the COLA servers.</p>
-<dl class="simple">
-<dt>Many of the examples provided in this tutorial will work using the COLA Anaconda Module, activated using ::</dt><dd><p>module load anaconda/3</p>
-</dd>
-</dl>
-<p>However, the COLA Anaconda Module may not have the latest version or may not include Python packages that you wish to use, especially non-standard packages such as <cite>climpred</cite> are not included.</p>
+<p>Many of the examples provided in this tutorial will work using the COLA Anaconda Module, activated using</p>
+<p>Also, the COLA Anaconda Module may not have the latest version or may not include Python packages that you wish to use, especially non-standard packages such as <cite>climpred</cite> are not included.</p>
 <p>I recommend installing your own version of miniconda (a mini version of Anaconda Python) which will allow you to install additional packages as you need without needing to ask Tom to install a package and so that you can develop custom testing environments in the future.  You may not see now why you would want this flexibility, but you will likely encounter the need down the road.  To do this I have reproduced the necessary steps from <a class="reference external" href="https://pangeo.io/setup_guides/hpc.html">https://pangeo.io/setup_guides/hpc.html</a>.</p>
 <ol class="arabic simple">
 <li><p>Log into a COLA Server and from your home directory execute the following:</p></li>
@@ -246,13 +243,13 @@ chmod +x Miniconda3-latest-Linux-x86_64.sh
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda config --set auto_activate_base <span class="nb">false</span>
 </pre></div>
 </div>
-<ol class="arabic" start="3">
-<li><p>Next, you want to make sure that your conda package manager is updated :</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+<ol class="arabic simple" start="3">
+<li><p>Next, you want to make sure that your conda package manager is updated :</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda update conda
 </pre></div>
 </div>
-<p>conda update conda</p>
-</li>
+<ol class="arabic simple" start="4">
 <li><p>We will now create a conda (Python) environment with a specific set of packages installed:</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create -n aoes -c conda-forge <span class="se">\</span>
@@ -268,6 +265,13 @@ chmod +x Miniconda3-latest-Linux-x86_64.sh
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda activate aoes
 </pre></div>
 </div>
+<ol class="arabic simple" start="6">
+<li><p>Finally, you should get the tutorial from github so that you have all the codes available to you to run on the COLA Servers</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<p>git checkout <a class="reference external" href="https://github.com/kpegion/Pangeo-at-AOES.git">https://github.com/kpegion/Pangeo-at-AOES.git</a></p>
 </div>
 
 
