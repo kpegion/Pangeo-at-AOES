@@ -51,7 +51,14 @@ You have now created a conda environment called pangeo. When you activiate this 
 
    conda activate aoes
 
-6.  Finally, you should get the tutorial from github so that you have all the codes available to you to run on the COLA Servers
+6. We will want to use the latest version of `climpred` which has not yet been r
+eleased. To do so,  execute the following:
+
+.. code-block:: bash
+
+   pip install git+https://github.com/bradyrx/climpred
+
+7.  Finally, you should get the tutorial from github so that you have all the codes available to you to run on the COLA Servers
 
 
 .. code-block:: bash
