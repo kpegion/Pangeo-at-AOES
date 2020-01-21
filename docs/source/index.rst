@@ -38,8 +38,8 @@ The examples are also generally relevant for climate data analysis.  Therefore, 
 
  
 .. toctree::
-   :maxdepth: s12
-   :caption: Climate Data using Xarray
+   :maxdepth: 1
+   :caption: Climate Data Analysis Xarray
 
    about-xarray
    examples/advanced-analysis.ipynb
