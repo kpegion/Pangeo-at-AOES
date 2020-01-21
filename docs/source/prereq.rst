@@ -2,7 +2,7 @@ What you should know
 #####################
 1. You are familiar with basic Unix.
 
-.. note::  If you are not familiar with Unix `Software Carpentry <https://software-carpentry.org>`_ provides a good basic `Unix Tutorial <http://swcarpentry.github.io/shell-novice/>'_
+.. note::  If you are not familiar with Unix `Software Carpentry <https://software-carpentry.org>`_ provides a good basic `Unix Tutorial <http://swcarpentry.github.io/shell-novice/>`_
 
 2. You have programming experience and a basic understandng of Python syntax.
   
