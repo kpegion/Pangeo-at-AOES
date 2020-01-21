@@ -5,7 +5,7 @@ dependencies:
   - python=3.6
   - jupyterlab=1.2.5
   - jupyter_client=5.3.1
-  - jupyter
+  - nbserverproxy
   - netcdf4
   - numpy
   - scipy
