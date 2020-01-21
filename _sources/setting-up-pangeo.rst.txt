@@ -56,4 +56,4 @@ You have now created a conda environment called pangeo. When you activiate this 
 
 .. code-block:: bash
 
-git checkout https://github.com/kpegion/Pangeo-at-AOES.git
+git clone https://github.com/kpegion/Pangeo-at-AOES.git
