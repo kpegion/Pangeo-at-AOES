@@ -63,4 +63,4 @@ eleased. To do so,  execute the following:
 
 .. code-block:: bash
 
-git clone https://github.com/kpegion/Pangeo-at-AOES.git
+   git clone https://github.com/kpegion/Pangeo-at-AOES.git
