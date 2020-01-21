@@ -1,12 +1,14 @@
-Setting up Pangeo & other Pytbon Packages  on the COLA Servers
+Setting up Pangeo & other Python Packages on the COLA Servers
 ################################################################
 
 Now that we understand what Pangeo is and why we want to use it, let's talk about how to set it up and run it on the COLA servers.
 
-Many of the examples provided in this tutorial will work using the COLA Anaconda Module, activated using ::
+Many of the examples provided in this tutorial will work using the COLA Anaconda Module, activated using 
+
+.. code-block:: bash
    module load anaconda/3
 
-However, the COLA Anaconda Module may not have the latest version or may not include Python packages that you wish to use, especially non-standard packages such as `climpred` are not included.
+Also, the COLA Anaconda Module may not have the latest version or may not include Python packages that you wish to use, especially non-standard packages such as `climpred` are not included.
 
 I recommend installing your own version of miniconda (a mini version of Anaconda Python) which will allow you to install additional packages as you need without needing to ask Tom to install a package and so that you can develop custom testing environments in the future.  You may not see now why you would want this flexibility, but you will likely encounter the need down the road.  To do this I have reproduced the necessary steps from https://pangeo.io/setup_guides/hpc.html. 
 
@@ -26,7 +28,7 @@ I recommend installing your own version of miniconda (a mini version of Anaconda
 
 3. Next, you want to make sure that your conda package manager is updated :
 
-   .. code-block:: bash
+.. code-block:: bash
 
    conda update conda
 
@@ -49,3 +51,9 @@ You have now created a conda environment called pangeo. When you activiate this 
 
    conda activate aoes
 
+6.  Finally, you should get the tutorial from github so that you have all the codes available to you to run on the COLA Servers
+
+
+.. code-block:: bash
+
+git checkout https://github.com/kpegion/Pangeo-at-AOES.git
