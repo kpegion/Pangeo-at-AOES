@@ -1,7 +1,7 @@
 Setting up Jupyter on COLA Servers
 ####################################
 
-1. Follow the steps in `Configure Jupyter <http://pangeo.io/setup_guides/hpc.html#configure-jupyter`_. The main point of this step is to create a password for when you log in to the Jupyter server you will start up on COLA.
+1. Follow the steps in `Configure Jupyter <http://pangeo.io/setup_guides/hpc.html#configure-jupyter>`_. The main point of this step is to create a password for when you log in to the Jupyter server you will start up on COLA.
 
 2. Log in to colaX.gmu.edu, where X refers to a COLA Server
 
