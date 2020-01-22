@@ -36,7 +36,7 @@ Setting up Jupyter on COLA Servers
 
 7. Your Jupyter server should appear in your local browser.
 
-.. note:: If the Jupyter server does not appear or if you have password issues, you may need to go through the longer version of the 'Jupyter Configuration <http://pangeo.io/setup_guides/hpc.html#configure-jupyter>'_.
+.. note:: If the Jupyter server does not appear or if you have password issues, you may need to go through the longer version of the `Jupyter Configuration <http://pangeo.io/setup_guides/hpc.html#configure-jupyter>`_
 
 8. In the upper right corner, you will see your current environemnt is `Python (aoes)`
 
