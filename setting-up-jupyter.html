@@ -231,30 +231,36 @@ jupyter notebook password
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
+<li><p>Issue the following command so that your environment will appear in Jupyter</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python -m ipykernel install --user --name aoes --display-name <span class="s2">&quot;Python (aoes)&quot;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
 <li><p>Log in to colaX.gmu.edu, where X refers to a COLA Server</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh -Y -l &lt;YOURUSERNAME&gt;@colaX.gmu.edu
 </pre></div>
 </div>
-<ol class="arabic simple" start="3">
+<ol class="arabic simple" start="4">
 <li><p>Go to the Pangeo-at-AOES directory:</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> Pangeo-at-AOES
 </pre></div>
 </div>
-<ol class="arabic simple" start="4">
+<ol class="arabic simple" start="5">
 <li><p>Start up the Jupyter server with the following command:</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter lab --no-browser --ip<span class="o">=</span><span class="sb">`</span>hostname<span class="sb">`</span> --port<span class="o">=</span><span class="m">8878</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="5">
+<ol class="arabic simple" start="6">
 <li><p>In a separate terminal, log in to colaX again with the following command:</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh -N -L <span class="m">8878</span>:colaX.gmu.edu:8878 &lt;YOURUSERNAME&gt;@colaX.gmu.edu
 </pre></div>
 </div>
-<ol class="arabic simple" start="6">
+<ol class="arabic simple" start="7">
 <li><p>Open your browser and go to <a class="reference external" href="http://localhost:8878">http://localhost:8878</a>. It will ask you to enter the password you created in step 1.</p></li>
 <li><p>Your Jupyter server should appear in your local browser.</p></li>
 </ol>
@@ -262,7 +268,7 @@ jupyter notebook password
 <p class="admonition-title">Note</p>
 <p>If the Jupyter server does not appear or if you have password issues, you may need to go through the longer version of the <a class="reference external" href="http://pangeo.io/setup_guides/hpc.html#configure-jupyter">Jupyter Configuration</a></p>
 </div>
-<ol class="arabic simple" start="8">
+<ol class="arabic simple" start="9">
 <li><p>In the upper right corner, you will see your current environemnt is <cite>Python (aoes)</cite></p></li>
 </ol>
 </div>
