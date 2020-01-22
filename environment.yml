@@ -9,12 +9,15 @@ dependencies:
   - netcdf4=1.5.1.1
   - metpy
   - numpy
+  - cfgrib
   - scipy
   - xarray>=0.14.1
   - dask
   - xskillscore>=0.0.12
   - cartopy
   - matplotlib
+  - tqdm
+  - ipywidgets
   - pip
   - pip:
       - git+https://github.com/bradyrx/climpred
