@@ -455,6 +455,9 @@ div.rendered_html tbody tr:hover {
 <span></span><span class="kn">import</span> <span class="nn">warnings</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;ggplot&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-talk&#39;</span><span class="p">)</span>
+
 <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -488,27 +491,15 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <p>Read the observed RMM Indices</p>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">obsds</span> <span class="o">=</span> <span class="n">climpred</span><span class="o">.</span><span class="n">tutorial</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;RMM-INTERANN-OBS&#39;</span><span class="p">)[</span><span class="s1">&#39;rmm1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_dataset</span><span class="p">()</span>
-<span class="n">obsds</span>
+<span class="n">obsds</span> <span class="o">=</span> <span class="n">obsds</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span> <span class="c1"># Get rid of missing times.</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
-</pre></div>
-</div>
-<div class="output_area rendered_html docutils container">
-<pre>&lt;xarray.Dataset&gt;
-Dimensions:  (time: 15613)
-Coordinates:
-  * time     (time) datetime64[ns] 1974-06-03 1974-06-04 ... 2017-07-24
-Data variables:
-    rmm1     (time) float64 ...</pre></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
@@ -525,7 +516,7 @@ Data variables:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[&lt;matplotlib.lines.Line2D at 0x7f8c3568bfd0&gt;]
+[&lt;matplotlib.lines.Line2D at 0x7ff0f40ad940&gt;]
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -536,41 +527,37 @@ Data variables:
 </div>
 </div>
 <p>Read the SubX RMM1 data for the GMAO-GEOS_V2p1 model from the SubX data server. It is important to note that the SubX data contains weekly initialized forecasts where the <code class="docutils literal notranslate"><span class="pre">init</span></code> day varies by model. SubX data may have all NaNs for initial dates in which a model does not make a forecast, thus we apply <code class="docutils literal notranslate"><span class="pre">dropna</span></code> over the <code class="docutils literal notranslate"><span class="pre">S=init</span></code> dimension when <code class="docutils literal notranslate"><span class="pre">how=all</span></code> data for a given <code class="docutils literal notranslate"><span class="pre">S=init</span></code> is missing. This can be slow, but allows the rest of the calculations to go more quickly.</p>
+<p>Note that we ran the <code class="docutils literal notranslate"><span class="pre">dropna</span></code> operation offline and then uploaded the post-processed SubX dataset to the <code class="docutils literal notranslate"><span class="pre">climpred-data</span></code> repo for the purposes of this demo. This is how you can do this manually:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://iridl.ldeo.columbia.edu/SOURCES/.Models/.SubX/.GMAO/.GEOS_V2p1/.hindcast/.RMM/.RMM1/dods/&#39;</span>
+<span class="n">fcstds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">:</span> <span class="mi">45</span><span class="p">})</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;S&#39;</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://iridl.ldeo.columbia.edu/SOURCES/.Models/.SubX/.GMAO/.GEOS_V2p1/.hindcast/.RMM/.RMM1/dods/&#39;</span>
-<span class="n">fcstds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">:</span> <span class="mi">45</span><span class="p">})</span>  <span class="c1">#.dropna(dim=&#39;S&#39;,how=&#39;all&#39;)</span>
-<span class="n">fcstds</span>
+<span></span><span class="n">fcstds</span> <span class="o">=</span> <span class="n">climpred</span><span class="o">.</span><span class="n">tutorial</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;GMAO-GEOS-RMM1&#39;</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fcstds</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
-</pre></div>
+<div class="prompt empty docutils container">
 </div>
-<div class="output_area rendered_html docutils container">
-<pre>&lt;xarray.Dataset&gt;
-Dimensions:  (L: 45, M: 4, S: 6205)
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;xarray.Dataset&gt;
+Dimensions:  (L: 45, M: 4, S: 510)
 Coordinates:
-  * S        (S) float32 14245.0 14246.0 14247.0 ... 20447.0 20448.0 20449.0
+  * S        (S) float32 14245.0 14250.0 14255.0 ... 20439.0 20444.0 20449.0
   * M        (M) float32 1.0 2.0 3.0 4.0
   * L        (L) float32 0.5 1.5 2.5 3.5 4.5 5.5 ... 40.5 41.5 42.5 43.5 44.5
 Data variables:
-    RMM1     (S, M, L) float32 dask.array&lt;chunksize=(1, 4, 45), meta=np.ndarray&gt;
+    RMM1     (S, M, L) float32 ...
 Attributes:
-    Conventions:  IRIDL</pre></div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">fcstds</span><span class="o">.</span><span class="n">to_netcdf</span><span class="p">(</span><span class="s1">&#39;SubX_GMAO-GEOS_V2p1_RMM1_Hindcast.nc&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
+    Conventions:  IRIDL
+</pre></div></div>
 </div>
 <p>The SubX data dimensions correspond to the following <code class="docutils literal notranslate"><span class="pre">climpred</span></code> dimension definitions: <code class="docutils literal notranslate"><span class="pre">X=lon</span></code>,<code class="docutils literal notranslate"><span class="pre">L=lead</span></code>,<code class="docutils literal notranslate"><span class="pre">Y=lat</span></code>,<code class="docutils literal notranslate"><span class="pre">M=member</span></code>, <code class="docutils literal notranslate"><span class="pre">S=init</span></code>. We will rename the dimensions to their <code class="docutils literal notranslate"><span class="pre">climpred</span></code> names.</p>
 <div class="nbinput nblast docutils container">
@@ -592,15 +579,13 @@ Attributes:
 </pre></div>
 </div>
 </div>
-<p>Now we need to make sure that the <code class="docutils literal notranslate"><span class="pre">init</span></code> dimension is set properly for <code class="docutils literal notranslate"><span class="pre">climpred</span></code>. For daily data, the <code class="docutils literal notranslate"><span class="pre">init</span></code> dimension must be a <code class="docutils literal notranslate"><span class="pre">xr.cfdateTimeIndex</span></code> or a <code class="docutils literal notranslate"><span class="pre">pd.datetimeIndex</span></code>. We convert the <code class="docutils literal notranslate"><span class="pre">init</span></code> values to <code class="docutils literal notranslate"><span class="pre">pd.datatimeIndex</span></code>.</p>
+<p>Now we need to make sure that the <code class="docutils literal notranslate"><span class="pre">init</span></code> dimension is set properly for <code class="docutils literal notranslate"><span class="pre">climpred</span></code>. For daily data, the <code class="docutils literal notranslate"><span class="pre">init</span></code> dimension must be a <code class="docutils literal notranslate"><span class="pre">xr.CFTimeIndex</span></code> or a <code class="docutils literal notranslate"><span class="pre">pd.DatetimeIndex</span></code>. We convert the <code class="docutils literal notranslate"><span class="pre">init</span></code> values to <code class="docutils literal notranslate"><span class="pre">pd.DatetimeIndex</span></code>.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">fcstds</span><span class="o">=</span><span class="n">decode_cf</span><span class="p">(</span><span class="n">fcstds</span><span class="p">,</span><span class="s1">&#39;init&#39;</span><span class="p">)</span>
-<span class="n">fcstds</span><span class="p">[</span><span class="s1">&#39;init&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">fcstds</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">))</span>
-<span class="n">fcstds</span><span class="p">[</span><span class="s1">&#39;init&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">fcstds</span><span class="p">[</span><span class="s1">&#39;init&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y%m</span><span class="si">%d</span><span class="s1"> 00:00&#39;</span><span class="p">))</span>
+<span></span><span class="n">fcstds</span> <span class="o">=</span> <span class="n">decode_cf</span><span class="p">(</span><span class="n">fcstds</span><span class="p">,</span> <span class="s1">&#39;init&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -614,30 +599,38 @@ Attributes:
 </pre></div>
 </div>
 </div>
-<p>Create the <code class="docutils literal notranslate"><span class="pre">climpred</span> <span class="pre">HindcastEnsemble</span></code> object and add the observations as the reference/verification</p>
+<p>Create the <code class="docutils literal notranslate"><span class="pre">climpred</span> <span class="pre">HindcastEnsemble</span></code> object and add the observations.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">hindcast</span> <span class="o">=</span> <span class="n">HindcastEnsemble</span><span class="p">(</span><span class="n">fcstds</span><span class="p">)</span>
-<span class="n">hindcast</span><span class="o">=</span><span class="n">hindcast</span><span class="o">.</span><span class="n">add_reference</span><span class="p">(</span><span class="n">obsds</span><span class="p">,</span> <span class="s1">&#39;observations&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<p>Calculate the Anomaly Correlation Coefficient (ACC)</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">skill</span> <span class="o">=</span> <span class="n">hindcast</span><span class="o">.</span><span class="n">compute_metric</span><span class="p">(</span><span class="n">metric</span><span class="o">=</span><span class="s1">&#39;acc&#39;</span><span class="p">)</span>
+<span></span><span class="n">hindcast</span> <span class="o">=</span> <span class="n">hindcast</span><span class="o">.</span><span class="n">add_observations</span><span class="p">(</span><span class="n">obsds</span><span class="p">,</span> <span class="s1">&#39;obs&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Calculate the Anomaly Correlation Coefficient (ACC)</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">skill</span> <span class="o">=</span> <span class="n">hindcast</span><span class="o">.</span><span class="n">verify</span><span class="p">(</span><span class="n">metric</span><span class="o">=</span><span class="s1">&#39;acc&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <p>Plot the skill as a function of lead time</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -649,7 +642,7 @@ Attributes:
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
