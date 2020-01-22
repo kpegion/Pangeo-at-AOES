@@ -12,4 +12,4 @@ Data Access
 #####################
 While many of these examples will have common relevance to the atmospheric, oceanic, and climate science fields, they are designed with the assumption that you have an account on the COLA AOES servers and access to local data there.
 
-A subset of some of the examples that do not require COLA AOES Server access are provided in the `External Tutorial`_. 
+Examples that do not require COLA AOES Server access are provided in the External Tutorial.
