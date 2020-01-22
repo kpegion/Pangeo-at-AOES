@@ -8,35 +8,41 @@ Setting up Jupyter on COLA Servers
    jupyter notebook --generate-config
    jupyter notebook password
 
-2. Log in to colaX.gmu.edu, where X refers to a COLA Server
+2. Issue the following command so that your environment will appear in Jupyter
+
+.. code-block:: bash
+
+   python -m ipykernel install --user --name aoes --display-name "Python (aoes)"
+
+3. Log in to colaX.gmu.edu, where X refers to a COLA Server
 
 .. code-block:: bash
 
    ssh -Y -l <YOURUSERNAME>@colaX.gmu.edu
 
-3. Go to the Pangeo-at-AOES directory:
+4. Go to the Pangeo-at-AOES directory:
 
 .. code-block:: bash
    
    cd Pangeo-at-AOES
 
-4. Start up the Jupyter server with the following command:
+5. Start up the Jupyter server with the following command:
 
 .. code-block:: bash
 
    jupyter lab --no-browser --ip=`hostname` --port=8878
 
-5. In a separate terminal, log in to colaX again with the following command:
+6. In a separate terminal, log in to colaX again with the following command:
 
 .. code-block:: bash
 
    ssh -N -L 8878:colaX.gmu.edu:8878 <YOURUSERNAME>@colaX.gmu.edu
 
-6. Open your browser and go to http://localhost:8878. It will ask you to enter the password you created in step 1.
+7. Open your browser and go to http://localhost:8878. It will ask you to enter the password you created in step 1.
 
-7. Your Jupyter server should appear in your local browser.
+8. Your Jupyter server should appear in your local browser.
 
 .. note:: If the Jupyter server does not appear or if you have password issues, you may need to go through the longer version of the `Jupyter Configuration <http://pangeo.io/setup_guides/hpc.html#configure-jupyter>`_
 
-8. In the upper right corner, you will see your current environemnt is `Python (aoes)`
+9. In the upper right corner, you will see your current environemnt is `Python (aoes)`
 
