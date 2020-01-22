@@ -9,9 +9,11 @@ Welcome to Pangeo at AOES
 This is a collection of information and example Jupyter Notebooks, for using the Python and the Pangeo Software stack for data analysis.  This set of examples is specifically designed for the Mason AOES/COLA Servers, datasets available on our servers, and use cases around common data analyses used by our students and faculty.
 
 
-The examples are also generally relevant for climate data analysis.  Therefore, an is also provided for those without access to the Mason AOES/COLA Servers.
+The examples are also generally relevant for climate data analysis.  Therefore, an External Tutorial is also provided for those without access to the Mason AOES/COLA Servers.
+
 .. image:: https://mybinder.org/badge_logo.svg
  :target: https://mybinder.org/v2/gh/kpegion/Pangeo-at-AOES/master?filepath=%2Fdocs%2Fbinder
+
 
 
 .. toctree::
