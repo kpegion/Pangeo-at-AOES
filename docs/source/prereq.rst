@@ -13,3 +13,5 @@ Data Access
 While many of these examples will have common relevance to the atmospheric, oceanic, and climate science fields, they are designed with the assumption that you have an account on the COLA AOES servers and access to local data there.
 
 Examples that do not require COLA AOES Server access are provided in the External Tutorial.
+image:: https://mybinder.org/badge_logo.svg
+ :target: https://mybinder.org/v2/gh/kpegion/Pangeo-at-AOES/master?filepath=%2Fdocs%2Fbinder
