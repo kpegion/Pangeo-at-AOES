@@ -237,19 +237,25 @@
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
+<li><p>Load anaconda so that you have access to the <cite>conda</cite> command:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load anaconda/3
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
 <li><p>We will now create a conda (Python) environment with a specific set of packages installed:</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda env create -f environment.yml
 </pre></div>
 </div>
 <p>You have now created a conda environment called aoes. When you activiate this environment, you have access to Python 3.6 and all the packages listed here.  You may wonder, how do I know what packages to install?  No need to worry, all the packages you need for this tutorial have been installed.  If you want to install additional packages later, you can add them.</p>
-<ol class="arabic simple" start="2">
+<ol class="arabic simple" start="5">
 <li><p>The following command is necessary so that your new Python environment is not initiaized by default on login:</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda config --set auto_activate_base <span class="nb">false</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="4">
+<ol class="arabic simple" start="6">
 <li><p>Now, let’s activiate this environment so you can work in Python with these packages:</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda activate aoes
