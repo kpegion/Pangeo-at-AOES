@@ -26,6 +26,8 @@
         <script type="text/javascript" src="../_static/doctools.js"></script>
         <script type="text/javascript" src="../_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -546,7 +548,7 @@ Attributes:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.colorbar.Colorbar at 0x7f804d351208&gt;
+&lt;matplotlib.colorbar.Colorbar at 0x7f4c5501f710&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -586,7 +588,7 @@ Attributes:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;cartopy.mpl.feature_artist.FeatureArtist at 0x7f804d2860f0&gt;
+&lt;cartopy.mpl.feature_artist.FeatureArtist at 0x7f4c54f48e10&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -602,7 +604,7 @@ Attributes:
 <p>This figure has a couple of things we would like to change: 1. The stripe at 0 lon. This is due to the fact that <code class="docutils literal notranslate"><span class="pre">contourf</span></code> has no way to know that our data is cyclic in longitude. We will fix this using <code class="docutils literal notranslate"><span class="pre">cartopy.util.add_cyclic_point</span></code> 2. No lat-lon labels. We will add lat-lon labels using <code class="docutils literal notranslate"><span class="pre">set_x(y)ticks</span></code> and <code class="docutils literal notranslate"><span class="pre">cticker</span></code>.</p>
 <p>We set the lat-lon lables using <code class="docutils literal notranslate"><span class="pre">set_x(y)ticks</span></code> and <code class="docutils literal notranslate"><span class="pre">cticker</span></code>. We will fix the white strip using</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -736,7 +738,7 @@ Attributes:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Text(0.5,1,&#39;NCAR-CCSM4 RCP4.5 2100-2299&#39;)
+Text(0.5, 1.0, &#39;NCAR-CCSM4 RCP4.5 2100-2299&#39;)
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">

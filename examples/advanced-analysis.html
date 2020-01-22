@@ -26,6 +26,8 @@
         <script type="text/javascript" src="../_static/doctools.js"></script>
         <script type="text/javascript" src="../_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -111,6 +113,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#Calculate-Anomalies-for-Monthly-Data">Calculate Anomalies for Monthly Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Make-Hovmoller-Diagram-of-EQ-Pacific-SST-Anomalies">Make Hovmoller Diagram of EQ Pacific SST Anomalies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Calculate-the-Nino3.4-Index">Calculate the Nino3.4 Index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Write-data-to-netcdf-file">Write data to netcdf file</a></li>
 </ul>
 </li>
 </ul>
@@ -432,6 +435,7 @@ div.rendered_html tbody tr:hover {
 <li><p>Reading in multiple files at a time</p></li>
 <li><p>Averaging over dimensions to calculate an average in space, time, or over ensemble members</p></li>
 <li><p>Calculating a climatology and anomalies for monthly data</p></li>
+<li><p>Writing data to netcdf file</p></li>
 </ol>
 <div class="section" id="Monthly-Data">
 <h2>Monthly Data<a class="headerlink" href="#Monthly-Data" title="Permalink to this headline">¶</a></h2>
@@ -442,7 +446,7 @@ div.rendered_html tbody tr:hover {
 <p>The ensemble members are indicated by: r1i1p1, r2i1p1, r3i1p1, r4i1p1, r5i1p1, r6i1p1 in the directory and filename.</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset</span></code>, we can simply use <code class="docutils literal notranslate"><span class="pre">*</span></code> in the filename and directory name to indicate all the ensemble members.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -456,7 +460,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -469,7 +473,7 @@ div.rendered_html tbody tr:hover {
 <h2>Read multiple files using <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset</span></code><a class="headerlink" href="#Read-multiple-files-using-xr.open_mfdataset" title="Permalink to this headline">¶</a></h2>
 <p>Set the path and filename using <code class="docutils literal notranslate"><span class="pre">*</span></code> for the ensemble members</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -480,7 +484,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <p>Read the data</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -499,7 +503,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <p>When reading the data, we need to tell <code class="docutils literal notranslate"><span class="pre">xarray</span></code> how to put the data together. Here, I told it to create a new dimension called <code class="docutils literal notranslate"><span class="pre">ensemble</span></code> for combining the data.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -508,7 +512,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -516,8 +520,8 @@ div.rendered_html tbody tr:hover {
 Dimensions:    (bnds: 2, ensemble: 6, lat: 382, lon: 288, time: 1140)
 Coordinates:
   * lon        (lon) float64 0.0 1.25 2.5 3.75 5.0 ... 355.0 356.2 357.5 358.8
-  * time       (time) object 2006-01-16 12:00:00 ... 2100-12-16 12:00:00
   * lat        (lat) float64 -90.0 -89.06 -89.06 -88.12 ... 89.06 89.06 90.0
+  * time       (time) object 2006-01-16 12:00:00 ... 2100-12-16 12:00:00
 Dimensions without coordinates: bnds, ensemble
 Data variables:
     time_bnds  (ensemble, time, bnds) object dask.array&lt;chunksize=(1, 1140, 2), meta=np.ndarray&gt;
@@ -563,7 +567,7 @@ Attributes:
 </div>
 <p>This next step converts the time dimension to a type that can be used later for plotting</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -577,7 +581,7 @@ Attributes:
 <h2>Calculate the Ensemble Mean<a class="headerlink" href="#Calculate-the-Ensemble-Mean" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">xarray</span></code> has nice features for performing operations over a specified dimension or set of dimension. One example is <code class="docutils literal notranslate"><span class="pre">xr.mean</span></code> which we can use to average over the <code class="docutils literal notranslate"><span class="pre">ensemble</span></code> dimension to make the ensemble mean.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -586,7 +590,7 @@ Attributes:
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -595,7 +599,7 @@ Attributes:
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -603,8 +607,8 @@ Attributes:
 Dimensions:   (bnds: 2, lat: 382, lon: 288, time: 1140)
 Coordinates:
   * lon       (lon) float64 0.0 1.25 2.5 3.75 5.0 ... 355.0 356.2 357.5 358.8
-  * time      (time) datetime64[ns] 2006-01-16T12:00:00 ... 2100-12-16T12:00:00
   * lat       (lat) float64 -90.0 -89.06 -89.06 -88.12 ... 89.06 89.06 90.0
+  * time      (time) datetime64[ns] 2006-01-16T12:00:00 ... 2100-12-16T12:00:00
 Dimensions without coordinates: bnds
 Data variables:
     lat_bnds  (lat, bnds) float64 dask.array&lt;chunksize=(382, 2), meta=np.ndarray&gt;
@@ -617,7 +621,7 @@ Data variables:
 <h2>Calculate Anomalies for Monthly Data<a class="headerlink" href="#Calculate-Anomalies-for-Monthly-Data" title="Permalink to this headline">¶</a></h2>
 <p>We often want to calculate anomalies for climate data analysis. <code class="docutils literal notranslate"><span class="pre">xarray</span></code> has a function called <code class="docutils literal notranslate"><span class="pre">groupby</span></code> which allows us to group the data by months. We can then apply a <code class="docutils literal notranslate"><span class="pre">mean</span></code> function over the months to get the climatology and subtract that from the original data to get anomalies.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -628,7 +632,7 @@ Data variables:
 </div>
 <p>Let’s convince ourselves that the climatology and anomalies we calculated look like what we expect. We will use <code class="docutils literal notranslate"><span class="pre">xr.sel</span></code> to select a specific latitude and longitude and plot them. Here, we tell <code class="docutils literal notranslate"><span class="pre">xarray</span></code> to select the values <code class="docutils literal notranslate"><span class="pre">nearest</span></code> the latitude and logitude of Fairfax, VA (39N,77W)</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[58]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -639,7 +643,7 @@ Data variables:
 </div>
 <p>Plot the Climatology</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[59]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -649,12 +653,12 @@ Data variables:
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[59]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Text(0.5,1,&#39;NCAR-CCSM RCP4.5 Surface Temperature Climatology at Fairfax, VA&#39;)
+Text(0.5, 1.0, &#39;NCAR-CCSM RCP4.5 Surface Temperature Climatology at Fairfax, VA&#39;)
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -666,7 +670,7 @@ Text(0.5,1,&#39;NCAR-CCSM RCP4.5 Surface Temperature Climatology at Fairfax, VA&
 </div>
 <p>Plot the Anomalies</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[60]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -676,12 +680,12 @@ Text(0.5,1,&#39;NCAR-CCSM RCP4.5 Surface Temperature Climatology at Fairfax, VA&
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[60]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Text(0.5,1,&#39;NCAR-CCSM RCP4.5 Surface Temperature Anomalies at Fairfax, VA&#39;)
+Text(0.5, 1.0, &#39;NCAR-CCSM RCP4.5 Surface Temperature Anomalies at Fairfax, VA&#39;)
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -696,7 +700,7 @@ Text(0.5,1,&#39;NCAR-CCSM RCP4.5 Surface Temperature Anomalies at Fairfax, VA&#3
 <h2>Make Hovmoller Diagram of EQ Pacific SST Anomalies<a class="headerlink" href="#Make-Hovmoller-Diagram-of-EQ-Pacific-SST-Anomalies" title="Permalink to this headline">¶</a></h2>
 <p>We will use <code class="docutils literal notranslate"><span class="pre">xarray</span></code> sel and slice to extract 5S-5N, 60-290 and mean to average over the latitudes</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[61]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -706,7 +710,7 @@ Text(0.5,1,&#39;NCAR-CCSM RCP4.5 Surface Temperature Anomalies at Fairfax, VA&#3
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[61]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -723,7 +727,7 @@ Data variables:
     ts        (time, lon) float32 dask.array&lt;chunksize=(1, 185), meta=np.ndarray&gt;</pre></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[62]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -732,12 +736,12 @@ Data variables:
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[62]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.contour.QuadContourSet at 0x7f45fcc36ac8&gt;
+&lt;matplotlib.contour.QuadContourSet at 0x7f11a517c978&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -752,7 +756,7 @@ Data variables:
 <h2>Calculate the Nino3.4 Index<a class="headerlink" href="#Calculate-the-Nino3.4-Index" title="Permalink to this headline">¶</a></h2>
 <p>We can use <code class="docutils literal notranslate"><span class="pre">xarray</span></code> sel, slice, and mean to calculate the Nino3.4 index by taking the mean over multiple dimensions</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[65]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -761,7 +765,7 @@ Data variables:
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[66]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -770,12 +774,12 @@ Data variables:
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[66]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[&lt;matplotlib.lines.Line2D at 0x7f45fcb79550&gt;]
+[&lt;matplotlib.lines.Line2D at 0x7f11a4db2d68&gt;]
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -783,6 +787,18 @@ Data variables:
 </div>
 <div class="output_area docutils container">
 <img alt="../_images/examples_advanced-analysis_36_1.png" src="../_images/examples_advanced-analysis_36_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="Write-data-to-netcdf-file">
+<h2>Write data to netcdf file<a class="headerlink" href="#Write-data-to-netcdf-file" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ds_nino34</span><span class="o">.</span><span class="n">to_netcdf</span><span class="p">(</span><span class="s1">&#39;nino34.nc&#39;</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
 </div>

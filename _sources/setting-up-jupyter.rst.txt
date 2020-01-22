@@ -1,7 +1,12 @@
 Setting up Jupyter on COLA Servers
 ####################################
 
-1. Follow the steps in `Configure Jupyter <http://pangeo.io/setup_guides/hpc.html#configure-jupyter>`_. The main point of this step is to create a password for when you log in to the Jupyter server you will start up on COLA.
+1. Setup a Password for Jupyter
+
+.. code-block:: bash
+
+   jupyter notebook --generate-config
+   jupyter notebook password
 
 2. Log in to colaX.gmu.edu, where X refers to a COLA Server
 
@@ -30,6 +35,8 @@ Setting up Jupyter on COLA Servers
 6. Open your browser and go to http://localhost:8878. It will ask you to enter the password you created in step 1.
 
 7. Your Jupyter server should appear in your local browser.
+
+.. note:: If the Jupyter server does not appear or if you have password issues, you may need to go through the longer version of the 'Jupyter Configuration <http://pangeo.io/setup_guides/hpc.html#configure-jupyter>'_.
 
 8. In the upper right corner, you will see your current environemnt is `Python (aoes)`
 

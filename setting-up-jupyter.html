@@ -26,6 +26,8 @@
         <script type="text/javascript" src="_static/doctools.js"></script>
         <script type="text/javascript" src="_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -222,7 +224,13 @@
 <div class="section" id="setting-up-jupyter-on-cola-servers">
 <h1>Setting up Jupyter on COLA Servers<a class="headerlink" href="#setting-up-jupyter-on-cola-servers" title="Permalink to this headline">¶</a></h1>
 <ol class="arabic simple">
-<li><p>Follow the steps in <a class="reference external" href="http://pangeo.io/setup_guides/hpc.html#configure-jupyter">Configure Jupyter</a>. The main point of this step is to create a password for when you log in to the Jupyter server you will start up on COLA.</p></li>
+<li><p>Setup a Password for Jupyter</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter notebook --generate-config
+jupyter notebook password
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
 <li><p>Log in to colaX.gmu.edu, where X refers to a COLA Server</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh -Y -l &lt;YOURUSERNAME&gt;@colaX.gmu.edu
@@ -249,6 +257,12 @@
 <ol class="arabic simple" start="6">
 <li><p>Open your browser and go to <a class="reference external" href="http://localhost:8878">http://localhost:8878</a>. It will ask you to enter the password you created in step 1.</p></li>
 <li><p>Your Jupyter server should appear in your local browser.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the Jupyter server does not appear or if you have password issues, you may need to go through the longer version of the ‘Jupyter Configuration &lt;<a class="reference external" href="http://pangeo.io/setup_guides/hpc.html#configure-jupyter">http://pangeo.io/setup_guides/hpc.html#configure-jupyter</a>&gt;’_.</p>
+</div>
+<ol class="arabic simple" start="8">
 <li><p>In the upper right corner, you will see your current environemnt is <cite>Python (aoes)</cite></p></li>
 </ol>
 </div>

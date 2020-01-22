@@ -26,6 +26,8 @@
         <script type="text/javascript" src="../_static/doctools.js"></script>
         <script type="text/javascript" src="../_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -474,7 +476,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">epath</span> <span class="o">=</span> <span class="s1">&#39;/Users/dirmeyer/MyFiles/Data Sets/ERA5/&#39;</span>
+<span></span><span class="n">epath</span> <span class="o">=</span> <span class="s1">&#39;/shared/land/ERA5/daily/conus/&#39;</span>
 <span class="n">sfcfile</span> <span class="o">=</span> <span class="n">epath</span><span class="o">+</span><span class="s1">&#39;ea_oper_an+fc_daily_MJJAS_2018.nc4&#39;</span>
 <span class="c1">#sfcdata = Dataset(sfcfile,&quot;r&quot;)</span>
 
@@ -502,7 +504,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <p>Create an image plot of dew point</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -520,8 +522,8 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <p>Plot the data on a map</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -539,6 +541,22 @@ div.rendered_html tbody tr:hover {
 <span class="n">pc</span><span class="o">.</span><span class="n">panels</span> <span class="o">=</span> <span class="p">[</span><span class="n">panel</span><span class="p">]</span>
 <span class="n">pc</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Found latitude/longitude values, assuming latitude_longitude for projection grid_mapping variable
+Found latitude/longitude values, assuming latitude_longitude for projection grid_mapping variable
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/examples_metpy-plot_9_1.png" src="../_images/examples_metpy-plot_9_1.png" />
 </div>
 </div>
 <div class="nbinput nblast docutils container">

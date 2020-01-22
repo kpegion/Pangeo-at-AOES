@@ -26,6 +26,8 @@
         <script type="text/javascript" src="../_static/doctools.js"></script>
         <script type="text/javascript" src="../_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -455,7 +457,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -466,7 +468,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <p>Set the directory and filename</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -477,7 +479,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <p>Read in the data for all models using <code class="docutils literal notranslate"><span class="pre">xr.open_mfdataset()</span></code></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -506,8 +508,8 @@ div.rendered_html tbody tr:hover {
 Dimensions:    (model: 6, time: 45)
 Coordinates:
     lat        float32 -90.0
-  * time       (time) datetime64[ns] 1960-01-02 1960-01-03 ... 1960-02-15
     lon        float32 0.0
+  * time       (time) datetime64[ns] 1960-01-02 1960-01-03 ... 1960-02-15
 Dimensions without coordinates: model
 Data variables:
     accrmm1    (model, time) float32 dask.array&lt;chunksize=(1, 45), meta=np.ndarray&gt;
@@ -530,7 +532,7 @@ Attributes:
 </div>
 <p>As you can see, the dimensiion model exists, but has no definition. Our <code class="docutils literal notranslate"><span class="pre">xr.Dataset</span></code> does not know the model names, but we can add them.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -542,7 +544,7 @@ Attributes:
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -550,8 +552,8 @@ Attributes:
 Dimensions:    (model: 6, time: 45)
 Coordinates:
     lat        float32 -90.0
-  * time       (time) datetime64[ns] 1960-01-02 1960-01-03 ... 1960-02-15
     lon        float32 0.0
+  * time       (time) datetime64[ns] 1960-01-02 1960-01-03 ... 1960-02-15
   * model      (model) &lt;U14 &#x27;CCSM4-RSMAS&#x27; &#x27;FIMr1p1-ESRL&#x27; ... &#x27;NESM-NRL&#x27;
 Data variables:
     accrmm1    (model, time) float32 dask.array&lt;chunksize=(1, 45), meta=np.ndarray&gt;
@@ -574,7 +576,7 @@ Attributes:
 </div>
 <p>Now we will plot the skill of the first model for all lead times as a line plot</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -583,12 +585,12 @@ Attributes:
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[&lt;matplotlib.lines.Line2D at 0x7f4c75714748&gt;]
+[&lt;matplotlib.lines.Line2D at 0x7f8330cf8128&gt;]
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -602,7 +604,7 @@ Attributes:
 <div class="section" id="Axis-Labels-and-Title">
 <h2>Axis Labels and Title<a class="headerlink" href="#Axis-Labels-and-Title" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -614,12 +616,12 @@ Attributes:
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Text(0,0.5,&#39;Bivariate Anomaly Correlation&#39;)
+Text(0, 0.5, &#39;Bivariate Anomaly Correlation&#39;)
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -634,7 +636,7 @@ Text(0,0.5,&#39;Bivariate Anomaly Correlation&#39;)
 <h2>Controlling the Axis intervals<a class="headerlink" href="#Controlling-the-Axis-intervals" title="Permalink to this headline">¶</a></h2>
 <p>You can control the axis intervals by specifying them in <code class="docutils literal notranslate"><span class="pre">plt.xticks</span></code> or <code class="docutils literal notranslate"><span class="pre">plt.yticks</span></code></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -649,21 +651,21 @@ Text(0,0.5,&#39;Bivariate Anomaly Correlation&#39;)
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-([&lt;matplotlib.axis.YTick at 0x7f4c74cc1cf8&gt;,
-  &lt;matplotlib.axis.YTick at 0x7f4c74cc1630&gt;,
-  &lt;matplotlib.axis.YTick at 0x7f4c74cf3da0&gt;,
-  &lt;matplotlib.axis.YTick at 0x7f4c7504dc50&gt;,
-  &lt;matplotlib.axis.YTick at 0x7f4c7505b438&gt;,
-  &lt;matplotlib.axis.YTick at 0x7f4c7505b7f0&gt;,
-  &lt;matplotlib.axis.YTick at 0x7f4c7505bcc0&gt;,
-  &lt;matplotlib.axis.YTick at 0x7f4c752901d0&gt;,
-  &lt;matplotlib.axis.YTick at 0x7f4c752906a0&gt;,
-  &lt;matplotlib.axis.YTick at 0x7f4c75290b70&gt;],
+([&lt;matplotlib.axis.YTick at 0x7f8330ac3710&gt;,
+  &lt;matplotlib.axis.YTick at 0x7f8330ac3048&gt;,
+  &lt;matplotlib.axis.YTick at 0x7f8330b1a828&gt;,
+  &lt;matplotlib.axis.YTick at 0x7f8330a71a58&gt;,
+  &lt;matplotlib.axis.YTick at 0x7f8330a71f28&gt;,
+  &lt;matplotlib.axis.YTick at 0x7f8330a77438&gt;,
+  &lt;matplotlib.axis.YTick at 0x7f8330a77908&gt;,
+  &lt;matplotlib.axis.YTick at 0x7f8330a77dd8&gt;,
+  &lt;matplotlib.axis.YTick at 0x7f8330a77eb8&gt;,
+  &lt;matplotlib.axis.YTick at 0x7f8330a716d8&gt;],
  &lt;a list of 10 Text yticklabel objects&gt;)
 </pre></div></div>
 </div>
@@ -678,7 +680,7 @@ Text(0,0.5,&#39;Bivariate Anomaly Correlation&#39;)
 <div class="section" id="Change-color-and-thickness,-add-horizontal-line">
 <h2>Change color and thickness, add horizontal line<a class="headerlink" href="#Change-color-and-thickness,-add-horizontal-line" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -694,21 +696,21 @@ Text(0,0.5,&#39;Bivariate Anomaly Correlation&#39;)
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-([&lt;matplotlib.axis.YTick at 0x7f4c752924e0&gt;,
-  &lt;matplotlib.axis.YTick at 0x7f4c7527cdd8&gt;,
-  &lt;matplotlib.axis.YTick at 0x7f4c752a4e48&gt;,
-  &lt;matplotlib.axis.YTick at 0x7f4c74eff0f0&gt;,
-  &lt;matplotlib.axis.YTick at 0x7f4c74effcc0&gt;,
-  &lt;matplotlib.axis.YTick at 0x7f4c74f051d0&gt;,
-  &lt;matplotlib.axis.YTick at 0x7f4c74f056a0&gt;,
-  &lt;matplotlib.axis.YTick at 0x7f4c74f05b70&gt;,
-  &lt;matplotlib.axis.YTick at 0x7f4c74f010f0&gt;,
-  &lt;matplotlib.axis.YTick at 0x7f4c74f01550&gt;],
+([&lt;matplotlib.axis.YTick at 0x7f8330d3f940&gt;,
+  &lt;matplotlib.axis.YTick at 0x7f8330d2fba8&gt;,
+  &lt;matplotlib.axis.YTick at 0x7f8330aa2b70&gt;,
+  &lt;matplotlib.axis.YTick at 0x7f8330d11cc0&gt;,
+  &lt;matplotlib.axis.YTick at 0x7f8330d043c8&gt;,
+  &lt;matplotlib.axis.YTick at 0x7f8330d150b8&gt;,
+  &lt;matplotlib.axis.YTick at 0x7f8330d15470&gt;,
+  &lt;matplotlib.axis.YTick at 0x7f8330cbe0b8&gt;,
+  &lt;matplotlib.axis.YTick at 0x7f8330cbe940&gt;,
+  &lt;matplotlib.axis.YTick at 0x7f8330cbe7f0&gt;],
  &lt;a list of 10 Text yticklabel objects&gt;)
 </pre></div></div>
 </div>
@@ -723,7 +725,7 @@ Text(0,0.5,&#39;Bivariate Anomaly Correlation&#39;)
 <div class="section" id="Multiple-lines-on-the-same-plot-with-legend">
 <h2>Multiple lines on the same plot with legend<a class="headerlink" href="#Multiple-lines-on-the-same-plot-with-legend" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -744,12 +746,12 @@ Text(0,0.5,&#39;Bivariate Anomaly Correlation&#39;)
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.collections.LineCollection at 0x7f4c7483b128&gt;
+&lt;matplotlib.collections.LineCollection at 0x7f8330cd1cc0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -765,7 +767,7 @@ Text(0,0.5,&#39;Bivariate Anomaly Correlation&#39;)
 <p>We will loop over all the models and make an individual plot for each model, with all plots being on the same page. We will make use of the <code class="docutils literal notranslate"><span class="pre">plt.subplot</span></code> function in which you specify <code class="docutils literal notranslate"><span class="pre">plt.subplot(#rows,#columns,</span> <span class="pre">plot#)</span></code>, which defines a grid of subplots on the page. The plots are thenfilled across rows first, then columns to fill out the grid.</p>
 <p>Here is an example using our RMM skill for all the models. In this case, we have specified then number of rows and columns manually to make it easy to understand, but this could easily be generaized</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -776,7 +778,7 @@ Text(0,0.5,&#39;Bivariate Anomaly Correlation&#39;)
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -798,29 +800,16 @@ Text(0,0.5,&#39;Bivariate Anomaly Correlation&#39;)
 </pre></div>
 </div>
 </div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-CCSM4-RSMAS
-FIMr1p1-ESRL
-GEFS-EMC
-GEM-ECCC
-GEOS_V2p1-GMAO
-NESM-NRL
-</pre></div></div>
-</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/examples_matplotlib-tutorial_31_1.png" src="../_images/examples_matplotlib-tutorial_31_1.png" />
+<img alt="../_images/examples_matplotlib-tutorial_31_0.png" src="../_images/examples_matplotlib-tutorial_31_0.png" />
 </div>
 </div>
 <p>There are two problems with this plot: 1. We have overlap between the titles and the xaxis labels. We will fix this using <code class="docutils literal notranslate"><span class="pre">plt.tight_layout()</span></code> 2. The plots have different ranges for the y-axis. We will fix this using <code class="docutils literal notranslate"><span class="pre">plt.ylim()</span></code></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>

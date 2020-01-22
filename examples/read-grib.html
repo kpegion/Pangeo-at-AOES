@@ -26,6 +26,8 @@
         <script type="text/javascript" src="../_static/doctools.js"></script>
         <script type="text/javascript" src="../_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -512,7 +514,7 @@ Attributes:
     GRIB_subCentre:          0
     Conventions:             CF-1.7
     institution:             European Centre for Medium-Range Weather Forecasts
-    history:                 2020-01-21T17:59:30 GRIB to CDM+CF via cfgrib-0....</pre></div>
+    history:                 2020-01-21T22:19:06 GRIB to CDM+CF via cfgrib-0....</pre></div>
 </div>
 <p>If you want to access just the Geopotential Height, without all the other variables, you can do that by supplying the name of the variable</p>
 <div class="nbinput docutils container">
@@ -615,7 +617,7 @@ Attributes:
     GRIB_subCentre:          0
     Conventions:             CF-1.7
     institution:             European Centre for Medium-Range Weather Forecasts
-    history:                 2020-01-21T17:59:30 GRIB to CDM+CF via cfgrib-0....</pre></div>
+    history:                 2020-01-21T22:19:06 GRIB to CDM+CF via cfgrib-0....</pre></div>
 </div>
 <p>Let’s make a very simple contour plot to convince ourselves that we indeed have geopotential height at 500 hPa. We will use the <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> <code class="docutils literal notranslate"><span class="pre">plt.contourf</span></code> function for a filled contour plot. It works very similar to Matlab plotting functions.</p>
 <div class="nbinput docutils container">
@@ -634,7 +636,7 @@ Attributes:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.colorbar.Colorbar at 0x7fc6a18aea90&gt;
+&lt;matplotlib.colorbar.Colorbar at 0x7fc1858edac8&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">

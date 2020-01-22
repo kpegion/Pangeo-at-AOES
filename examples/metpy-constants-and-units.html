@@ -26,6 +26,8 @@
         <script type="text/javascript" src="../_static/doctools.js"></script>
         <script type="text/javascript" src="../_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -427,7 +429,7 @@ div.rendered_html tbody tr:hover {
 <h1>MetPy Constants and Units<a class="headerlink" href="#MetPy-Constants-and-Units" title="Permalink to this headline">¶</a></h1>
 <p>Complete list of constants at: <a class="reference external" href="https://unidata.github.io/MetPy/latest/api/generated/metpy.constants.html">https://unidata.github.io/MetPy/latest/api/generated/metpy.constants.html</a></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -439,8 +441,8 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="Invoking-constants-in-MetPy">
 <h2>Invoking constants in MetPy<a class="headerlink" href="#Invoking-constants-in-MetPy" title="Permalink to this headline">¶</a></h2>
 <p>All constants have a long name, short name, and associated units:</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -448,9 +450,17 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+9.80665 meter / second ** 2     9.80665 meter / second ** 2
+</pre></div></div>
+</div>
 <p>Units functionality comes from the <code class="docutils literal notranslate"><span class="pre">pint</span></code> library. All arithmetic carries units with it:</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -458,12 +468,22 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.2870579959589441 joule / gram / kelvin
+ 1005 meter ** 2 / kelvin / second ** 2
+ 0.0002856298467253175 joule * second ** 2 / gram / meter ** 2
+</pre></div></div>
+</div>
 </div>
 <div class="section" id="Simplifying-units">
 <h2>Simplifying units<a class="headerlink" href="#Simplifying-units" title="Permalink to this headline">¶</a></h2>
 <p>You can see that there can be some ugly units going on sometimes. In <code class="docutils literal notranslate"><span class="pre">pint</span></code> there is a method <code class="docutils literal notranslate"><span class="pre">to_base_units()</span></code> that will sort this out and convert to the simplist SI units:</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -472,18 +492,60 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.2856298467253175 dimensionless
+</pre></div></div>
+</div>
 </div>
 <div class="section" id="Automatic-dimensional-analysis-as-a-debugger">
 <h2>Automatic dimensional analysis as a debugger<a class="headerlink" href="#Automatic-dimensional-analysis-as-a-debugger" title="Permalink to this headline">¶</a></h2>
 <p>If you try to mix units, you will be reprimanded! This is a good thing - you can catch a lot of code bugs this way.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">abomination</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">water_heat_vaporization</span> <span class="o">+</span> <span class="n">c</span><span class="o">.</span><span class="n">water_gas_constant</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">DimensionalityError</span>                       Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-5-1f23323fd30a&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>abomination <span class="ansi-blue-fg">=</span> c<span class="ansi-blue-fg">.</span>water_heat_vaporization <span class="ansi-blue-fg">+</span> c<span class="ansi-blue-fg">.</span>water_gas_constant
+
+<span class="ansi-green-fg">~/.conda/envs/aoes/lib/python3.6/site-packages/pint/quantity.py</span> in <span class="ansi-cyan-fg">__add__</span><span class="ansi-blue-fg">(self, other)</span>
+<span class="ansi-green-intense-fg ansi-bold">    969</span>             <span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>to_timedelta<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span> <span class="ansi-blue-fg">+</span> other
+<span class="ansi-green-intense-fg ansi-bold">    970</span>         <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 971</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>_add_sub<span class="ansi-blue-fg">(</span>other<span class="ansi-blue-fg">,</span> operator<span class="ansi-blue-fg">.</span>add<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    972</span>
+<span class="ansi-green-intense-fg ansi-bold">    973</span>     __radd__ <span class="ansi-blue-fg">=</span> __add__
+
+<span class="ansi-green-fg">~/.conda/envs/aoes/lib/python3.6/site-packages/pint/quantity.py</span> in <span class="ansi-cyan-fg">wrapped</span><span class="ansi-blue-fg">(self, *args, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">    104</span>         <span class="ansi-green-fg">elif</span> isinstance<span class="ansi-blue-fg">(</span>other<span class="ansi-blue-fg">,</span> list<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">and</span> other <span class="ansi-green-fg">and</span> isinstance<span class="ansi-blue-fg">(</span>other<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">,</span> type<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    105</span>             <span class="ansi-green-fg">return</span> NotImplemented
+<span class="ansi-green-fg">--&gt; 106</span><span class="ansi-red-fg">         </span>result <span class="ansi-blue-fg">=</span> f<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    107</span>         <span class="ansi-green-fg">return</span> result
+<span class="ansi-green-intense-fg ansi-bold">    108</span>
+
+<span class="ansi-green-fg">~/.conda/envs/aoes/lib/python3.6/site-packages/pint/quantity.py</span> in <span class="ansi-cyan-fg">_add_sub</span><span class="ansi-blue-fg">(self, other, op)</span>
+<span class="ansi-green-intense-fg ansi-bold">    882</span>         <span class="ansi-green-fg">if</span> <span class="ansi-green-fg">not</span> self<span class="ansi-blue-fg">.</span>dimensionality <span class="ansi-blue-fg">==</span> other<span class="ansi-blue-fg">.</span>dimensionality<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    883</span>             raise DimensionalityError(
+<span class="ansi-green-fg">--&gt; 884</span><span class="ansi-red-fg">                 </span>self<span class="ansi-blue-fg">.</span>_units<span class="ansi-blue-fg">,</span> other<span class="ansi-blue-fg">.</span>_units<span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">.</span>dimensionality<span class="ansi-blue-fg">,</span> other<span class="ansi-blue-fg">.</span>dimensionality
+<span class="ansi-green-intense-fg ansi-bold">    885</span>             )
+<span class="ansi-green-intense-fg ansi-bold">    886</span>
+
+<span class="ansi-red-fg">DimensionalityError</span>: Cannot convert from &#39;meter ** 2 / second ** 2&#39; ([length] ** 2 / [time] ** 2) to &#39;joule / gram / kelvin&#39; ([length] ** 2 / [temperature] / [time] ** 2)
+</pre></div></div>
 </div>
 </div>
 <div class="section" id="Changing-units">

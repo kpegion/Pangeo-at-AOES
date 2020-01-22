@@ -16,7 +16,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 1,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -34,9 +34,17 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 2,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "9.80665 meter / second ** 2     9.80665 meter / second ** 2\n"
+     ]
+    }
+   ],
    "source": [
     "print(c.earth_gravity, '   ', c.g)"
    ]
@@ -51,9 +59,19 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 3,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0.2870579959589441 joule / gram / kelvin \n",
+      " 1005 meter ** 2 / kelvin / second ** 2 \n",
+      " 0.0002856298467253175 joule * second ** 2 / gram / meter ** 2\n"
+     ]
+    }
+   ],
    "source": [
     "print(c.Rd,'\\n' ,c.Cp_d,'\\n' , c.Rd / c.Cp_d)"
    ]
@@ -68,9 +86,17 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 4,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0.2856298467253175 dimensionless\n"
+     ]
+    }
+   ],
    "source": [
     "diatomic_gas_ratio = c.Rd / c.Cp_d\n",
     "print(diatomic_gas_ratio.to_base_units())"
@@ -86,9 +112,24 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 5,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "ename": "DimensionalityError",
+     "evalue": "Cannot convert from 'meter ** 2 / second ** 2' ([length] ** 2 / [time] ** 2) to 'joule / gram / kelvin' ([length] ** 2 / [temperature] / [time] ** 2)",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mDimensionalityError\u001b[0m                       Traceback (most recent call last)",
+      "\u001b[0;32m<ipython-input-5-1f23323fd30a>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mabomination\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mc\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mwater_heat_vaporization\u001b[0m \u001b[0;34m+\u001b[0m \u001b[0mc\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mwater_gas_constant\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[0;32m~/.conda/envs/aoes/lib/python3.6/site-packages/pint/quantity.py\u001b[0m in \u001b[0;36m__add__\u001b[0;34m(self, other)\u001b[0m\n\u001b[1;32m    969\u001b[0m             \u001b[0;32mreturn\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mto_timedelta\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m \u001b[0;34m+\u001b[0m \u001b[0mother\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    970\u001b[0m         \u001b[0;32melse\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 971\u001b[0;31m             \u001b[0;32mreturn\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m_add_sub\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mother\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0moperator\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0madd\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    972\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    973\u001b[0m     \u001b[0m__radd__\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0m__add__\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;32m~/.conda/envs/aoes/lib/python3.6/site-packages/pint/quantity.py\u001b[0m in \u001b[0;36mwrapped\u001b[0;34m(self, *args, **kwargs)\u001b[0m\n\u001b[1;32m    104\u001b[0m         \u001b[0;32melif\u001b[0m \u001b[0misinstance\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mother\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mlist\u001b[0m\u001b[0;34m)\u001b[0m \u001b[0;32mand\u001b[0m \u001b[0mother\u001b[0m \u001b[0;32mand\u001b[0m \u001b[0misinstance\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mother\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;36m0\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mtype\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    105\u001b[0m             \u001b[0;32mreturn\u001b[0m \u001b[0mNotImplemented\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 106\u001b[0;31m         \u001b[0mresult\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mf\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m*\u001b[0m\u001b[0margs\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m**\u001b[0m\u001b[0mkwargs\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    107\u001b[0m         \u001b[0;32mreturn\u001b[0m \u001b[0mresult\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    108\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;32m~/.conda/envs/aoes/lib/python3.6/site-packages/pint/quantity.py\u001b[0m in \u001b[0;36m_add_sub\u001b[0;34m(self, other, op)\u001b[0m\n\u001b[1;32m    882\u001b[0m         \u001b[0;32mif\u001b[0m \u001b[0;32mnot\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mdimensionality\u001b[0m \u001b[0;34m==\u001b[0m \u001b[0mother\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mdimensionality\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    883\u001b[0m             raise DimensionalityError(\n\u001b[0;32m--> 884\u001b[0;31m                 \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m_units\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mother\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0m_units\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mdimensionality\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mother\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mdimensionality\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    885\u001b[0m             )\n\u001b[1;32m    886\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n",
+      "\u001b[0;31mDimensionalityError\u001b[0m: Cannot convert from 'meter ** 2 / second ** 2' ([length] ** 2 / [time] ** 2) to 'joule / gram / kelvin' ([length] ** 2 / [temperature] / [time] ** 2)"
+     ]
+    }
+   ],
    "source": [
     "abomination = c.water_heat_vaporization + c.water_gas_constant"
    ]
@@ -191,9 +232,9 @@
  ],
  "metadata": {
   "kernelspec": {
-   "display_name": "Python 3",
+   "display_name": "Python (aoes)",
    "language": "python",
-   "name": "python3"
+   "name": "aoes"
   },
   "language_info": {
    "codemirror_mode": {
@@ -205,7 +246,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.7.3"
+   "version": "3.6.7"
   }
  },
  "nbformat": 4,
