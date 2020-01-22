@@ -16,19 +16,8 @@ It is an `xarray` wrapper and open source.
 Installation
 **************
 
-If you followed the `Getting Started` section, then you already have MetPy installed. 
+If you followed the `Getting Started` section, then you already have climpred installed. 
 
-Otherwise, you can install with conda
-
-.. code-block:: bash
-
-  conda install -c conda-forge climpred
-
-or pip
-
-.. code-block:: bash
-
-  pip install climpred
 
 What is it good for?
 ********************
