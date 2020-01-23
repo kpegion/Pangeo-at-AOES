@@ -42,7 +42,25 @@ Setting up Jupyter on COLA Servers
 
 8. Your Jupyter server should appear in your local browser.
 
-.. note:: If the Jupyter server does not appear or if you have password issues, you may need to go through the longer version of the `Jupyter Configuration <http://pangeo.io/setup_guides/hpc.html#configure-jupyter>`_
+9. In the upper right corner, you will see your current environemnt is `Python (aoes)`.  If it only says `Python`, click on `Python` and a menu will appear. Select `Python (aoes)`
 
-9. In the upper right corner, you will see your current environemnt is `Python (aoes)`
+Troubleshooting
+################
 
+1. If the Jupyter server does not appear or if you have password issues, you may need to go through the longer version of the `Jupyter Configuration <http://pangeo.io/setup_guides/hpc.html#configure-jupyter>`_
+
+2. Jypyter Notebook does not launch and gives the following error:
+
+.. warning::
+
+   Traceback (most recent call last):
+  File "/homes/sknapp4/.conda/envs/aoes/lib/python3.6/site-packages/traitlets/traitlets.py", line 528, in get
+    value = obj._trait_values[self.name]
+KeyError: 'allow_remote_access'
+
+.. note::
+  
+   Try launching Jupyter with the following commane
+
+   ```jupyter lab --no-browser --ip=`hostname` --port=8878```
+ 
