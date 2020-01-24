@@ -63,4 +63,10 @@ Troubleshooting
 
    If you get an Invalid Credentials error, check the messages on the screen where you launched `jupyter lab `
    Sometimes port 8878 is in use and it will find a different port.  The error messages will tell you which port you should use.
+ 
+   These errors messages look like:
+
+   jupyter lab --no-browser --ip=`hostname` --port=8878
+   [I 14:12:20.887 LabApp] The port 8878 is already in use, trying another port.
+
 
