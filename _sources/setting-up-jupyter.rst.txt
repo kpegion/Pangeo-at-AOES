@@ -38,11 +38,34 @@ Setting up Jupyter on COLA Servers
 
    ssh -N -L 8878:colaX.gmu.edu:8878 <YOURUSERNAME>@colaX.gmu.edu
 
+.. warning::  You must use the same Cola server in this step as you did in step 3.  If you do not, then you get an invalid credentials error when you attempt to login to Jupyter.
+
 7. Open your browser and go to http://localhost:8878. It will ask you to enter the password you created in step 1.
 
 8. Your Jupyter server should appear in your local browser.
 
-.. note:: If the Jupyter server does not appear or if you have password issues, you may need to go through the longer version of the `Jupyter Configuration <http://pangeo.io/setup_guides/hpc.html#configure-jupyter>`_
+9. In the upper right corner, you will see your current environemnt is `Python (aoes)`.  If it only says `Python`, click on `Python` and a menu will appear. Select `Python (aoes)`
 
-9. In the upper right corner, you will see your current environemnt is `Python (aoes)`
+Troubleshooting
+################
+
+.. warning::
+
+   Traceback (most recent call last):
+  File "/homes/sknapp4/.conda/envs/aoes/lib/python3.6/site-packages/traitlets/traitlets.py", line 528, in get
+    value = obj._trait_values[self.name]
+KeyError: 'allow_remote_access'
+
+.. note::
+  
+   Try launching Jupyter with the following commane
+
+   ```jupyter lab --no-browser --ip=`hostname` --port=8878```
+
+.. warning:: Invalid Credentials
+
+.. note::
+
+   Check the messages on the screen where you launched `jupyter lab `
+   Sometimes port 8878 is in use and it will find a different port.  The error messages will tell you which port you should use.
 

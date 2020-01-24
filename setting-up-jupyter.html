@@ -97,6 +97,7 @@
 <li class="toctree-l1"><a class="reference internal" href="why-python-and-pangeo.html#what-is-pangeo">What is Pangeo?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="setting-up-pangeo.html">Setting up Pangeo &amp; other Python Packages on the COLA Servers</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Setting up Jupyter on COLA Servers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Reading Data</span></p>
 <ul>
@@ -260,17 +261,39 @@ jupyter notebook password
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh -N -L <span class="m">8878</span>:colaX.gmu.edu:8878 &lt;YOURUSERNAME&gt;@colaX.gmu.edu
 </pre></div>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You must use the same Cola server in this step as you did in step 3.  If you do not, then you get an invalid credentials error when you attempt to login to Jupyter.</p>
+</div>
 <ol class="arabic simple" start="7">
 <li><p>Open your browser and go to <a class="reference external" href="http://localhost:8878">http://localhost:8878</a>. It will ask you to enter the password you created in step 1.</p></li>
 <li><p>Your Jupyter server should appear in your local browser.</p></li>
+<li><p>In the upper right corner, you will see your current environemnt is <cite>Python (aoes)</cite>.  If it only says <cite>Python</cite>, click on <cite>Python</cite> and a menu will appear. Select <cite>Python (aoes)</cite></p></li>
 </ol>
+</div>
+<div class="section" id="troubleshooting">
+<h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Traceback (most recent call last):</p>
+</div>
+<p>  File “/homes/sknapp4/.conda/envs/aoes/lib/python3.6/site-packages/traitlets/traitlets.py”, line 528, in get
+    value = obj._trait_values[self.name]
+KeyError: ‘allow_remote_access’</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If the Jupyter server does not appear or if you have password issues, you may need to go through the longer version of the <a class="reference external" href="http://pangeo.io/setup_guides/hpc.html#configure-jupyter">Jupyter Configuration</a></p>
+<p>Try launching Jupyter with the following commane</p>
+<p><code class="docutils literal notranslate"><span class="pre">`jupyter</span> <span class="pre">lab</span> <span class="pre">--no-browser</span> <span class="pre">--ip=`hostname`</span> <span class="pre">--port=8878`</span></code></p>
 </div>
-<ol class="arabic simple" start="9">
-<li><p>In the upper right corner, you will see your current environemnt is <cite>Python (aoes)</cite></p></li>
-</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Invalid Credentials</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Check the messages on the screen where you launched <a href="#id1"><span class="problematic" id="id2">`</span></a>jupyter lab `
+Sometimes port 8878 is in use and it will find a different port.  The error messages will tell you which port you should use.</p>
+</div>
 </div>
 
 
