@@ -92,4 +92,4 @@ The examples are also generally relevant for climate data analysis.  Therefore, 
    :maxdepth: 1
    :caption: Get Involved
 
-   external.rst
+   get-involved.rst
