@@ -31,40 +31,34 @@ Here is what you need to do:
 
 1. Make sure your version of the Pangeo-at-AOES repository is up to date with the version on Github
 
-   .. code-block:: bash
-   n
+.. code-block:: bash
    git pull master
 
 2. Create a new branch
 
-   .. code-block:: bash
-
+.. code-block:: bash
    git clone my-branch
 
 3. Switch to your new branch
 
-   .. code-block:: bash
-
+.. code-block:: bash
    git branch my-branch
 
 4. Make your changes and additions to the documents
 
 5. If you created any new files,
 
-   .. code-block:: bash
-
+.. code-block:: bash
    git add new-file.rst
 
 6. Commit your changes in your branch and provide a short explanation
 
-   .. code-block:: bash
-
+.. code-block:: bash
    git commit -a -m 'added file new-file.rst'
 
 7. Push your changes to your branch in github
 
-   .. code-block:: bash
-
+.. code-block:: bash
    git push origin my-branch
 
 8. Go to the repository in Github and create a Pull Request (PR)
