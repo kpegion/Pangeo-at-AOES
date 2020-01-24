@@ -86,3 +86,10 @@ The examples are also generally relevant for climate data analysis.  Therefore, 
    :caption: External Tutorial
 
    external.rst
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Get Involved
+
+   external.rst

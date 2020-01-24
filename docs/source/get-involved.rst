@@ -1,9 +1,5 @@
-How to Get Involved and Contribute
-#####################################
-
-
 AOES Python Club
-*****************
+##################
 
 AOES has a weekly Python club. It is open to all AOES students, faculty, and staff and is entirely volunteer. There is no need to sign up.  Just come, learn new things, and help others.
 
@@ -21,13 +17,13 @@ Spring 2020 Dates: 2/3, 2/7, 2/17, 2/22, 3/2, 3/6, 3/16, 3/20, 3/23, 3/27, 4/6, 
 Volunteer facilitators are reqeusted for each session. The job of the facilitator is to identify who wants to present their tools & tips or their problems for that session, lead the club meeting, and provide a written summary including  reccomendations for additional information to be added to the documentation.
 
 Identify Issues
-******************
+################
 
 As you read and use the website and identify issues that need to be corrected or additions that are needed, you can go to the Issues tab in the Github Repository (https://github.com/kpegion/Pangeo-at-AOES) and indicate new issues.
 
 
 Contribute to the Github Repository
-************************************
+###################################
 
 Contribute new information and/or provide corrections in the Pangeo-at-AOES github repository.  Let's bring together our collective knowledge as a community resource in AOES and beyond!
 
