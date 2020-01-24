@@ -9,6 +9,7 @@ dependencies:
   - netcdf4=1.5.1.1
   - metpy
   - numpy
+  - climpred
   - cfgrib
   - scipy
   - xarray>=0.14.1
@@ -19,5 +20,3 @@ dependencies:
   - tqdm
   - ipywidgets
   - pip
-  - pip:
-      - git+https://github.com/bradyrx/climpred
