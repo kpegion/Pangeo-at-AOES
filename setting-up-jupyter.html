@@ -263,7 +263,7 @@ jupyter notebook password
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>You must use the same Cola server in this step as you did in step 3.  If you do not, then you get an invalid credentials error when you attempt to login to Jupyter.</p>
+<p>You must use the same COLA server in this step as you did in step 3.  If you do not, then you get an invalid credentials error when you attempt to login to Jupyter.</p>
 </div>
 <ol class="arabic simple" start="7">
 <li><p>Open your browser and go to <a class="reference external" href="http://localhost:8878">http://localhost:8878</a>. It will ask you to enter the password you created in step 1.</p></li>
@@ -280,11 +280,10 @@ jupyter notebook password
 <p>  File “/homes/sknapp4/.conda/envs/aoes/lib/python3.6/site-packages/traitlets/traitlets.py”, line 528, in get
     value = obj._trait_values[self.name]
 KeyError: ‘allow_remote_access’</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Try launching Jupyter with the following commane</p>
+<blockquote>
+<div><p>Try launching Jupyter with the following commane</p>
 <p><code class="docutils literal notranslate"><span class="pre">`jupyter</span> <span class="pre">lab</span> <span class="pre">--no-browser</span> <span class="pre">--ip=`hostname`</span> <span class="pre">--port=8878`</span></code></p>
-</div>
+</div></blockquote>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Invalid Credentials</p>

@@ -38,7 +38,7 @@ Setting up Jupyter on COLA Servers
 
    ssh -N -L 8878:colaX.gmu.edu:8878 <YOURUSERNAME>@colaX.gmu.edu
 
-.. warning::  You must use the same Cola server in this step as you did in step 3.  If you do not, then you get an invalid credentials error when you attempt to login to Jupyter.
+.. warning::  You must use the same COLA server in this step as you did in step 3.  If you do not, then you get an invalid credentials error when you attempt to login to Jupyter.
 
 7. Open your browser and go to http://localhost:8878. It will ask you to enter the password you created in step 1.
 
@@ -56,8 +56,6 @@ Troubleshooting
     value = obj._trait_values[self.name]
 KeyError: 'allow_remote_access'
 
-.. note::
-  
    Try launching Jupyter with the following commane
 
    ```jupyter lab --no-browser --ip=`hostname` --port=8878```
