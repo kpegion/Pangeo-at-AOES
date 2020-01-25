@@ -5,7 +5,8 @@
 
 Welcome to Pangeo at AOES
 ==========================================
-`Gitter<https://badges.gitter.im/Pangeo-at-AOES/community.svg)](https://gitter.im/Pangeo-at-AOES/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge>`_
+
+`Gitter <https://badges.gitter.im/Pangeo-at-AOES/community.svg><https://gitter.im/Pangeo-at-AOES/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge>`_
 
 This is a collection of information and example Jupyter Notebooks, for using the Python and the Pangeo Software stack for data analysis.  This set of examples is specifically designed for the Mason AOES/COLA Servers, datasets available on our servers, and use cases around common data analyses used by our students and faculty.
 

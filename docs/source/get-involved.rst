@@ -17,7 +17,7 @@ Python Club Meets every ther week during the semester on Mon @ Noon and Fri @ no
 
 Spring 2020 Dates: 2/3, 2/7, 2/17, 2/22, 3/2, 3/6, 3/16, 3/20, 3/23, 3/27, 4/6, 4/10, 4/20, 4/24, 4/4, 4/8
 
-Volunteer facilitators are reqeusted for each session. The job of the facilitator is to identify who wants to present their tools & tips or their problems for that session, lead the club meeting, and provide a written summary including  reccomendations for additional information to be added to the documentation on `Gitter<https://badges.gitter.im/Pangeo-at-AOES/community.svg)](https://gitter.im/Pangeo-at-AOES/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge>`_
+Volunteer facilitators are reqeusted for each session. The job of the facilitator is to identify who wants to present their tools & tips or their problems for that session, lead the club meeting, and provide a written summary including  reccomendations for additional information to be added to the documentation on `Gitter <https://badges.gitter.im/Pangeo-at-AOES/community.svg><https://gitter.im/Pangeo-at-AOES/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge>`_
 
 Identify Issues
 ################
