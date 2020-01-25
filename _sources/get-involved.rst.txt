@@ -17,7 +17,22 @@ Python Club Meets every ther week during the semester on Mon @ Noon and Fri @ no
 
 Spring 2020 Dates: 2/3, 2/7, 2/17, 2/22, 3/2, 3/6, 3/16, 3/20, 3/23, 3/27, 4/6, 4/10, 4/20, 4/24, 4/4, 4/8
 
-Volunteer facilitators are reqeusted for each session. The job of the facilitator is to identify who wants to present their tools & tips or their problems for that session, lead the club meeting, and provide a written summary including  reccomendations for additional information to be added to the documentation on `Gitter <https://badges.gitter.im/Pangeo-at-AOES/community.svg><https://gitter.im/Pangeo-at-AOES/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge>`_
+Volunteer facilitators are reqeusted for each session. The job of the facilitator is to identify who wants to present their tools & tips or their problems for that session, lead the club meeting, and provide a written summary including  reccomendations for additional information to be added to the documentation on Gitter
+
+.. image:: https://badges.gitter.im/Pangeo-at-AOES/community.svg
+   :alt: Join the chat at https://gitter.im/Pangeo-at-AOES/community
+   :target: https://gitter.im/Pangeo-at-AOES/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
+
+
+Join the Converation on Gitter
+###############################
+
+This is where information from Python Club Meetings will be posted and a place to further discuss things that arise in Python Club.  You can also reach out to the AOES Python Club outside of club meetings to discuss Python issues and Ideas, help each other, and volunteer to facilitate or present at a meeting.
+
+.. image:: https://badges.gitter.im/Pangeo-at-AOES/community.svg
+   :alt: Join the chat at https://gitter.im/Pangeo-at-AOES/community
+   :target: https://gitter.im/Pangeo-at-AOES/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
+
 
 Identify Issues
 ################
