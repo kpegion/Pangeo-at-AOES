@@ -230,14 +230,18 @@
 <div class="section" id="aoes-python-club">
 <h1>AOES Python Club<a class="headerlink" href="#aoes-python-club" title="Permalink to this headline">¶</a></h1>
 <p>AOES has a weekly Python club. It is open to all AOES students, faculty, and staff and is entirely volunteer. There is no need to sign up.  Just come, learn new things, and help others.</p>
-<p>The meetings consist of:
-a) Presenting tools and tips
-Did you figure out something that took you awhile?  Did you learn about a Python package that could be useful?  Share your knowledge with the group</p>
-<p>b) Problem Solving
-Are you stuck on a data analysis problem in Python?  Present your problem to the group and we will help you solve it.</p>
+<p>The meetings consist of:</p>
+<ol class="loweralpha simple">
+<li><p>Presenting tools and tips</p></li>
+</ol>
+<p>Did you figure out something that took you awhile?  Did you learn about a Python package that could be useful?  Share your knowledge with the group</p>
+<ol class="loweralpha simple" start="2">
+<li><p>Problem Solving</p></li>
+</ol>
+<p>Are you stuck on a data analysis problem in Python?  Present your problem to the group and we will help you solve it.</p>
 <p>Python Club Meets every ther week during the semester on Mon &#64; Noon and Fri &#64; noon in the Clim Lab</p>
 <p>Spring 2020 Dates: 2/3, 2/7, 2/17, 2/22, 3/2, 3/6, 3/16, 3/20, 3/23, 3/27, 4/6, 4/10, 4/20, 4/24, 4/4, 4/8</p>
-<p>Volunteer facilitators are reqeusted for each session. The job of the facilitator is to identify who wants to present their tools &amp; tips or their problems for that session, lead the club meeting, and provide a written summary including  reccomendations for additional information to be added to the documentation.</p>
+<p>Volunteer facilitators are reqeusted for each session. The job of the facilitator is to identify who wants to present their tools &amp; tips or their problems for that session, lead the club meeting, and provide a written summary including  reccomendations for additional information to be added to the documentation on <a href="#id1"><span class="problematic" id="id2">`Gitter &lt;https://badges.gitter.im/Pangeo-at-AOES/community.svg&gt;&lt;https://gitter.im/Pangeo-at-AOES/community?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&gt;`_</span></a></p>
 </div>
 <div class="section" id="identify-issues">
 <h1>Identify Issues<a class="headerlink" href="#identify-issues" title="Permalink to this headline">¶</a></h1>
@@ -250,22 +254,40 @@ Are you stuck on a data analysis problem in Python?  Present your problem to the
 <ol class="arabic simple">
 <li><p>Make sure your version of the Pangeo-at-AOES repository is up to date with the version on Github</p></li>
 </ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git pull master
+</pre></div>
+</div>
 <ol class="arabic simple" start="2">
 <li><p>Create a new branch</p></li>
 </ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone my-branch
+</pre></div>
+</div>
 <ol class="arabic simple" start="3">
 <li><p>Switch to your new branch</p></li>
 </ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git branch my-branch
+</pre></div>
+</div>
 <ol class="arabic simple" start="4">
 <li><p>Make your changes and additions to the documents</p></li>
 <li><p>If you created any new files,</p></li>
 </ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add new-file.rst
+</pre></div>
+</div>
 <ol class="arabic simple" start="6">
 <li><p>Commit your changes in your branch and provide a short explanation</p></li>
 </ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git commit -a -m <span class="s1">&#39;added file new-file.rst&#39;</span>
+</pre></div>
+</div>
 <ol class="arabic simple" start="7">
 <li><p>Push your changes to your branch in github</p></li>
 </ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git push origin my-branch
+</pre></div>
+</div>
 <ol class="arabic" start="8">
 <li><p>Go to the repository in Github and create a Pull Request (PR)</p>
 <p><a class="reference external" href="https://github.com/kpegion/Pangeo-at-AOES">https://github.com/kpegion/Pangeo-at-AOES</a>
