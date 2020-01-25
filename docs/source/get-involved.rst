@@ -4,10 +4,13 @@ AOES Python Club
 AOES has a weekly Python club. It is open to all AOES students, faculty, and staff and is entirely volunteer. There is no need to sign up.  Just come, learn new things, and help others.
 
 The meetings consist of:
+
 a) Presenting tools and tips
+
 Did you figure out something that took you awhile?  Did you learn about a Python package that could be useful?  Share your knowledge with the group
 
 b) Problem Solving 
+
 Are you stuck on a data analysis problem in Python?  Present your problem to the group and we will help you solve it.
 
 Python Club Meets every ther week during the semester on Mon @ Noon and Fri @ noon in the Clim Lab
@@ -32,16 +35,19 @@ Here is what you need to do:
 1. Make sure your version of the Pangeo-at-AOES repository is up to date with the version on Github
 
 .. code-block:: bash
+
    git pull master
 
 2. Create a new branch
 
 .. code-block:: bash
+
    git clone my-branch
 
 3. Switch to your new branch
 
 .. code-block:: bash
+
    git branch my-branch
 
 4. Make your changes and additions to the documents
@@ -49,16 +55,19 @@ Here is what you need to do:
 5. If you created any new files,
 
 .. code-block:: bash
+
    git add new-file.rst
 
 6. Commit your changes in your branch and provide a short explanation
 
 .. code-block:: bash
+
    git commit -a -m 'added file new-file.rst'
 
 7. Push your changes to your branch in github
 
 .. code-block:: bash
+
    git push origin my-branch
 
 8. Go to the repository in Github and create a Pull Request (PR)
