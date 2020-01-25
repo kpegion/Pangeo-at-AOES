@@ -13,18 +13,18 @@ b) Problem Solving
 
 Are you stuck on a data analysis problem in Python?  Present your problem to the group and we will help you solve it.
 
-Python Club Meets every ther week during the semester on Mon @ Noon and Fri @ noon in the Clim Lab
+Meeting Days/Times
+*******************
+
+Python Club Meets every other week during the semester on Mon @ Noon and Fri @ noon in the Clim Lab
 
 Spring 2020 Dates: 2/3, 2/7, 2/17, 2/22, 3/2, 3/6, 3/16, 3/20, 3/23, 3/27, 4/6, 4/10, 4/20, 4/24, 4/4, 4/8
 
-Volunteer facilitators are reqeusted for each session. The job of the facilitator is to identify who wants to present their tools & tips or their problems for that session, lead the club meeting, and provide a written summary including  reccomendations for additional information to be added to the documentation on Gitter
+Volunteer to facilitate 
+************************
+The club meetings are intended to be an AOES community driven effort, so everyone should take a turn contributing.  The job of the facilitator is to identify who wants to present their tools & tips or their problems for that session and provide a written summary, including recommendations for additional information or corrections to be added to the documentation.  Summaries should be posted to Gitter (see below). 
 
-.. image:: https://badges.gitter.im/Pangeo-at-AOES/community.svg
-   :alt: Join the chat at https://gitter.im/Pangeo-at-AOES/community
-   :target: https://gitter.im/Pangeo-at-AOES/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
-
-
-Join the Converation on Gitter
+Join the Conversation on Gitter
 ###############################
 
 This is where information from Python Club Meetings will be posted and a place to further discuss things that arise in Python Club.  You can also reach out to the AOES Python Club outside of club meetings to discuss Python issues and Ideas, help each other, and volunteer to facilitate or present at a meeting.
@@ -90,3 +90,7 @@ Here is what you need to do:
    https://github.com/kpegion/Pangeo-at-AOES
    Click on Pull requests and create a new one with your branch.  
    This will notify me that you have additions or updates for the repository.
+
+.. note:: Need help to Contribute?
+   Want to contribute to the repository, but feeling unsure about it?  Contriibutions from all of AOES are welcome!
+   Contact Kathy and I will help you get started as a contributor.
