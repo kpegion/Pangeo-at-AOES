@@ -39,10 +39,15 @@ Be Inclusive
 --------------
 
 Treating others with respect is more than just "don't harass", it means creating an environment where people of all backgrounds and personalities feel comfortable and welcome.  This includes:
+
 * Being conscious of how we speak to each other
+
 * Leaving space for everyone's voice
+
 * Not interrupting or talking over others
+
 * Not dominating the conversation
+
 * Critiquing ideas rather than individuals
 
 
