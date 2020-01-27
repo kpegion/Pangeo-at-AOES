@@ -16,9 +16,9 @@ Are you stuck on a data analysis problem in Python?  Present your problem to the
 Meeting Days/Times
 *******************
 
-Python Club Meets every other week during the semester on Mon @ Noon and Fri @ noon in the Clim Lab
+Python Club Meets every other week during the semester on Mon @ Noon and Fri @ noon in the Clim Lab, starting Feb 3
 
-Spring 2020 Dates: 2/3, 2/7, 2/17, 2/22, 3/2, 3/6, 3/16, 3/20, 3/23, 3/27, 4/6, 4/10, 4/20, 4/24, 4/4, 4/8
+Spring 2020 Dates: 2/3, 2/7, 2/17, 2/22, 3/2, 3/6, 3/16, 3/20, 3/30, 4/3, 4/13, 4/17, 4/27, 5/1
 
 Volunteer to facilitate 
 ************************
