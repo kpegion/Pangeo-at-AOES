@@ -32,7 +32,7 @@ AOES Python club is is a respectful and inclusive environment, welcoming to all 
 Respect Others
 ---------------
 
-All participants in AOES Python Club are expected to treat other participants with respect regardless of gender, gender identity or expression, sexual orientation, disability, physical appearance, age, body size, race, religion, national origin, ethnicity, level of experience, political affiliation, veteran status, pregnancy, genetic information, as well as any other characteristic protected under state or federal law, or University Policy. Harassment in any form will not be toloerated.  Additionally, sexual language and imagery is not appropriate.  Note: Anyone at Mason who advises or supervises at Mason is a mandatory reporter of harassment or discrimination.
+All participants in AOES Python Club are expected to treat other participants with respect regardless of gender, gender identity or expression, sexual orientation, disability, physical appearance, age, body size, race, religion, national origin, ethnicity, level of experience, political affiliation, veteran status, pregnancy, genetic information, as well as any other characteristic protected under state or federal law, or University Policy. Harassment in any form will not be toloerated.  Additionally, sexual language and imagery is not appropriate.  Note: Mason employees are mandatory reporters of harassment or discrimination.
 
 
 Be Inclusive
