@@ -24,6 +24,28 @@ Volunteer to facilitate
 ************************
 The club meetings are intended to be an AOES community driven effort, so everyone should take a turn contributing.  The job of the facilitator is to identify who wants to present their tools & tips or their problems for that session and provide a written summary, including recommendations for additional information or corrections to be added to the documentation.  Summaries should be posted to Gitter (see below). 
 
+Code of Conduct
+*****************
+
+AOES Python club is is a respectful and inclusive environment, welcoming to all participants.  It is a community in which we support, help, and learn from each other.  Our code of conduct is designed to create such an environment.  
+
+Respect Others
+---------------
+
+All participants in AOES Python Club are expected to treat other participants with respect regardless of gender, gender identity or expression, sexual orientation, disability, physical appearance, age, body size, race, religion, national origin, ethnicity, level of experience, political affiliation, veteran status, pregnancy, genetic information, as well as any other characteristic protected under state or federal law, or University Policy. Harassment in any form will not be toloerated.  Additionally, sexual language and imagery is not appropriate.  Note: Anyone at Mason who advises or supervises at Mason is a mandatory reporter of harassment or discrimination.
+
+
+Be Inclusive
+--------------
+
+Treating others with respect is more than just "don't harass", it means creating an environment where people of all backgrounds and personalities feel comfortable and welcome.  This includes:
+* Being conscious of how we speak to each other
+* Leaving space for everyone's voice
+* Not interrupting or talking over others
+* Not dominating the conversation
+* Critiquing ideas rather than individuals
+
+
 Join the Conversation on Gitter
 ###############################
 
