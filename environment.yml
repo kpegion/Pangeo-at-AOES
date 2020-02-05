@@ -19,4 +19,5 @@ dependencies:
   - matplotlib
   - tqdm
   - ipywidgets
+  - seaborn
   - pip
