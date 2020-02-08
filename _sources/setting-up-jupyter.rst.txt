@@ -57,7 +57,7 @@ Troubleshooting
 
    Try launching Jupyter with the following command
 
-   ```jupyter lab --no-browser --ip=0.0.0.0 --port=8878```
+   jupyter lab --no-browser --ip='0.0.0.0' --port=8878
 
 .. note::
 

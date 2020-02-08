@@ -276,8 +276,8 @@ div.nboutput.container div.prompt pre {
 div.nbinput.container div.prompt,
 div.nboutput.container div.prompt {
     min-width: 5ex;
-    padding-top: 0.4em;
-    padding-right: 0.4em;
+    padding-top: 0.3rem;
+    padding-right: 0.3rem;
     text-align: right;
     flex: 0;
 }
@@ -301,7 +301,6 @@ div.nboutput.container div.prompt pre {
 /* input/output area */
 div.nbinput.container div.input_area,
 div.nboutput.container div.output_area {
-    padding: 0.4em;
     -webkit-flex: 1;
     flex: 1;
     overflow: auto;
@@ -374,6 +373,27 @@ div.nboutput.container div.output_area.stderr {
 
 .ansi-bold { font-weight: bold; }
 .ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 0.3rem;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
 
 /* Some additional styling taken form the Jupyter notebook CSS */
 div.rendered_html table {
@@ -466,7 +486,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <p>Read the data using <code class="docutils literal notranslate"><span class="pre">xarray</span></code> <code class="docutils literal notranslate"><span class="pre">open_dataset</span></code> <a class="reference external" href="http://xarray.pydata.org/en/stable/generated/xarray.open_dataset.html">http://xarray.pydata.org/en/stable/generated/xarray.open_dataset.html</a></p>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
@@ -475,9 +495,97 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">KeyError</span>                                  Traceback (most recent call last)
+<span class="ansi-green-fg">~/.conda/envs/aoes/lib/python3.6/site-packages/xarray/backends/file_manager.py</span> in <span class="ansi-cyan-fg">_acquire_with_cache_info</span><span class="ansi-blue-fg">(self, needs_lock)</span>
+<span class="ansi-green-intense-fg ansi-bold">    197</span>             <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 198</span><span class="ansi-red-fg">                 </span>file <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_cache<span class="ansi-blue-fg">[</span>self<span class="ansi-blue-fg">.</span>_key<span class="ansi-blue-fg">]</span>
+<span class="ansi-green-intense-fg ansi-bold">    199</span>             <span class="ansi-green-fg">except</span> KeyError<span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">~/.conda/envs/aoes/lib/python3.6/site-packages/xarray/backends/lru_cache.py</span> in <span class="ansi-cyan-fg">__getitem__</span><span class="ansi-blue-fg">(self, key)</span>
+<span class="ansi-green-intense-fg ansi-bold">     52</span>         <span class="ansi-green-fg">with</span> self<span class="ansi-blue-fg">.</span>_lock<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">---&gt; 53</span><span class="ansi-red-fg">             </span>value <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_cache<span class="ansi-blue-fg">[</span>key<span class="ansi-blue-fg">]</span>
+<span class="ansi-green-intense-fg ansi-bold">     54</span>             self<span class="ansi-blue-fg">.</span>_cache<span class="ansi-blue-fg">.</span>move_to_end<span class="ansi-blue-fg">(</span>key<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">KeyError</span>: [&lt;class &#39;netCDF4._netCDF4.Dataset&#39;&gt;, (&#39;/shared/cmip5/data/rcp45/atmos/mon/Amon/tas/NCAR.CCSM4/r1i1p1/tas_Amon_CCSM4_rcp45_r1i1p1_200601-210012.nc&#39;,), &#39;r&#39;, ((&#39;clobber&#39;, True), (&#39;diskless&#39;, False), (&#39;format&#39;, &#39;NETCDF4&#39;), (&#39;persist&#39;, False))]
+
+During handling of the above exception, another exception occurred:
+
+<span class="ansi-red-fg">FileNotFoundError</span>                         Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-3-c835b6385220&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>ds<span class="ansi-blue-fg">=</span>xr<span class="ansi-blue-fg">.</span>open_dataset<span class="ansi-blue-fg">(</span>path<span class="ansi-blue-fg">+</span>fname<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">~/.conda/envs/aoes/lib/python3.6/site-packages/xarray/backends/api.py</span> in <span class="ansi-cyan-fg">open_dataset</span><span class="ansi-blue-fg">(filename_or_obj, group, decode_cf, mask_and_scale, decode_times, autoclose, concat_characters, decode_coords, engine, chunks, lock, cache, drop_variables, backend_kwargs, use_cftime)</span>
+<span class="ansi-green-intense-fg ansi-bold">    497</span>         <span class="ansi-green-fg">if</span> engine <span class="ansi-blue-fg">==</span> <span class="ansi-blue-fg">&#34;netcdf4&#34;</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    498</span>             store = backends.NetCDF4DataStore.open(
+<span class="ansi-green-fg">--&gt; 499</span><span class="ansi-red-fg">                 </span>filename_or_obj<span class="ansi-blue-fg">,</span> group<span class="ansi-blue-fg">=</span>group<span class="ansi-blue-fg">,</span> lock<span class="ansi-blue-fg">=</span>lock<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>backend_kwargs
+<span class="ansi-green-intense-fg ansi-bold">    500</span>             )
+<span class="ansi-green-intense-fg ansi-bold">    501</span>         <span class="ansi-green-fg">elif</span> engine <span class="ansi-blue-fg">==</span> <span class="ansi-blue-fg">&#34;scipy&#34;</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">~/.conda/envs/aoes/lib/python3.6/site-packages/xarray/backends/netCDF4_.py</span> in <span class="ansi-cyan-fg">open</span><span class="ansi-blue-fg">(cls, filename, mode, format, group, clobber, diskless, persist, lock, lock_maker, autoclose)</span>
+<span class="ansi-green-intense-fg ansi-bold">    355</span>             netCDF4<span class="ansi-blue-fg">.</span>Dataset<span class="ansi-blue-fg">,</span> filename<span class="ansi-blue-fg">,</span> mode<span class="ansi-blue-fg">=</span>mode<span class="ansi-blue-fg">,</span> kwargs<span class="ansi-blue-fg">=</span>kwargs
+<span class="ansi-green-intense-fg ansi-bold">    356</span>         )
+<span class="ansi-green-fg">--&gt; 357</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> cls<span class="ansi-blue-fg">(</span>manager<span class="ansi-blue-fg">,</span> group<span class="ansi-blue-fg">=</span>group<span class="ansi-blue-fg">,</span> mode<span class="ansi-blue-fg">=</span>mode<span class="ansi-blue-fg">,</span> lock<span class="ansi-blue-fg">=</span>lock<span class="ansi-blue-fg">,</span> autoclose<span class="ansi-blue-fg">=</span>autoclose<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    358</span>
+<span class="ansi-green-intense-fg ansi-bold">    359</span>     <span class="ansi-green-fg">def</span> _acquire<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> needs_lock<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">~/.conda/envs/aoes/lib/python3.6/site-packages/xarray/backends/netCDF4_.py</span> in <span class="ansi-cyan-fg">__init__</span><span class="ansi-blue-fg">(self, manager, group, mode, lock, autoclose)</span>
+<span class="ansi-green-intense-fg ansi-bold">    311</span>         self<span class="ansi-blue-fg">.</span>_group <span class="ansi-blue-fg">=</span> group
+<span class="ansi-green-intense-fg ansi-bold">    312</span>         self<span class="ansi-blue-fg">.</span>_mode <span class="ansi-blue-fg">=</span> mode
+<span class="ansi-green-fg">--&gt; 313</span><span class="ansi-red-fg">         </span>self<span class="ansi-blue-fg">.</span>format <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>ds<span class="ansi-blue-fg">.</span>data_model
+<span class="ansi-green-intense-fg ansi-bold">    314</span>         self<span class="ansi-blue-fg">.</span>_filename <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>ds<span class="ansi-blue-fg">.</span>filepath<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    315</span>         self<span class="ansi-blue-fg">.</span>is_remote <span class="ansi-blue-fg">=</span> is_remote_uri<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>_filename<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">~/.conda/envs/aoes/lib/python3.6/site-packages/xarray/backends/netCDF4_.py</span> in <span class="ansi-cyan-fg">ds</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-intense-fg ansi-bold">    364</span>     <span class="ansi-blue-fg">@</span>property
+<span class="ansi-green-intense-fg ansi-bold">    365</span>     <span class="ansi-green-fg">def</span> ds<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 366</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>_acquire<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    367</span>
+<span class="ansi-green-intense-fg ansi-bold">    368</span>     <span class="ansi-green-fg">def</span> open_store_variable<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> name<span class="ansi-blue-fg">,</span> var<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">~/.conda/envs/aoes/lib/python3.6/site-packages/xarray/backends/netCDF4_.py</span> in <span class="ansi-cyan-fg">_acquire</span><span class="ansi-blue-fg">(self, needs_lock)</span>
+<span class="ansi-green-intense-fg ansi-bold">    358</span>
+<span class="ansi-green-intense-fg ansi-bold">    359</span>     <span class="ansi-green-fg">def</span> _acquire<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> needs_lock<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 360</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">with</span> self<span class="ansi-blue-fg">.</span>_manager<span class="ansi-blue-fg">.</span>acquire_context<span class="ansi-blue-fg">(</span>needs_lock<span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">as</span> root<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    361</span>             ds <span class="ansi-blue-fg">=</span> _nc4_require_group<span class="ansi-blue-fg">(</span>root<span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">.</span>_group<span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">.</span>_mode<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    362</span>         <span class="ansi-green-fg">return</span> ds
+
+<span class="ansi-green-fg">~/.conda/envs/aoes/lib/python3.6/contextlib.py</span> in <span class="ansi-cyan-fg">__enter__</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-intense-fg ansi-bold">     79</span>     <span class="ansi-green-fg">def</span> __enter__<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">     80</span>         <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">---&gt; 81</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> next<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>gen<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     82</span>         <span class="ansi-green-fg">except</span> StopIteration<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">     83</span>             <span class="ansi-green-fg">raise</span> RuntimeError<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;generator didn&#39;t yield&#34;</span><span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">from</span> <span class="ansi-green-fg">None</span>
+
+<span class="ansi-green-fg">~/.conda/envs/aoes/lib/python3.6/site-packages/xarray/backends/file_manager.py</span> in <span class="ansi-cyan-fg">acquire_context</span><span class="ansi-blue-fg">(self, needs_lock)</span>
+<span class="ansi-green-intense-fg ansi-bold">    184</span>     <span class="ansi-green-fg">def</span> acquire_context<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> needs_lock<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    185</span>         <span class="ansi-blue-fg">&#34;&#34;&#34;Context manager for acquiring a file.&#34;&#34;&#34;</span>
+<span class="ansi-green-fg">--&gt; 186</span><span class="ansi-red-fg">         </span>file<span class="ansi-blue-fg">,</span> cached <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_acquire_with_cache_info<span class="ansi-blue-fg">(</span>needs_lock<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    187</span>         <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    188</span>             <span class="ansi-green-fg">yield</span> file
+
+<span class="ansi-green-fg">~/.conda/envs/aoes/lib/python3.6/site-packages/xarray/backends/file_manager.py</span> in <span class="ansi-cyan-fg">_acquire_with_cache_info</span><span class="ansi-blue-fg">(self, needs_lock)</span>
+<span class="ansi-green-intense-fg ansi-bold">    202</span>                     kwargs <span class="ansi-blue-fg">=</span> kwargs<span class="ansi-blue-fg">.</span>copy<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    203</span>                     kwargs<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">&#34;mode&#34;</span><span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_mode
+<span class="ansi-green-fg">--&gt; 204</span><span class="ansi-red-fg">                 </span>file <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_opener<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>self<span class="ansi-blue-fg">.</span>_args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    205</span>                 <span class="ansi-green-fg">if</span> self<span class="ansi-blue-fg">.</span>_mode <span class="ansi-blue-fg">==</span> <span class="ansi-blue-fg">&#34;w&#34;</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    206</span>                     <span class="ansi-red-fg"># ensure file doesn&#39;t get overriden when opened again</span>
+
+<span class="ansi-green-fg">netCDF4/_netCDF4.pyx</span> in <span class="ansi-cyan-fg">netCDF4._netCDF4.Dataset.__init__</span><span class="ansi-blue-fg">()</span>
+
+<span class="ansi-green-fg">netCDF4/_netCDF4.pyx</span> in <span class="ansi-cyan-fg">netCDF4._netCDF4._ensure_nc_success</span><span class="ansi-blue-fg">()</span>
+
+<span class="ansi-red-fg">FileNotFoundError</span>: [Errno 2] No such file or directory: b&#39;/shared/cmip5/data/rcp45/atmos/mon/Amon/tas/NCAR.CCSM4/r1i1p1/tas_Amon_CCSM4_rcp45_r1i1p1_200601-210012.nc&#39;
+</pre></div></div>
+</div>
 <p>When you read in data using <code class="docutils literal notranslate"><span class="pre">xarray</span></code>, it creates an object called an <code class="docutils literal notranslate"><span class="pre">xarray.Dataset</span></code> which consists of your data and all its metadata. If we print out our <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> which is called <code class="docutils literal notranslate"><span class="pre">ds</span></code>, its similar to doing a <code class="docutils literal notranslate"><span class="pre">ncdump</span> <span class="pre">-h</span></code> on a netcdf file. You can see all the dimensions, size, and attributes of the data in the file.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -485,64 +593,9 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
-</pre></div>
-</div>
-<div class="output_area rendered_html docutils container">
-<pre>&lt;xarray.Dataset&gt;
-Dimensions:    (bnds: 2, lat: 192, lon: 288, time: 1140)
-Coordinates:
-  * time       (time) object 2006-01-16 12:00:00 ... 2100-12-16 12:00:00
-  * lat        (lat) float64 -90.0 -89.06 -88.12 -87.17 ... 88.12 89.06 90.0
-  * lon        (lon) float64 0.0 1.25 2.5 3.75 5.0 ... 355.0 356.2 357.5 358.8
-    height     float64 ...
-Dimensions without coordinates: bnds
-Data variables:
-    time_bnds  (time, bnds) object ...
-    lat_bnds   (lat, bnds) float64 ...
-    lon_bnds   (lon, bnds) float64 ...
-    tas        (time, lat, lon) float32 ...
-Attributes:
-    institution:                  NCAR (National Center for Atmospheric Resea...
-    institute_id:                 NCAR
-    experiment_id:                rcp45
-    source:                       CCSM4
-    model_id:                     CCSM4
-    forcing:                      Sl GHG Vl SS Ds SA BC MD OC Oz AA
-    parent_experiment_id:         historical
-    parent_experiment_rip:        r1i1p1
-    branch_time:                  2005.0
-    contact:                      cesm_data@ucar.edu
-    references:                   Gent P. R., et.al. 2011: The Community Clim...
-    initialization_method:        1
-    physics_version:              1
-    tracking_id:                  0bf35136-b266-44d2-9078-f3081b83b6ad
-    acknowledgements:             The CESM project is supported by the Nation...
-    cesm_casename:                b40.rcp4_5.1deg.001
-    cesm_repotag:                 ccsm4_0_beta49
-    cesm_compset:                 BRCP45CN
-    resolution:                   f09_g16 (0.9x1.25_gx1v6)
-    forcing_note:                 Additional information on the external forc...
-    processed_by:                 strandwg on mirage0 at 20111021
-    processing_code_information:  Last Changed Rev: 428 Last Changed Date: 20...
-    product:                      output
-    experiment:                   RCP4.5
-    frequency:                    mon
-    creation_date:                2011-10-21T21:56:22Z
-    history:                      2011-10-21T21:56:22Z CMOR rewrote data to c...
-    Conventions:                  CF-1.4
-    project_id:                   CMIP5
-    table_id:                     Table Amon (26 July 2011) 976b7fd1d9e1be31d...
-    title:                        CCSM4 model output prepared for CMIP5 RCP4.5
-    parent_experiment:            historical
-    modeling_realm:               atmos
-    realization:                  1
-    cmor_version:                 2.7.1</pre></div>
-</div>
 <p>If you want to access just the surface air tempeature (tas) data itself, without all the gloal attributes, you can do that by supplying the name of the variable</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -550,57 +603,18 @@ Attributes:
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
-</pre></div>
-</div>
-<div class="output_area rendered_html docutils container">
-<pre>&lt;xarray.DataArray &#x27;tas&#x27; (time: 1140, lat: 192, lon: 288)&gt;
-[63037440 values with dtype=float32]
-Coordinates:
-  * time     (time) object 2006-01-16 12:00:00 ... 2100-12-16 12:00:00
-  * lat      (lat) float64 -90.0 -89.06 -88.12 -87.17 ... 87.17 88.12 89.06 90.0
-  * lon      (lon) float64 0.0 1.25 2.5 3.75 5.0 ... 355.0 356.2 357.5 358.8
-    height   float64 ...
-Attributes:
-    standard_name:     air_temperature
-    long_name:         Near-Surface Air Temperature
-    units:             K
-    original_name:     TREFHT
-    comment:           TREFHT no change
-    cell_methods:      time: mean (interval: 30 days)
-    cell_measures:     area: areacella
-    history:           2011-10-21T21:56:22Z altered by CMOR: Treated scalar d...
-    associated_files:  baseURL: http://cmip-pcmdi.llnl.gov/CMIP5/dataLocation...</pre></div>
-</div>
 <div class="line-block">
 <div class="line">Let’s make a very simple contour plot to convince ourselves that we indeed have surface air temperature data. 1. We will use the <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> <code class="docutils literal notranslate"><span class="pre">plt.contourf</span></code> function for a filed contour plot. It works very similar to Matlab plotting functions.</div>
 <div class="line">2. We can only make a contour plot with 2-D data (lat,lon) and we have 3-D (time,lat,lon), so we will need to access a single time using brackets notation. 3. We will want to add a colorbar to see that values are reasonable</div>
 </div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="s1">&#39;tas&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,:,:])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
 </pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-&lt;matplotlib.colorbar.Colorbar at 0x7fd3a88b5748&gt;
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/examples_read-netcdf_14_1.png" src="../_images/examples_read-netcdf_14_1.png" />
 </div>
 </div>
 <p>This is a very simple plot, but it looks like we have global temperature data. More details on how to plot maps, make nice lables, and colors, can be found in other examples.</p>
