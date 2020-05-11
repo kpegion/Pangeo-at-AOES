@@ -65,6 +65,7 @@ The examples are also generally relevant for climate data analysis.  Therefore, 
    :caption: Maps using Cartopy
 
    examples/cartopy-tutorial.ipynb
+   examples/multi-panel-cartopy.ipynb
 
 
 .. toctree::
