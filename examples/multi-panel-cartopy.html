@@ -119,13 +119,14 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Making multi-panel plots using <code class="docutils literal notranslate"><span class="pre">Cartopy</span></code></a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Data">Data</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#The-Subseasonal-Experiment-(SubX)">The Subseasonal Experiment (SubX)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Get-rid-of-the-extra-panels">Get rid of the extra panels</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Make-Consistent-contour-intervals-across-all-panels">Make Consistent contour intervals across all panels</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Add-a-single-colorbar-for-all-subplots-and-one-big-title-for-the-whole-page">Add a single colorbar for all subplots and one big title for the whole page</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Add-lat/lon-labels">Add lat/lon labels</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#Fix-the-spacing-so-lats/lons-and-colorbar-to-not-overlap">Fix the spacing so lats/lons and colorbar to not overlap</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#Single-page-with-mult-panels">Single page with mult-panels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Get-rid-of-the-extra-panels">Get rid of the extra panels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Make-Consistent-contour-intervals-across-all-panels">Make Consistent contour intervals across all panels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Add-a-single-colorbar-and-big-title">Add a single colorbar and big title</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Add-lat-lon-labels">Add lat-lon labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Fix-the-spacing">Fix the spacing</a></li>
 </ul>
 </li>
 </ul>
@@ -484,7 +485,7 @@ div.rendered_html tbody tr:hover {
 <p>SubX Forecasts are hosted locally on COLA computers at the following location: <code class="docutils literal notranslate"><span class="pre">/shared/subx/forecast/weekly/</span></code></p>
 <p>Specifically, we will use the forecast for 2m temperatures anomalies made on Apr 16, 2020, located in: <code class="docutils literal notranslate"><span class="pre">/shared/subx/forecast/weekly/20200416/data/fcst_20200416.anom.tas_2m.nc</span></code></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[64]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -502,7 +503,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <p>Set the path and filename</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[65]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -512,7 +513,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[66]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -522,7 +523,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <p>This dataset contains weekly forecasts for 2m temperature anomalies from each of the SubX Models and the multi-model ensemble (MME). These are listed as the Data Variables. The forecats have 4 times, corresponding to weeks 1, 2, 3, and 4.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[67]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -531,7 +532,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[67]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -869,7 +870,7 @@ dl.xr-attrs {
   stroke: currentColor;
   fill: currentColor;
 }
-</style><div class='xr-wrap'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-44362390-1f37-4a78-a4b5-f4b9cfcda409' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-44362390-1f37-4a78-a4b5-f4b9cfcda409' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>lat</span>: 181</li><li><span class='xr-has-index'>lon</span>: 360</li><li><span class='xr-has-index'>time</span>: 4</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-34847f29-6871-42fd-87ea-db2dbd3426a9' class='xr-section-summary-in' type='checkbox'  checked><label for='section-34847f29-6871-42fd-87ea-db2dbd3426a9' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>-90.0 -89.0 -88.0 ... 89.0 90.0</div><input id='attrs-16a478b7-8c8d-48ea-9f18-1b67eb6000e3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-16a478b7-8c8d-48ea-9f18-1b67eb6000e3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-28192b4c-a828-429b-9034-00e0a611e1fb' class='xr-var-data-in' type='checkbox'><label for='data-28192b4c-a828-429b-9034-00e0a611e1fb' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><pre class='xr-var-data'>array([-90., -89., -88., -87., -86., -85., -84., -83., -82., -81., -80., -79.,
+</style><div class='xr-wrap'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-91802ff8-91de-42c4-8611-442cbf70b7b8' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-91802ff8-91de-42c4-8611-442cbf70b7b8' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>lat</span>: 181</li><li><span class='xr-has-index'>lon</span>: 360</li><li><span class='xr-has-index'>time</span>: 4</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-5539b133-5db6-4ed8-8410-f72150b479ef' class='xr-section-summary-in' type='checkbox'  checked><label for='section-5539b133-5db6-4ed8-8410-f72150b479ef' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>-90.0 -89.0 -88.0 ... 89.0 90.0</div><input id='attrs-615241a5-658f-482e-9cd1-71d192c8d1bb' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-615241a5-658f-482e-9cd1-71d192c8d1bb' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4372ea20-0047-494c-a0c9-49ebaefe698c' class='xr-var-data-in' type='checkbox'><label for='data-4372ea20-0047-494c-a0c9-49ebaefe698c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><pre class='xr-var-data'>array([-90., -89., -88., -87., -86., -85., -84., -83., -82., -81., -80., -79.,
        -78., -77., -76., -75., -74., -73., -72., -71., -70., -69., -68., -67.,
        -66., -65., -64., -63., -62., -61., -60., -59., -58., -57., -56., -55.,
        -54., -53., -52., -51., -50., -49., -48., -47., -46., -45., -44., -43.,
@@ -884,13 +885,13 @@ dl.xr-attrs {
         54.,  55.,  56.,  57.,  58.,  59.,  60.,  61.,  62.,  63.,  64.,  65.,
         66.,  67.,  68.,  69.,  70.,  71.,  72.,  73.,  74.,  75.,  76.,  77.,
         78.,  79.,  80.,  81.,  82.,  83.,  84.,  85.,  86.,  87.,  88.,  89.,
-        90.], dtype=float32)</pre></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>0.0 1.0 2.0 ... 357.0 358.0 359.0</div><input id='attrs-cb77ce7d-e376-42c6-8a69-bfb16360f81f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-cb77ce7d-e376-42c6-8a69-bfb16360f81f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-13b85673-8812-4327-b8ba-9b6752f737df' class='xr-var-data-in' type='checkbox'><label for='data-13b85673-8812-4327-b8ba-9b6752f737df' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><pre class='xr-var-data'>array([  0.,   1.,   2., ..., 357., 358., 359.], dtype=float32)</pre></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-04-24 ... 2020-05-15</div><input id='attrs-50c25e83-31a1-4927-9534-bbb09d5fd95a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-50c25e83-31a1-4927-9534-bbb09d5fd95a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1016b363-8e9e-4720-bce4-fc46182a9f3b' class='xr-var-data-in' type='checkbox'><label for='data-1016b363-8e9e-4720-bce4-fc46182a9f3b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>long_name :</span></dt><dd>Time of measurements</dd></dl></div><pre class='xr-var-data'>array([&#x27;2020-04-24T00:00:00.000000000&#x27;, &#x27;2020-05-01T00:00:00.000000000&#x27;,
+        90.], dtype=float32)</pre></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>0.0 1.0 2.0 ... 357.0 358.0 359.0</div><input id='attrs-80e62224-596b-4e36-9520-9fa863c91f9f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-80e62224-596b-4e36-9520-9fa863c91f9f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4b5dfda6-1935-4657-8fe6-55c8b8e50dd4' class='xr-var-data-in' type='checkbox'><label for='data-4b5dfda6-1935-4657-8fe6-55c8b8e50dd4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><pre class='xr-var-data'>array([  0.,   1.,   2., ..., 357., 358., 359.], dtype=float32)</pre></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2020-04-24 ... 2020-05-15</div><input id='attrs-e3f5e18d-eaa0-4715-bb0d-83ef48a8e8b6' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e3f5e18d-eaa0-4715-bb0d-83ef48a8e8b6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-539e0470-e8fa-46fb-8196-5514fdb3d819' class='xr-var-data-in' type='checkbox'><label for='data-539e0470-e8fa-46fb-8196-5514fdb3d819' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>long_name :</span></dt><dd>Time of measurements</dd></dl></div><pre class='xr-var-data'>array([&#x27;2020-04-24T00:00:00.000000000&#x27;, &#x27;2020-05-01T00:00:00.000000000&#x27;,
        &#x27;2020-05-08T00:00:00.000000000&#x27;, &#x27;2020-05-15T00:00:00.000000000&#x27;],
-      dtype=&#x27;datetime64[ns]&#x27;)</pre></li></ul></div></li><li class='xr-section-item'><input id='section-3898bf4b-1662-46c3-aafd-4c7ee0b5bcdc' class='xr-section-summary-in' type='checkbox'  checked><label for='section-3898bf4b-1662-46c3-aafd-4c7ee0b5bcdc' class='xr-section-summary' >Data variables: <span>(7)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>GEOS_V2p1</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-ea268186-c3a6-4ecc-b72b-a1ddc6af4cdf' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ea268186-c3a6-4ecc-b72b-a1ddc6af4cdf' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-dd64c63e-2bfd-435d-a81e-3aad8fc30081' class='xr-var-data-in' type='checkbox'><label for='data-dd64c63e-2bfd-435d-a81e-3aad8fc30081' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>name :</span></dt><dd>GEOS_V2p1</dd><dt><span>long_name :</span></dt><dd>GMAO-GEOS_V2p1 20200411</dd><dt><span>units :</span></dt><dd>degC</dd></dl></div><pre class='xr-var-data'>[260640 values with dtype=float32]</pre></li><li class='xr-var-item'><div class='xr-var-name'><span>CCSM4</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-b69f4971-1665-4de0-b918-9e6e72fdd1e1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b69f4971-1665-4de0-b918-9e6e72fdd1e1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b602fde9-a6c3-4b33-b5cf-f0dc00ca9ccf' class='xr-var-data-in' type='checkbox'><label for='data-b602fde9-a6c3-4b33-b5cf-f0dc00ca9ccf' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>name :</span></dt><dd>CCSM4</dd><dt><span>long_name :</span></dt><dd>RSMAS-CCSM4 20200412</dd><dt><span>units :</span></dt><dd>degC</dd></dl></div><pre class='xr-var-data'>[260640 values with dtype=float32]</pre></li><li class='xr-var-item'><div class='xr-var-name'><span>FIMr1p1</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-292859ab-dadd-4496-be1f-c01ad8931d7f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-292859ab-dadd-4496-be1f-c01ad8931d7f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-19dbf9fb-1a7c-4c23-829d-8667d934d327' class='xr-var-data-in' type='checkbox'><label for='data-19dbf9fb-1a7c-4c23-829d-8667d934d327' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>name :</span></dt><dd>FIMr1p1</dd><dt><span>long_name :</span></dt><dd>ESRL-FIMr1p1 20200415</dd><dt><span>units :</span></dt><dd>degC</dd></dl></div><pre class='xr-var-data'>[260640 values with dtype=float32]</pre></li><li class='xr-var-item'><div class='xr-var-name'><span>GEPS6</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-4c82f2be-d036-49be-919f-91505d1afeaa' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4c82f2be-d036-49be-919f-91505d1afeaa' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e28d3c01-d007-4db5-a13d-2705fa3f6496' class='xr-var-data-in' type='checkbox'><label for='data-e28d3c01-d007-4db5-a13d-2705fa3f6496' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>name :</span></dt><dd>GEPS6</dd><dt><span>long_name :</span></dt><dd>ECCC-GEPS6 20200416</dd><dt><span>units :</span></dt><dd>degC</dd></dl></div><pre class='xr-var-data'>[260640 values with dtype=float32]</pre></li><li class='xr-var-item'><div class='xr-var-name'><span>NESM</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-d9e4e0a2-fe1d-41db-8871-9542da78dce0' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d9e4e0a2-fe1d-41db-8871-9542da78dce0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1c9b4e72-5fb2-4870-9dc2-8a87adfe07ac' class='xr-var-data-in' type='checkbox'><label for='data-1c9b4e72-5fb2-4870-9dc2-8a87adfe07ac' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>name :</span></dt><dd>NESM</dd><dt><span>long_name :</span></dt><dd>NRL-NESM 20200414 20200413 20200412 20200411</dd><dt><span>units :</span></dt><dd>degC</dd></dl></div><pre class='xr-var-data'>[260640 values with dtype=float32]</pre></li><li class='xr-var-item'><div class='xr-var-name'><span>GEFS</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-2a4dca4d-f4c8-4dac-b0b9-bffbef394acc' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-2a4dca4d-f4c8-4dac-b0b9-bffbef394acc' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d91a97b3-47fb-4d1a-9108-b6381fc7c745' class='xr-var-data-in' type='checkbox'><label for='data-d91a97b3-47fb-4d1a-9108-b6381fc7c745' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>name :</span></dt><dd>GEFS</dd><dt><span>long_name :</span></dt><dd>EMC-GEFS 20200415</dd><dt><span>units :</span></dt><dd>degC</dd></dl></div><pre class='xr-var-data'>[260640 values with dtype=float32]</pre></li><li class='xr-var-item'><div class='xr-var-name'><span>MME</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-c6790903-5e30-441d-b55c-4141be602f61' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c6790903-5e30-441d-b55c-4141be602f61' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3285a1bb-8bbc-410b-a3b6-414e14e2aca5' class='xr-var-data-in' type='checkbox'><label for='data-3285a1bb-8bbc-410b-a3b6-414e14e2aca5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>name :</span></dt><dd>MME</dd><dt><span>long_name :</span></dt><dd>MME</dd><dt><span>units :</span></dt><dd>degC</dd></dl></div><pre class='xr-var-data'>[260640 values with dtype=float32]</pre></li></ul></div></li><li class='xr-section-item'><input id='section-d152cda0-0817-4fab-9a31-9fcf42cbcaef' class='xr-section-summary-in' type='checkbox'  checked><label for='section-d152cda0-0817-4fab-9a31-9fcf42cbcaef' class='xr-section-summary' >Attributes: <span>(8)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>title :</span></dt><dd>SubX Weekly Forecast Anomalies</dd><dt><span>long_title :</span></dt><dd>SubX Weekly Forecast Anomalies</dd><dt><span>comments :</span></dt><dd>SubX project http://cola.gmu.edu/~kpegion/subx/</dd><dt><span>institution :</span></dt><dd>IRI</dd><dt><span>source :</span></dt><dd>SubX IRI</dd><dt><span>CreationDate :</span></dt><dd>2020/04/17 08:55:49</dd><dt><span>CreatedBy :</span></dt><dd>rfreelan</dd><dt><span>MatlabSource :</span></dt><dd>calcAnomsFCST</dd></dl></div></li></ul></div></div></div>
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></li></ul></div></li><li class='xr-section-item'><input id='section-74b79c07-70e3-4e55-84dd-4d718a432f26' class='xr-section-summary-in' type='checkbox'  checked><label for='section-74b79c07-70e3-4e55-84dd-4d718a432f26' class='xr-section-summary' >Data variables: <span>(7)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>GEOS_V2p1</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-e2ca81ca-5e67-441d-9136-c7ce1edc8d07' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e2ca81ca-5e67-441d-9136-c7ce1edc8d07' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9b4af37f-c3fc-4ee6-97d6-abcbde1be836' class='xr-var-data-in' type='checkbox'><label for='data-9b4af37f-c3fc-4ee6-97d6-abcbde1be836' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>name :</span></dt><dd>GEOS_V2p1</dd><dt><span>long_name :</span></dt><dd>GMAO-GEOS_V2p1 20200411</dd><dt><span>units :</span></dt><dd>degC</dd></dl></div><pre class='xr-var-data'>[260640 values with dtype=float32]</pre></li><li class='xr-var-item'><div class='xr-var-name'><span>CCSM4</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-dd786dcd-5057-49d9-8a4a-85a60607c72b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-dd786dcd-5057-49d9-8a4a-85a60607c72b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5317eb0b-3cda-4cac-9345-94f03a1c6c43' class='xr-var-data-in' type='checkbox'><label for='data-5317eb0b-3cda-4cac-9345-94f03a1c6c43' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>name :</span></dt><dd>CCSM4</dd><dt><span>long_name :</span></dt><dd>RSMAS-CCSM4 20200412</dd><dt><span>units :</span></dt><dd>degC</dd></dl></div><pre class='xr-var-data'>[260640 values with dtype=float32]</pre></li><li class='xr-var-item'><div class='xr-var-name'><span>FIMr1p1</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-eb5beab8-4e45-4dcd-8cf6-912d47069897' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-eb5beab8-4e45-4dcd-8cf6-912d47069897' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-47b33a40-3216-465b-b35b-ed3d94e6ccf9' class='xr-var-data-in' type='checkbox'><label for='data-47b33a40-3216-465b-b35b-ed3d94e6ccf9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>name :</span></dt><dd>FIMr1p1</dd><dt><span>long_name :</span></dt><dd>ESRL-FIMr1p1 20200415</dd><dt><span>units :</span></dt><dd>degC</dd></dl></div><pre class='xr-var-data'>[260640 values with dtype=float32]</pre></li><li class='xr-var-item'><div class='xr-var-name'><span>GEPS6</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-84b19ad2-24b4-4e4a-9b1d-f543dfc9becf' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-84b19ad2-24b4-4e4a-9b1d-f543dfc9becf' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-cb54379d-e9e1-47a3-96cf-67279e428b58' class='xr-var-data-in' type='checkbox'><label for='data-cb54379d-e9e1-47a3-96cf-67279e428b58' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>name :</span></dt><dd>GEPS6</dd><dt><span>long_name :</span></dt><dd>ECCC-GEPS6 20200416</dd><dt><span>units :</span></dt><dd>degC</dd></dl></div><pre class='xr-var-data'>[260640 values with dtype=float32]</pre></li><li class='xr-var-item'><div class='xr-var-name'><span>NESM</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-506ee598-4ecf-4d5d-b61e-74094e44e914' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-506ee598-4ecf-4d5d-b61e-74094e44e914' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-701ccf33-193c-406e-ae0f-6bc5a91f63f5' class='xr-var-data-in' type='checkbox'><label for='data-701ccf33-193c-406e-ae0f-6bc5a91f63f5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>name :</span></dt><dd>NESM</dd><dt><span>long_name :</span></dt><dd>NRL-NESM 20200414 20200413 20200412 20200411</dd><dt><span>units :</span></dt><dd>degC</dd></dl></div><pre class='xr-var-data'>[260640 values with dtype=float32]</pre></li><li class='xr-var-item'><div class='xr-var-name'><span>GEFS</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-4055139d-066e-48cd-ad2a-9a18c722b1e5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4055139d-066e-48cd-ad2a-9a18c722b1e5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f0aa93cb-50d0-47cc-8ccf-9d40f0937e7c' class='xr-var-data-in' type='checkbox'><label for='data-f0aa93cb-50d0-47cc-8ccf-9d40f0937e7c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>name :</span></dt><dd>GEFS</dd><dt><span>long_name :</span></dt><dd>EMC-GEFS 20200415</dd><dt><span>units :</span></dt><dd>degC</dd></dl></div><pre class='xr-var-data'>[260640 values with dtype=float32]</pre></li><li class='xr-var-item'><div class='xr-var-name'><span>MME</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-813268b4-14a9-4d4e-93f0-8255fa1f3ddd' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-813268b4-14a9-4d4e-93f0-8255fa1f3ddd' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1b98a852-3e52-465c-bf8d-7b580dfe0ad6' class='xr-var-data-in' type='checkbox'><label for='data-1b98a852-3e52-465c-bf8d-7b580dfe0ad6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>name :</span></dt><dd>MME</dd><dt><span>long_name :</span></dt><dd>MME</dd><dt><span>units :</span></dt><dd>degC</dd></dl></div><pre class='xr-var-data'>[260640 values with dtype=float32]</pre></li></ul></div></li><li class='xr-section-item'><input id='section-e42fbb0f-e063-46a1-b615-ebd64581ca05' class='xr-section-summary-in' type='checkbox'  checked><label for='section-e42fbb0f-e063-46a1-b615-ebd64581ca05' class='xr-section-summary' >Attributes: <span>(8)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>title :</span></dt><dd>SubX Weekly Forecast Anomalies</dd><dt><span>long_title :</span></dt><dd>SubX Weekly Forecast Anomalies</dd><dt><span>comments :</span></dt><dd>SubX project http://cola.gmu.edu/~kpegion/subx/</dd><dt><span>institution :</span></dt><dd>IRI</dd><dt><span>source :</span></dt><dd>SubX IRI</dd><dt><span>CreationDate :</span></dt><dd>2020/04/17 08:55:49</dd><dt><span>CreatedBy :</span></dt><dd>rfreelan</dd><dt><span>MatlabSource :</span></dt><dd>calcAnomsFCST</dd></dl></div></li></ul></div></div></div>
 </div>
 <p>Following our previous example (<code class="docutils literal notranslate"><span class="pre">Making</span> <span class="pre">maps</span> <span class="pre">using</span> <span class="pre">Cartopy</span></code>), we can make a map of the Multi-model Ensemble week 1 forecast using <code class="docutils literal notranslate"><span class="pre">Cartopy</span></code>.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[68]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -935,12 +936,16 @@ dl.xr-attrs {
 <img alt="../_images/examples_multi-panel-cartopy_11_0.png" src="../_images/examples_multi-panel-cartopy_11_0.png" />
 </div>
 </div>
+</div>
+</div>
+<div class="section" id="Single-page-with-mult-panels">
+<h2>Single page with mult-panels<a class="headerlink" href="#Single-page-with-mult-panels" title="Permalink to this headline">¶</a></h2>
 <p>Now let’s make a single page showing the forecast for week 1 for each model. To do that, we will need to divide the page into subplots using <code class="docutils literal notranslate"><span class="pre">plt.subplots</span></code>.</p>
 <ol class="arabic simple">
 <li><p>We need to get a list of all our models from the <code class="docutils literal notranslate"><span class="pre">xarray.Dataset</span></code>. You can see from this list that we have 7 models.</p></li>
 </ol>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[69]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -950,7 +955,7 @@ dl.xr-attrs {
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[69]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -962,7 +967,7 @@ dl.xr-attrs {
 <li><p>We need to define the number of rows and columns on our page. With 7 models, we will need to divide our page into 3 rows and 3 columns, even though we won’t use them all.</p></li>
 </ol>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[70]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -972,7 +977,7 @@ dl.xr-attrs {
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[58]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[71]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1015,10 +1020,10 @@ dl.xr-attrs {
 </div>
 </div>
 <div class="section" id="Get-rid-of-the-extra-panels">
-<h3>Get rid of the extra panels<a class="headerlink" href="#Get-rid-of-the-extra-panels" title="Permalink to this headline">¶</a></h3>
+<h2>Get rid of the extra panels<a class="headerlink" href="#Get-rid-of-the-extra-panels" title="Permalink to this headline">¶</a></h2>
 <p>Since we created a 3x3 grid of <code class="docutils literal notranslate"><span class="pre">GeoAxes</span></code>, the boxes for those axes appear even though we don’t want them. We can delete them.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[59]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[72]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1065,10 +1070,10 @@ dl.xr-attrs {
 </div>
 </div>
 <div class="section" id="Make-Consistent-contour-intervals-across-all-panels">
-<h3>Make Consistent contour intervals across all panels<a class="headerlink" href="#Make-Consistent-contour-intervals-across-all-panels" title="Permalink to this headline">¶</a></h3>
+<h2>Make Consistent contour intervals across all panels<a class="headerlink" href="#Make-Consistent-contour-intervals-across-all-panels" title="Permalink to this headline">¶</a></h2>
 <p>Typically in atmosphere, ocean, and climate science, we make multi-panel plots because we want to easily compare across the panels. To do this, we need the contour intervals to be the same for each panel. To do this, we specify the levels in the <code class="docutils literal notranslate"><span class="pre">plt.contourf</span></code> call.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[60]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[73]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1118,10 +1123,10 @@ dl.xr-attrs {
 </div>
 </div>
 </div>
-<div class="section" id="Add-a-single-colorbar-for-all-subplots-and-one-big-title-for-the-whole-page">
-<h3>Add a single colorbar for all subplots and one big title for the whole page<a class="headerlink" href="#Add-a-single-colorbar-for-all-subplots-and-one-big-title-for-the-whole-page" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="Add-a-single-colorbar-and-big-title">
+<h2>Add a single colorbar and big title<a class="headerlink" href="#Add-a-single-colorbar-and-big-title" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[61]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[74]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1177,7 +1182,7 @@ dl.xr-attrs {
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[61]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[74]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1193,10 +1198,10 @@ Text(0.5, 0.98, &#39;SubX Week 1 2m Temperature Anomalies ($^\\circ$C): Apr 16, 
 </div>
 </div>
 </div>
-<div class="section" id="Add-lat/lon-labels">
-<h3>Add lat/lon labels<a class="headerlink" href="#Add-lat/lon-labels" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="Add-lat-lon-labels">
+<h2>Add lat-lon labels<a class="headerlink" href="#Add-lat-lon-labels" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[62]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[75]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1262,7 +1267,7 @@ Text(0.5, 0.98, &#39;SubX Week 1 2m Temperature Anomalies ($^\\circ$C): Apr 16, 
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[62]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[75]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1278,11 +1283,11 @@ Text(0.5, 0.98, &#39;SubX Week 1 2m Temperature Anomalies ($^\\circ$C): Apr 16, 
 </div>
 </div>
 </div>
-<div class="section" id="Fix-the-spacing-so-lats/lons-and-colorbar-to-not-overlap">
-<h3>Fix the spacing so lats/lons and colorbar to not overlap<a class="headerlink" href="#Fix-the-spacing-so-lats/lons-and-colorbar-to-not-overlap" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="Fix-the-spacing">
+<h2>Fix the spacing<a class="headerlink" href="#Fix-the-spacing" title="Permalink to this headline">¶</a></h2>
 <p>Change the spacing values in <code class="docutils literal notranslate"><span class="pre">fig.subplots_adjust</span></code></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[63]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[76]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1348,7 +1353,7 @@ Text(0.5, 0.98, &#39;SubX Week 1 2m Temperature Anomalies ($^\\circ$C): Apr 16, 
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[63]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[76]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1361,7 +1366,6 @@ Text(0.5, 0.98, &#39;SubX Week 1 2m Temperature Anomalies ($^\\circ$C): Apr 16, 
 </div>
 <div class="output_area docutils container">
 <img alt="../_images/examples_multi-panel-cartopy_28_1.png" src="../_images/examples_multi-panel-cartopy_28_1.png" />
-</div>
 </div>
 </div>
 </div>
