@@ -44,6 +44,7 @@ The examples are also generally relevant for climate data analysis.  Therefore, 
    examples/read-netcdf.ipynb
    examples/read-grib.ipynb
    examples/read-opendap.ipynb
+   examples/read-fortran-binary.ipynb
 
  
 .. toctree::
