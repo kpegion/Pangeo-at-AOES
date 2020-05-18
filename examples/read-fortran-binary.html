@@ -469,7 +469,7 @@ div.rendered_html tbody tr:hover {
 <h1>Read Fortran Binary Data Files<a class="headerlink" href="#Read-Fortran-Binary-Data-Files" title="Permalink to this headline">¶</a></h1>
 <p>Although most of the data files I work with in atmosphere, ocean, and climate science are in self describing formats, such as netCDF, grib, etc, I still sometimes encounter binary data files written in fortran direct or sequential access. I want to be able to read in these files and convert them to <code class="docutils literal notranslate"><span class="pre">xarray.Dataset</span></code> so I can use all the <code class="docutils literal notranslate"><span class="pre">xarray</span></code> methods and tools to process them.</p>
 <p>This notebook will demonstrate how to read a fortran binary sequential access file and convert it to an <code class="docutils literal notranslate"><span class="pre">xarray.Dataset</span></code></p>
-<p>Thanks to Phil Pegion at University of Colorado/CIRES and NOAA/ESRL/PSD for showing me how to do this.</p>
+<p>Thanks to Phil Pegion at University of Colorado/CIRES and NOAA/PSL for showing me how to do this.</p>
 <div class="section" id="Data">
 <h2>Data<a class="headerlink" href="#Data" title="Permalink to this headline">¶</a></h2>
 <p>I was given the location of the following file from a colleague (Thanks David Straus!). It consists of EOFs (spatial patterns of variability) based on anomalies of 500 hPa geopotential height and 250 hPa zonal winds. The file is located here on the COLA servers:</p>

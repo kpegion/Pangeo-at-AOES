@@ -15,7 +15,7 @@
     "\n",
     "This notebook will demonstrate how to read a fortran binary sequential access file and convert it to an `xarray.Dataset`\n",
     "\n",
-    "Thanks to Phil Pegion at University of Colorado/CIRES and NOAA/ESRL/PSD for showing me how to do this."
+    "Thanks to Phil Pegion at University of Colorado/CIRES and NOAA/PSL for showing me how to do this."
    ]
   },
   {
