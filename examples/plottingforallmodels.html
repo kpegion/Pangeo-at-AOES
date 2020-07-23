@@ -1,0 +1,694 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Plotting weekly forecasts for all models &mdash; Pangeo-at-AOES 0.1.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Pangeo-at-AOES
+          
+
+          
+            
+            <img src="../_static/AOES-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Prerequisites</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../prereq.html">What you should know</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prereq.html#data-access">Data Access</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../why-python-and-pangeo.html">Why Python?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../why-python-and-pangeo.html#what-is-pangeo">What is Pangeo?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setting-up-pangeo.html">Setting up Pangeo &amp; other Python Packages on the COLA Servers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setting-up-jupyter.html">Setting up Jupyter on COLA Servers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setting-up-jupyter.html#troubleshooting">Troubleshooting</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reading Data</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="read-netcdf.html">Read a netcdf file and make a contour plot of the data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="read-grib.html">Read a grib file and make a contour plot of the data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="read-opendap.html">Read a file from an remote OPeNDAP server and make a contour plot of the data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="read-fortran-binary.html">Read Fortran Binary Data Files</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Climate Data Analysis Xarray</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="advanced-analysis.html">Analysis using <code class="docutils literal notranslate"><span class="pre">Xarray</span></code></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Plotting using Matplotlib</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib-tutorial.html">Making Plots Using <code class="docutils literal notranslate"><span class="pre">Matplotlib</span></code></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Maps using Cartopy</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cartopy-tutorial.html">Making Maps using <code class="docutils literal notranslate"><span class="pre">Cartopy</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="multi-panel-cartopy.html">Making multi-panel plots using <code class="docutils literal notranslate"><span class="pre">Cartopy</span></code></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Hindcasts with climpred</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../about-climpred.html">About climpred</a></li>
+<li class="toctree-l1"><a class="reference internal" href="monthly-enso-subx-example.html">Calculate ENSO Skill as a Function of Initial Month vs. Lead Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="daily-subx-example.html">Calculate the skill of a MJO Index as a function of lead time</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weather Data with Metpy</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../metpy-tutorial.html">About MetPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metpy-constants-and-units.html">MetPy Constants and Units</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metpy-calc.html">MetPy calc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metpy-plot.html">MetPy Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metpy-sounding-dignostic.html">Example 2: Analysis of ERA5 profiles</a></li>
+</ul>
+<p class="caption"><span class="caption-text">External Tutorial</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../external.html">Why this External Tutorial?</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Get Involved</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../get-involved.html">AOES Python Club</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get-involved.html#join-the-conversation-on-gitter">Join the Conversation on Gitter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get-involved.html#identify-issues">Identify Issues</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get-involved.html#contribute-to-the-github-repository">Contribute to the Github Repository</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Pangeo-at-AOES</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Plotting weekly forecasts for all models</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/examples/plottingforallmodels.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Plotting-weekly-forecasts-for-all-models">
+<h1>Plotting weekly forecasts for all models<a class="headerlink" href="#Plotting-weekly-forecasts-for-all-models" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Data">
+<h2><em>Data</em><a class="headerlink" href="#Data" title="Permalink to this headline">¶</a></h2>
+<p>The data used is COLA Sub-seasonal (SubX) forecast data</p>
+<p><em>First</em> we input the python packages necessary to run and plot our data. The first three are the basics to help import and read in the data, Cartopy allows us to plot with the world map, latitude and longitude marks, along with creating a Cohesive map that connects in the middle with a cyclic point.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
+<span class="kn">import</span> <span class="nn">cartopy.mpl.ticker</span> <span class="k">as</span> <span class="nn">cticker</span>
+<span class="kn">from</span> <span class="nn">cartopy.util</span> <span class="kn">import</span> <span class="n">add_cyclic_point</span>
+
+
+</pre></div>
+</div>
+</div>
+<p>This is where the ‘for’ loop is used to create all 7 maps, per date. To do so you must define rows and columns for the maps to be placed.</p>
+<p><em>‘prints’ are included as check points to make sure it is running smoothly</em></p>
+<p><em>More information defined per line!</em></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">nrows</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">ncols</span><span class="o">=</span><span class="mi">3</span>
+<span class="c1">#dates are defined below, for the loop to cycle through them all</span>
+<span class="n">fcstdate</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;20200507&#39;</span><span class="p">,</span><span class="s1">&#39;20200514&#39;</span><span class="p">,</span><span class="s1">&#39;20200521&#39;</span><span class="p">,</span><span class="s1">&#39;20200528&#39;</span><span class="p">,</span><span class="s1">&#39;20200604&#39;</span><span class="p">]</span>
+
+
+<span class="c1"># This for loop is to run each of the fcstdates and open each one of the Precipitation files.</span>
+<span class="k">for</span> <span class="n">single_date</span> <span class="ow">in</span> <span class="n">fcstdate</span><span class="p">:</span>
+    <span class="c1">#dictating the path to get to the file; using single_date allows the string of dates to be filed in automatically.</span>
+    <span class="n">path</span><span class="o">=</span><span class="s1">&#39;/shared/subx/forecast/weekly/&#39;</span><span class="o">+</span><span class="n">single_date</span><span class="o">+</span><span class="s1">&#39;/data/&#39;</span>
+    <span class="c1">#defining the path name</span>
+    <span class="n">fname</span><span class="o">=</span><span class="s1">&#39;fcst_&#39;</span><span class="o">+</span><span class="n">single_date</span><span class="o">+</span><span class="s1">&#39;.anom.pr_sfc.nc&#39;</span>
+    <span class="c1">#opening the data with in the file and defining it (can be named whatever you&#39;d like)</span>
+    <span class="n">ds</span><span class="o">=</span><span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">path</span><span class="o">+</span><span class="n">fname</span><span class="p">)</span>
+    <span class="c1">#print (fname)</span>
+
+    <span class="c1"># This line grabs all of the models defined in &#39;ds&#39;</span>
+    <span class="n">models</span><span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="c1">#print(models)</span>
+    <span class="c1">#dim allows to set the dimensions of the lats and lons to get a section instead of the whole globe</span>
+    <span class="n">dim</span><span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">lon</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="mi">350</span><span class="p">),</span><span class="n">lat</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">45</span><span class="p">))</span>
+    <span class="c1">#set the maximum and minimum for longitude based on the middle labeled &#39;lon&#39;</span>
+    <span class="n">lon</span><span class="o">=</span> <span class="mi">300</span>
+    <span class="n">minlon</span><span class="o">=</span> <span class="o">-</span><span class="mi">50</span> <span class="o">+</span><span class="n">lon</span>
+    <span class="n">maxlon</span> <span class="o">=</span> <span class="o">+</span><span class="mi">50</span> <span class="o">+</span><span class="n">lon</span>
+    <span class="c1">#here I have the extent to define where the map can go</span>
+    <span class="c1">#The lat is different than what is defined above because this will get rid of white space</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">minlon</span><span class="p">,</span><span class="n">maxlon</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+    <span class="c1">#print (dim)</span>
+
+    <span class="c1">#Here is where we define the plots, i.e. the 7 boxes to be filled</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="n">nrows</span><span class="p">,</span><span class="n">ncols</span><span class="o">=</span><span class="n">ncols</span><span class="p">,</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;projection&#39;</span><span class="p">:</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=</span> <span class="n">lon</span><span class="p">)},</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">33</span><span class="p">,</span><span class="mi">28</span><span class="p">))</span>
+
+    <span class="c1">#The counter allows for each of the models with in each file to be cycled through</span>
+    <span class="n">counter</span><span class="o">=</span><span class="mi">0</span>
+    <span class="c1">#These for loops arrange the boxes in the correct order</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">nrows</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ncols</span><span class="p">):</span>
+            <span class="c1">#this puts a limit on the counter to keep it from going on forever</span>
+            <span class="k">if</span> <span class="n">counter</span> <span class="o">&lt;</span> <span class="mi">7</span><span class="p">:</span>
+
+
+                <span class="c1">#makinglevels</span>
+                <span class="n">levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+                <span class="c1">#The two below make sure the code is running smoothly (only use when getting an error)</span>
+                <span class="c1">#print(levels)</span>
+
+                <span class="c1">#print(models[counter])</span>
+
+                <span class="c1">#takes the extent definde above and applies it to the data</span>
+                <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_extent</span><span class="p">(</span><span class="n">extent</span><span class="p">)</span>
+                <span class="c1">#Here the data is once again changed to a larger variable to use below</span>
+                <span class="n">data</span><span class="o">=</span> <span class="p">(</span><span class="n">dim</span><span class="p">[</span><span class="n">models</span><span class="p">[</span><span class="n">counter</span><span class="p">]][</span><span class="mi">0</span><span class="p">,:,:]</span><span class="o">*</span><span class="mi">86400</span><span class="p">)</span>
+
+
+                <span class="c1">#creating the actual plot</span>
+                <span class="c1">#using dim [&#39;lat&#39;] &amp; [&#39;lon&#39;] gives the map the new information defined with the extents.</span>
+                <span class="c1">#cmap defines the color being used for the scale of anomalies</span>
+                <span class="n">cs</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">dim</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">],</span> <span class="n">dim</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span> <span class="p">,</span><span class="n">data</span><span class="p">,</span> <span class="n">levels</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;BrBG&#39;</span><span class="p">,</span><span class="n">transform</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+
+
+                <span class="c1">#adding a title for each plot</span>
+                <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">models</span><span class="p">[</span><span class="n">counter</span><span class="p">])</span>
+                <span class="c1">#Add coastlines</span>
+                <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
+
+                <span class="c1"># Define the xticks for longitude</span>
+                <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span><span class="mi">350</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">crs</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+                <span class="n">lon_formatter</span> <span class="o">=</span> <span class="n">cticker</span><span class="o">.</span><span class="n">LongitudeFormatter</span><span class="p">()</span>
+                <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">lon_formatter</span><span class="p">)</span>
+
+                <span class="c1">#Define the yticks for Latitude</span>
+                <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">46</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">crs</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+                <span class="n">lat_formatter</span> <span class="o">=</span> <span class="n">cticker</span><span class="o">.</span><span class="n">LatitudeFormatter</span><span class="p">()</span>
+                <span class="n">axs</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">lat_formatter</span><span class="p">)</span>
+
+
+            <span class="c1"># this allows for the count in loop to change which changes the model name and data; it must be outside the second loop</span>
+            <span class="n">counter</span><span class="o">=</span><span class="n">counter</span><span class="o">+</span><span class="mi">1</span>
+
+    <span class="c1">#everything is aligned with the date for loop because they need to be added for each date</span>
+
+    <span class="c1">#These lines delete the left over blocks from the 3x3 since we are only using 7 of 9</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">delaxes</span><span class="p">(</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">delaxes</span><span class="p">(</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+
+
+    <span class="c1">#this adds a title for the whole plot, for each dates data</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Week One Precipitation Anomalies &#39;</span><span class="o">+</span><span class="n">single_date</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
+    <span class="c1"># this is to get rid of the space between the plots</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
+                    <span class="n">wspace</span><span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.08</span><span class="p">)</span>
+    <span class="c1">#the creates a Color Bar large enough, and lays it horizontal on the bottom</span>
+    <span class="n">cbar_ax</span><span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">])</span>
+    <span class="n">cbar</span><span class="o">=</span><span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cbar_ax</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">)</span>
+    <span class="c1">#this allows the set of plots printed to the saved to my notebook; with the name of the rotating date</span>
+    <span class="n">imagename</span><span class="o">=</span> <span class="n">single_date</span><span class="o">+</span><span class="s1">&#39;.png&#39;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">imagename</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+
+
+
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/examples_plottingforallmodels_4_0.png" src="../_images/examples_plottingforallmodels_4_0.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/examples_plottingforallmodels_4_1.png" src="../_images/examples_plottingforallmodels_4_1.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/examples_plottingforallmodels_4_2.png" src="../_images/examples_plottingforallmodels_4_2.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/examples_plottingforallmodels_4_3.png" src="../_images/examples_plottingforallmodels_4_3.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/examples_plottingforallmodels_4_4.png" src="../_images/examples_plottingforallmodels_4_4.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Kathy Pegion
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
