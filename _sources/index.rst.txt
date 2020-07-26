@@ -67,7 +67,7 @@ The examples are also generally relevant for climate data analysis.  Therefore, 
 
    examples/cartopy-tutorial.ipynb
    examples/multi-panel-cartopy.ipynb
-
+   examples/plottingforallmodels.ipynb
 
 .. toctree::
    :maxdepth: 1
